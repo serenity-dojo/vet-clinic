@@ -2,29 +2,50 @@
 
 This project is used as the basis of a number of tutorials and exercises, as part of the *Professional Java Development and Test Automation Skills* program (see http://johnfergusonsmart.com/products). Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
 
-These tutorials are designed to be used as the basis of small coding exercises (similar to very short coding katas) that you can learn and practice until you are familiar with a particular technique. The approach is outlined here:
+## Vet Clinic Tutorial 1 - The Builder Pattern
 
-![Learning from the tutorials](src/documentation/images/tutorial-process.png)
+In this exercise we will learn about more expressive ways of creating new object instances using the Builder Pattern.
 
-1. Clone this repository and check out the starting point for the tutorial you want to do.
-2. Watch the tutorial and follow along on your own machine.
-3. Redo the tutorial following the step-by-step instructions given in the tutorial's README file.
-4. Redo the exercise without the instructions.
+### Step 1 - Create a domain package.
 
-## The problem domain
+First of all we need a place to store our domain model. Create a package called `domain` in the `serenitylabs.tutorials.vetclinic` package, in both `src/main/java` and `src/test/java`.
 
-The domain is a simple one. We are writing an application for a Vet clinic, where you can take your pets to be treated when they are sick. At the vet clinic, we need to be able to register new animals when they arrive for treatment.
+### Step 2 - Creating a Dog with a name
 
-## Starting a tutorial
+Lets start by seeing how we create a Dog.
 
-Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
-```
-$ git checkout tutorial-1/start
-```
+  - First, add new class called `WhenWeCreateANewDog` in the `serenitylabs.tutorials.vetclinic.model` package under `src/test/java`.
 
-And to see the solution for tutorial 1, use the solution branch:
-```
-$ git checkout tutorial-1/solution
-```
+  - Add a test called `a_new_dog_should_have_a_name()`, that demonstrates how you can create a new Dog instance with a given name. Use a simple default constructor and a String field `name` with a getter and setter.
 
-Go to the tutorial branch to see the step-by-step instructions for that tutorial.
+### Step 3- Adding a breed
+Now we need to cater for the breed of the dog. We can do this by simply adding another field called 'breed'
+  
+  - Refactor your test and the Dog class to use a constructor that takes two parameters: `name` and `breed`.
+  
+### Step 5 - Adding a colour
+Now let's add a third attribute for colour. We could add a third parameter to the constructor, and a fourth, and so on, but the constructor would start to get hard to read, and it would be easy to mix up the parameter order.
+
+We need a more readable way of creating a dog, where the person using the Dog API can easily see what attributes are available, and a person reading the code can easily see what attributes were used to create a particular dog.
+
+We'll do this using what's known as the Builder Pattern. The Builder Pattern is basically a fancy way of saying that you write a class whose job it is to build instances of another class. 
+
+ - Start by writing the builder expression that we would like to see as a user of our API. Try to make it as readable as possible. For example:
+    ```
+    Dog fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black");
+    ```
+
+  - Generate the `called("Fido)` method and make it return a new instance of the `DogBreeder` class.
+  - Create the `DogBreeder` class with a single `name` field.
+  - Add the `ofBreed("Labrador")` to the `DogBreader` class and make it return the current `DogBreader` instance.
+  - Add the `andOfCoulor("Black")` method that creates a new instance of `Dog` using a constructor with the three parameters, `name`,`breed`, and `colour`.
+  - Add the `coulour` field to the `Dog` class.
+
+
+
+
+
+
+
+
+  -
