@@ -6,10 +6,10 @@ These tutorials are designed to be used as the basis of small coding exercises (
 
 ![Learning from the tutorials](src/documentation/images/tutorial-process.png)
 
-    1) Clone this repository and check out the starting point for the tutorial you want to do.
-    2) Watch the tutorial and follow along on your own machine.
-    3) Redo the tutorial following the step-by-step instructions given in the tutorial's README file.
-    4) Redo the exercise without the instructions.
+1. Clone this repository and check out the starting point for the tutorial you want to do.
+2. Watch the tutorial and follow along on your own machine.
+3. Redo the tutorial following the step-by-step instructions given in the tutorial's README file.
+4. Redo the exercise without the instructions.
 
 ## Starting a tutorial
 
