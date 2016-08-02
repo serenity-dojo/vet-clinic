@@ -4,7 +4,7 @@ This project is used as the basis of a number of tutorials and exercises, as par
 
 These tutorials are designed to be used as the basis of small coding exercises (similar to very short coding katas) that you can learn and practice until you are familiar with a particular technique. The approach is outlined here:
 
-![Learning from the tutorials](documentation/images/tutorial-process.png)
+![Learning from the tutorials](src/documentation/images/tutorial-process.png)
 
 1) Clone this repository and check out the starting point for the tutorial you want to do.
 2) Watch the tutorial and follow along on your own machine.
