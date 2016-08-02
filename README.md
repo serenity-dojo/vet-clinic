@@ -11,6 +11,10 @@ These tutorials are designed to be used as the basis of small coding exercises (
 3. Redo the tutorial following the step-by-step instructions given in the tutorial's README file.
 4. Redo the exercise without the instructions.
 
+## The problem domain
+
+The domain is a simple one. We are writing an application for a Vet clinic, where you can take your pets to be treated when they are sick. At the vet clinic, we need to be able to register new animals when they arrive for treatment.
+
 ## Starting a tutorial
 
 Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
