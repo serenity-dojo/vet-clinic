@@ -35,6 +35,7 @@ public class WhenWeCreateANewDog {
 
         assertThat(fido.getColour(), contains("Black", "White"));
         assertThat(fido.getColour(), hasItem("Black"));
+        assertThat(fido.getColour(), hasItems("Black","White"));
         assertThat(fido.getColour(), not(hasItem("Red")));
 
     }
