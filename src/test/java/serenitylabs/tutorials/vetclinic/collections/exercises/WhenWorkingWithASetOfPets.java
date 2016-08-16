@@ -5,10 +5,6 @@ import org.junit.Test;
 
 import java.util.Set;
 
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.Assert.assertThat;
-
 public class WhenWorkingWithASetOfPets {
 
     @Test
@@ -16,9 +12,6 @@ public class WhenWorkingWithASetOfPets {
         Set<String> names = Sets.newHashSet();
 
         // TODO
-        names.add("Fido");
-
-        assertThat(names, contains("Fido"));
     }
 
     @Test
@@ -30,7 +23,6 @@ public class WhenWorkingWithASetOfPets {
         names.add("Fido");
 
         // TODO
-        assertThat(names, containsInAnyOrder("Fido","Felix"));
     }
 
     @Test
@@ -40,7 +32,6 @@ public class WhenWorkingWithASetOfPets {
         names.addAll(Sets.newHashSet("Felix","Spot"));
 
         // TODO
-        assertThat(names, containsInAnyOrder("Fido","Felix","Spot"));
     }
 
 
