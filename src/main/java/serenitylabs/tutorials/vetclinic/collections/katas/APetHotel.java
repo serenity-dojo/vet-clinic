@@ -23,15 +23,6 @@ public class APetHotel {
             this.petCount = petCount;
         }
 
-// TODO: Refact this ancient cradt
-//        public PetHotel petsCheckedIn()  {
-//            PetHotel hotel = new PetHotel();
-//            for(int count = 0; count < petCount; count++) {
-//                hotel.checkIn(somePet(count));
-//            }
-//            return hotel;
-//        }
-
         private Pet somePet(int petCount) {
             return new Pet(someName(petCount), someBreed());
         }
