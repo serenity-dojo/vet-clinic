@@ -15,8 +15,6 @@ public class WhenWorkingWithAPetQueue {
         waitingList.add(Pet.cat().named("Felix"));
         waitingList.add(Pet.dog().named("Fido"));
 
-        Pet nextInLine = waitingList.poll();
-
         // TODO
     }
 
@@ -26,8 +24,6 @@ public class WhenWorkingWithAPetQueue {
 
         waitingList.add(Pet.cat().named("Felix"));
         waitingList.add(Pet.dog().named("Fido"));
-
-        Pet nextInLine = waitingList.peek();
 
         // TODO
     }

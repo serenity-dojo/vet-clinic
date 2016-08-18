@@ -32,8 +32,6 @@ public class WhenWorkingWithAPetMap {
         pets.put("Fido", fido);
         pets.put("Stray", stray);
 
-        Pet retrievedPet = pets.getOrDefault("Rover", stray);
-
         // TODO
     }
 

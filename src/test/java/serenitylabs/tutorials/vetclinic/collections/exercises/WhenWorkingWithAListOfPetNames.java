@@ -3,7 +3,6 @@ package serenitylabs.tutorials.vetclinic.collections.exercises;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.Comparator;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -82,7 +81,6 @@ public class WhenWorkingWithAListOfPetNames {
         List<String> pets = Lists.newArrayList("Felix","Alfred","Spot");
 
         // TODO
-        pets.sort(Comparator.comparing(String::length));
 
         assertThat(pets, hasItems("Spot","Felix","Alfred"));
     }
