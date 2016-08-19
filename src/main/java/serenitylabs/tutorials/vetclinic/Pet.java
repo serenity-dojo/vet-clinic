@@ -5,16 +5,10 @@ import com.google.common.base.Objects;
 public class Pet {
     private final String name;
     private final Breed breed;
-    private final Gender gender;
-
-    public Pet(String name, Breed breed, Gender gender) {
-        this.name = name;
-        this.breed = breed;
-        this.gender = gender;
-    }
 
     public Pet(String name, Breed breed) {
-        this(name, breed, Gender.Unknown);
+        this.name = name;
+        this.breed = breed;
     }
 
     public String getName() {
@@ -25,10 +19,6 @@ public class Pet {
         return breed;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
-
     public static PetBuilder dog() { return new PetBuilder(Breed.Dog);}
     public static PetBuilder cat() { return new PetBuilder(Breed.Cat);}
     public static PetBuilder rabbit() { return new PetBuilder(Breed.Rabbit);}
@@ -37,20 +27,15 @@ public class Pet {
 
     public static class PetBuilder {
         private final Breed breed;
-        private Gender gender = Gender.Unknown;
 
         public PetBuilder(Breed breed) {
             this.breed = breed;
         }
 
         public Pet named(String name) {
-            return new Pet(name, breed, gender);
+            return new Pet(name, breed);
         }
 
-        public PetBuilder ofGender(Gender gender) {
-            this.gender = gender;
-            return this;
-        }
     }
 
     @Override
