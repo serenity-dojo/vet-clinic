@@ -63,8 +63,4 @@ public class PetHotel {
         }
     }
 
-    @Override
-    public String toString() {
-        return "the hotel " + hotelName;
-    }
 }
