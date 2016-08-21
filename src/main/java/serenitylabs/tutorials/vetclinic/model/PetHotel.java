@@ -10,16 +10,28 @@ public class PetHotel {
 
     public static final int MAXIMUM_PETS = 20;
 
+    private final String hotelName;
     private final GuestList guestList;
     private final WaitingList waitingList;
 
-    public PetHotel(GuestList guestList, WaitingList waitingList) {
+    public PetHotel(String hotelName,
+                    GuestList guestList,
+                    WaitingList waitingList) {
+        this.hotelName = hotelName;
         this.guestList = guestList;
         this.waitingList = waitingList;
     }
 
+    public PetHotel(String name) {
+        this(name, new GuestList(), new WaitingList());
+    }
+
     public List<Pet> getPets() {
         return guestList.getGuests();
+    }
+
+    public static PetHotel called(String name) {
+        return new PetHotel(name);
     }
 
     private enum HotelAvailability { Available, Full}
@@ -49,5 +61,10 @@ public class PetHotel {
         if (!waitingList.isEmpty()) {
             checkIn(waitingList.nextInLine());
         }
+    }
+
+    @Override
+    public String toString() {
+        return "the hotel " + hotelName;
     }
 }

@@ -1,11 +1,11 @@
 package serenitylabs.tutorials.vetclinic.screenplay;
 
 import com.google.common.collect.ImmutableList;
-import serenitylabs.tutorials.vetclinic.Breed;
-import serenitylabs.tutorials.vetclinic.Pet;
+import serenitylabs.tutorials.vetclinic.model.Breed;
+import serenitylabs.tutorials.vetclinic.model.Pet;
 import serenitylabs.tutorials.vetclinic.model.GuestList;
 import serenitylabs.tutorials.vetclinic.model.PetHotel;
-import serenitylabs.tutorials.vetclinic.model.WaitingListStrategy;
+import serenitylabs.tutorials.vetclinic.model.WaitingList;
 
 import java.util.List;
 import java.util.Random;
@@ -27,7 +27,7 @@ public class APetHotel {
         }
 
         public PetHotel petsCheckedIn()  {
-            PetHotel hotel = new PetHotel(new GuestList(), new WaitingListStrategy.WaitingList());
+            PetHotel hotel = new PetHotel("Pet Hotel", new GuestList(), new WaitingList());
             for(int count = 0; count < petCount; count++) {
                 hotel.checkIn(somePet(count));
             }

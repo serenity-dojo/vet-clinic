@@ -2,13 +2,12 @@ package serenitylabs.tutorials.vetclinic.screenplay.tasks;
 
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.Performable;
 import net.thucydides.core.annotations.Step;
-import serenitylabs.tutorials.vetclinic.Pet;
+import serenitylabs.tutorials.vetclinic.model.Pet;
 import serenitylabs.tutorials.vetclinic.model.PetHotel;
 
-public class CheckIn implements Task {
-
+public class CheckIn implements Performable {
     private final Pet pet;
     private final PetHotel petHotel;
 
@@ -17,9 +16,9 @@ public class CheckIn implements Task {
         this.petHotel = petHotel;
     }
 
-    @Override
     @Step("{0} checks #pet into #petHotel")
-    public <T extends Actor> void performAs(T t) {
+    @Override
+    public <T extends Actor> void performAs(T actor) {
         petHotel.checkIn(pet);
     }
 
@@ -28,16 +27,14 @@ public class CheckIn implements Task {
     }
 
     public static class CheckInBuilder {
-
         private final Pet pet;
 
         public CheckInBuilder(Pet pet) {
             this.pet = pet;
         }
 
-        public CheckIn into(PetHotel petHotel) {
+        public Performable into(PetHotel petHotel) {
             return Instrumented.instanceOf(CheckIn.class).withProperties(pet, petHotel);
         }
-
     }
 }

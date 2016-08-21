@@ -4,9 +4,12 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import serenitylabs.tutorials.vetclinic.model.GuestList;
+import serenitylabs.tutorials.vetclinic.model.Pet;
 import serenitylabs.tutorials.vetclinic.model.PetHotel;
-import serenitylabs.tutorials.vetclinic.model.WaitingList;
+import serenitylabs.tutorials.vetclinic.screenplay.tasks.CheckIn;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 
 @RunWith(SerenityRunner.class)
 public class WhenCheckingInToThePetHotel {
@@ -15,19 +18,18 @@ public class WhenCheckingInToThePetHotel {
     public void petra_books_her_pet_cat_into_the_hotel() {
 
         // GIVEN
+
         Actor petra = Actor.named("Petra the pet owner");
-
-        GuestList guestList = new GuestList();
-        WaitingList waitingList = new WaitingList();
-
-        PetHotel petHotelCalifornia = new PetHotel(guestList, waitingList);
+        Pet ginger = Pet.cat().named("Ginger");
+        PetHotel petHotel = PetHotel.called("Pet Hotel California");
 
         // WHEN
+        petra.attemptsTo(
+                CheckIn.aPet(ginger).into(petHotel)
+        );
 
         // THEN
-
-       // assertThat(petHotelCalifornia.getPets(), hasItem(Pet.cat().named("Ginger")));
-
+        assertThat(petHotel.getPets(), hasItem(ginger));
 
     }
 }

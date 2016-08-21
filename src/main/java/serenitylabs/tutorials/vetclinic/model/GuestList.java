@@ -1,8 +1,6 @@
 package serenitylabs.tutorials.vetclinic.model;
 
 import com.google.common.collect.ImmutableList;
-import serenitylabs.tutorials.vetclinic.Pet;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;

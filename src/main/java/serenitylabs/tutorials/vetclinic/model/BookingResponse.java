@@ -1,7 +1,5 @@
 package serenitylabs.tutorials.vetclinic.model;
 
-import serenitylabs.tutorials.vetclinic.Pet;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class BookingResponse implements BookingAcknowledgement {

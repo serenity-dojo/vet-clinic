@@ -1,7 +1,5 @@
 package serenitylabs.tutorials.vetclinic.model;
 
-import serenitylabs.tutorials.vetclinic.Pet;
-
 public class PlacedOnWaitingList extends BookingResponse {
     public PlacedOnWaitingList(int number, Pet pet) {
         super(number, pet);
