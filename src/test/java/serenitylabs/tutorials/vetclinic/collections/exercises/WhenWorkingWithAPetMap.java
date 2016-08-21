@@ -39,6 +39,8 @@ public class WhenWorkingWithAPetMap {
         assertThat(retrievedPet, equalTo(stray));
     }
 
+
+
     @Test
     public void the_map_keys_should_be_the_pet_names() {
         Map<String, Pet> pets = new HashMap<>();

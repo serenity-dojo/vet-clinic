@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
 public class WhenWorkingWithAListOfPetNames {
@@ -19,7 +20,7 @@ public class WhenWorkingWithAListOfPetNames {
         // TODO
         names.add("Fido");
 
-        assertThat(names, hasItems("Fido"));
+        assertThat(names, contains("Fido"));
     }
 
     @Test
@@ -28,7 +29,7 @@ public class WhenWorkingWithAListOfPetNames {
         // TODO
         names.remove("Fido");
 
-        assertThat(names, hasItems("Felix","Spot"));
+        assertThat(names, contains("Felix","Spot"));
     }
 
     @Test
@@ -38,7 +39,7 @@ public class WhenWorkingWithAListOfPetNames {
         // TODO
         names.remove(0);
 
-        assertThat(names, hasItems("Fido","Spot"));
+        assertThat(names, contains("Fido","Spot"));
     }
 
     @Test
@@ -50,7 +51,7 @@ public class WhenWorkingWithAListOfPetNames {
         List<String> catsAndDogs = new ArrayList(cats);
         catsAndDogs.addAll(dogs);
 
-        assertThat(catsAndDogs, hasItems("Felix","Spot","Fido","Rover"));
+        assertThat(catsAndDogs, contains("Felix","Spot","Fido","Rover"));
     }
 
     @Test
@@ -62,7 +63,7 @@ public class WhenWorkingWithAListOfPetNames {
         List<String> catsAndDogs = new ArrayList(cats);
         catsAndDogs.addAll(1,dogs);
 
-        assertThat(catsAndDogs, hasItems("Felix","Fido","Rover","Spot"));
+        assertThat(catsAndDogs, contains("Felix","Fido","Rover","Spot"));
     }
 
     @Test
@@ -72,7 +73,7 @@ public class WhenWorkingWithAListOfPetNames {
         // TODO
         pets.sort(Comparator.naturalOrder());
 
-        assertThat(pets, hasItems("Felix","Fido","Rover","Spot"));
+        assertThat(pets, contains("Felix","Fido","Rover","Spot"));
     }
 
     @Test
@@ -92,7 +93,7 @@ public class WhenWorkingWithAListOfPetNames {
         // TODO
         pets.sort(Comparator.comparing(String::length));
 
-        assertThat(pets, hasItems("Spot","Felix","Alfred"));
+        assertThat(pets, contains("Spot","Felix","Alfred"));
     }
 
 }
