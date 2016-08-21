@@ -1,9 +1,5 @@
 package serenitylabs.tutorials.vetclinic.model;
 
-import serenitylabs.tutorials.vetclinic.Pet;
-
-import java.util.Collection;
-
 public class WaitingListStrategy implements CheckInStrategy {
     private final WaitingList waitingList;
 
@@ -16,5 +12,4 @@ public class WaitingListStrategy implements CheckInStrategy {
         waitingList.add(pet);
         return BookingResponse.waitingListFor(pet);
     }
-
 }

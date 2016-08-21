@@ -8,13 +8,11 @@ import serenitylabs.tutorials.vetclinic.model.GuestList;
 import serenitylabs.tutorials.vetclinic.model.PetHotel;
 import serenitylabs.tutorials.vetclinic.model.WaitingList;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
 @RunWith(SerenityRunner.class)
 public class WhenCheckingInToThePetHotel {
 
     @Test
-    public void petra_books_her_pet_cat_into_the_hotel(PetHotel petHotelCalifornia) {
+    public void petra_books_her_pet_cat_into_the_hotel() {
 
         // GIVEN
         Actor petra = Actor.named("Petra the pet owner");

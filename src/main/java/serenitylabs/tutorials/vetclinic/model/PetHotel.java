@@ -1,7 +1,6 @@
 package serenitylabs.tutorials.vetclinic.model;
 
 import com.google.common.collect.ImmutableMap;
-import serenitylabs.tutorials.vetclinic.Pet;
 
 import java.util.Collection;
 import java.util.List;
