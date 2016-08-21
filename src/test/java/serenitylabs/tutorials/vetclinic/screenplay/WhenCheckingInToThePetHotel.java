@@ -6,12 +6,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import serenitylabs.tutorials.vetclinic.model.Pet;
 import serenitylabs.tutorials.vetclinic.model.PetHotel;
+import serenitylabs.tutorials.vetclinic.screenplay.questions.TheGuestsOnTheWaitingList;
 import serenitylabs.tutorials.vetclinic.screenplay.questions.TheRegisteredGuests;
 import serenitylabs.tutorials.vetclinic.screenplay.tasks.CheckIn;
 import serenitylabs.tutorials.vetclinic.screenplay.tasks.CheckOut;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.not;
 
@@ -54,7 +54,29 @@ public class WhenCheckingInToThePetHotel {
         );
 
         // THEN
-        assertThat(petHotel.getPets(), not(hasItem(ginger)));
+        petra.should(seeThat(TheRegisteredGuests.in(petHotel), not(hasItem(ginger))));
+
+    }
+
+    @Test
+    public void petra_checks_her_cat_in_when_the_hotel_is_full() {
+        // GIVEN
+
+        Actor petra = Actor.named("Petra the pet owner");
+        Pet ginger = Pet.cat().named("Ginger");
+        PetHotel petHotel = APetHotel.with(20).petsCheckedIn();
+
+        petra.wasAbleTo(CheckIn.aPet(ginger).into(petHotel));
+
+        // WHEN
+        petra.attemptsTo(
+                CheckOut.aPet(ginger).from(petHotel)
+        );
+
+        // THEN
+        petra.should(
+                seeThat(TheRegisteredGuests.in(petHotel), not(hasItem(ginger))),
+                seeThat(TheGuestsOnTheWaitingList.forHotel(petHotel), hasItem(ginger)));
 
     }
 

@@ -2,7 +2,6 @@ package serenitylabs.tutorials.vetclinic.model;
 
 import com.google.common.collect.ImmutableMap;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -51,7 +50,7 @@ public class PetHotel {
         return checkInStrategy.attemptToCheckIn(pet);
     }
 
-    public Collection<Pet> getWaitingList() {
+    public List<Pet> getWaitingList() {
         return waitingList.getPets();
     }
 
