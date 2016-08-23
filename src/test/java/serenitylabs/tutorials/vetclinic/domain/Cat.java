@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-public class Dog extends Animal implements NeedVaccinations{
+public class Cat extends Animal implements NeedVaccinations{
 	private final String name;
 	private final String breed;
 	private final List<String> colors;
@@ -20,7 +20,7 @@ public class Dog extends Animal implements NeedVaccinations{
 		return new ArrayList(colors);
 	}
 
-	public Dog(String name, String breed, List<String> colors) {
+	public Cat(String name, String breed, List<String> colors) {
 		super();
 		this.name = name;
 		this.breed = breed;
@@ -51,27 +51,30 @@ public class Dog extends Animal implements NeedVaccinations{
 			return this;
 		}
 
-		public Dog andOfColour(String... colour) {
+		public Cat andOfColour(String... colour) {
 
-			return new Dog(name, breed, ImmutableList.of(colour));
+			return new Cat(name, breed, ImmutableList.of(colour));
 		}
 
 	}
-@Override
+
+	@Override
 	public String complaint() {
 		// TODO Auto-generated method stub
-		return "Grrrr";
+		return "Meow";
 	}
 
-public void wasVaccinatedOn(LocalDate vaccinationDate) {
-	// TODO Auto-generated method stub	
-	this.lastVaccinatedOn=vaccinationDate;
+	public void wasVaccinatedOn(LocalDate vaccinationDate) {
+		// TODO Auto-generated method stub
+		this.lastVaccinatedOn=vaccinationDate;
+		
+	}
+
+	public LocalDate nextVaccinationDue() {
+		// TODO Auto-generated method stub
+		return lastVaccinatedOn.plusYears(1);
+	}
+
 	
-}
-
-public LocalDate nextVaccinationDue() {
-	// TODO Auto-generated method stub
-	return lastVaccinatedOn.plusMonths(6);
-}
-
+	
 }

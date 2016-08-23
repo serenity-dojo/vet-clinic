@@ -1,6 +1,7 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
@@ -22,6 +23,22 @@ public class WhenWeCreateANewDog {
 		Dog fido = Dog.called("Fido").ofBreed("Labrador")
 				.andOfColour("Black", "White");
 		assertThat(fido.getColor(), contains("Black", "White"));
+	}
+	
+	@Test
+	public void a_dog_complains_by_growling(){
+		Dog fido = Dog.called("Fido").ofBreed("Labrador")
+				.andOfColour("Black", "White");
+		
+		assertThat(fido.complaint(),is(equalTo("Grrrr")));
+	}
+	
+	@Test
+	public void a_Cat_complains_by_meowing(){
+		Cat felix = Cat.called("Felix").ofBreed("Burmese")
+				.andOfColour("Brown");
+		
+		assertThat(felix.complaint(),is(equalTo("Meow")));
 	}
 
 }
