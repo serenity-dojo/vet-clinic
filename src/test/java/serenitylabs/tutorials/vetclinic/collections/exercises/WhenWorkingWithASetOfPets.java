@@ -1,9 +1,16 @@
 package serenitylabs.tutorials.vetclinic.collections.exercises;
 
-import com.google.common.collect.Sets;
-import org.junit.Test;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
 
 import java.util.Set;
+
+import org.junit.Test;
+
+import com.google.common.collect.Sets;
 
 public class WhenWorkingWithASetOfPets {
 
@@ -11,7 +18,9 @@ public class WhenWorkingWithASetOfPets {
     public void should_add_Fido_to_the_set_of_pets() {
         Set<String> names = Sets.newHashSet();
 
+        names.add("Fido");
         // TODO
+        assertThat(names, is( not ( empty() ) ) );
     }
 
     @Test
@@ -23,15 +32,17 @@ public class WhenWorkingWithASetOfPets {
         names.add("Fido");
 
         // TODO
+        assertThat(names.size(), is( 2 ) );
     }
 
     @Test
     public void adding_several_pets() {
         Set<String> names = Sets.newHashSet("Fido","Felix");
-
+        Set<String> originalSet = Sets.newHashSet(names);
         names.addAll(Sets.newHashSet("Felix","Spot"));
 
         // TODO
+        assertThat(names.size(), is( greaterThan( originalSet.size() ) ) );
     }
 
 

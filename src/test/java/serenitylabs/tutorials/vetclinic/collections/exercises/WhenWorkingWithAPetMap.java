@@ -1,6 +1,7 @@
 package serenitylabs.tutorials.vetclinic.collections.exercises;
 
 import org.junit.Test;
+
 import serenitylabs.tutorials.vetclinic.Breed;
 import serenitylabs.tutorials.vetclinic.Pet;
 
@@ -18,8 +19,8 @@ public class WhenWorkingWithAPetMap {
         Pet fido = Pet.dog().named("Fido");
 
         pets.put("Fido", fido);
-
         // TODO
+        assertThat(pets.get("Fido"), is( fido ) );
     }
 
     @Test
@@ -31,8 +32,12 @@ public class WhenWorkingWithAPetMap {
 
         pets.put("Fido", fido);
         pets.put("Stray", stray);
+        
+
+        Pet retrievedPet = pets.getOrDefault("Rover", stray);
 
         // TODO
+        assertThat( retrievedPet, is( stray ) );
     }
 
     @Test
@@ -51,7 +56,7 @@ public class WhenWorkingWithAPetMap {
     @Test
     public void the_map_should_store_pets_in_alphabetical_order() {
         // TODO: Instantiate the correct type of Map
-        NavigableMap<String, Pet> pets = null;
+        NavigableMap<String, Pet> pets = new TreeMap<>();
 
         pets.put("Rover", Pet.dog().named("Rover"));
         pets.put("Felix", Pet.cat().named("Felix"));
@@ -63,7 +68,7 @@ public class WhenWorkingWithAPetMap {
     @Test
     public void the_map_should_store_pets_in_the_order_they_where_added() {
         // TODO: Instantiate the correct type of Map
-        Map<String, Pet> pets =  null;
+        Map<String, Pet> pets =  new LinkedHashMap<>();
 
         pets.put("Spot", Pet.cat().named("Spot"));
         pets.put("Rover", Pet.dog().named("Rover"));
@@ -76,7 +81,7 @@ public class WhenWorkingWithAPetMap {
     @Test
     public void the_map_should_store_pet_leaders_by_breed() {
         // TODO: Create an EnumMap to define a pet leader for each breed
-        EnumMap<Breed, Pet> petLeaders =  null;
+        EnumMap<Breed, Pet> petLeaders =  new EnumMap<>(Breed.class);
 
         petLeaders.put(Breed.Cat, Pet.cat().named("Felix"));
         petLeaders.put(Breed.Dog, Pet.dog().named("Lassie"));

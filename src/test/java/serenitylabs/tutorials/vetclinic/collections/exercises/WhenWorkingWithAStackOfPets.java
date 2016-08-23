@@ -20,7 +20,7 @@ public class WhenWorkingWithAStackOfPets {
         pets.push(Pet.dog().named("Fido"));
 
         // TODO: Retrieve the last pet put on the list
-        Pet lastPet = null;
+        Pet lastPet = pets.pollFirst();
 
         assertThat(lastPet.getName(),equalTo("Fido"));
         assertThat(pets.size(), equalTo(1));
@@ -35,7 +35,7 @@ public class WhenWorkingWithAStackOfPets {
         pets.push(Pet.dog().named("Fido"));
 
         // TODO: Retrieve the last pet put on the list
-        Pet lastPet = null;
+        Pet lastPet = pets.peekFirst();
 
         assertThat(lastPet.getName(),equalTo("Fido"));
         assertThat(pets.size(), equalTo(2));

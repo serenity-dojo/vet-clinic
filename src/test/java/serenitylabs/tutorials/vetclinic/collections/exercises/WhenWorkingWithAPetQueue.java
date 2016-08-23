@@ -1,6 +1,10 @@
 package serenitylabs.tutorials.vetclinic.collections.exercises;
 
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
+
 import serenitylabs.tutorials.vetclinic.Pet;
 
 import java.util.LinkedList;
@@ -15,7 +19,10 @@ public class WhenWorkingWithAPetQueue {
         waitingList.add(Pet.cat().named("Felix"));
         waitingList.add(Pet.dog().named("Fido"));
 
+        Pet nextInLine = waitingList.poll();
+
         // TODO
+        assertThat( waitingList.poll(), is( Pet.dog().named("Fido") ) );
     }
 
     @Test
@@ -25,7 +32,10 @@ public class WhenWorkingWithAPetQueue {
         waitingList.add(Pet.cat().named("Felix"));
         waitingList.add(Pet.dog().named("Fido"));
 
+        Pet nextInLine = waitingList.peek();
+
         // TODO
+        assertThat( nextInLine, is(Pet.cat().named("Felix")) );
     }
 
 
