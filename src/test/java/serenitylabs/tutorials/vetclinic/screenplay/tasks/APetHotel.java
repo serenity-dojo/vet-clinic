@@ -1,4 +1,4 @@
-package serenitylabs.tutorials.vetclinic.screenplay;
+package serenitylabs.tutorials.vetclinic.screenplay.tasks;
 
 import com.google.common.collect.ImmutableList;
 import serenitylabs.tutorials.vetclinic.model.Breed;
@@ -33,21 +33,21 @@ public class APetHotel {
             }
             return hotel;
         }
+    }
 
-        private Pet somePet(int petCount) {
-            return new Pet(someName(petCount), someBreed());
-        }
+    public static Pet somePet(int petCount) {
+        return new Pet(someName(petCount), someBreed());
+    }
 
-        private final static Random random = new Random();
+    private final static Random random = new Random();
 
-        private Breed someBreed() {
-            return Breed.values()[ random.nextInt(Breed.values().length) ];
-        }
+    private static Breed someBreed() {
+        return Breed.values()[ random.nextInt(Breed.values().length) ];
+    }
 
-        private final static List<String> PET_NAMES = ImmutableList.of("Fido","Felix","Rover","Spot");
+    private final static List<String> PET_NAMES = ImmutableList.of("Fido","Felix","Rover","Spot");
 
-        private String someName(int petCount) {
-            return PET_NAMES.get(random.nextInt(PET_NAMES.size())) + " " + petCount;
-        }
+    private static String someName(int petCount) {
+        return PET_NAMES.get(random.nextInt(PET_NAMES.size())) + " " + petCount;
     }
 }
