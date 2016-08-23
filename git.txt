@@ -1,0 +1,153 @@
+Clone Repository :
+
+git clone <<URL>>
+
+
+How  to See Branch :
+
+git branch
+
+
+How to check last commit log:
+
+git log
+
+
+Working dir Status : commite or not after cloning
+
+git status
+
+
+To add or update file to Repository:
+git add --all
+git add test.txt
+
+git status
+	Changes to be commited:
+        modified : test.txt
+
+
+git commit
+
+
+
+git config --global user.email "sushil.mejari@gmail.com"
+
+git config --global user.name "sushilmejari"
+
+git commit
+
+
+git branch -all
+
+git diff origin/master
+
+git push
+
+take data from remote:
+
+git fetch
+      
+
+git diff master origin/master
+<Dtails in difference>
+git diff master origin/master --name-only
+<will give only files name>
+ 
+sync with remote
+git merge origin/master
+
+
+take data from remote: 	
+git pull
+
+already up to date
+
+
+
+Temp save : save for later
+
+git stash
+
+show temp save file list :
+
+git stash list
+
+
+
+to drop temp Change :
+
+git stash list
+stash@{0}: WIP on master
+
+git stash drop stash@{0}
+
+
+
+
+Recover File or Work :
+    -take file copy from remote
+git checkout <file name>
+
+
+git reset HEAD test.txt
+git checkout <file name>
+
+
+
+will get last commited files to local :
+
+git reset --hard Head
+
+
+Undo the commit: 
+
+git commit -m "remove file"
+
+git log
+
+will get list of commited logs with unique no.
+
+git revert <Unique no> 
+
+Check Branch :
+
+git branch --all
+
+git branch Devlopment <Will create new branch>
+
+git checkout devlopment <<Switch to branch development>>
+
+git status <will show on which branch you are>
+
+Push brach to remote:
+
+git push origin devlopment
+
+
+git diff master devlopment
+
+git diff --name-only master
+
+
+Switch to branch master	:
+git checkout master
+
+
+
+Delete Branch :
+
+git branch -d devlopment
+
+
+git branch --all <remote>
+
+git push origin --delete development <remote>
+
+Information about release:
+git tag
+
+
+git tag -a RELEASE0002
+
+
