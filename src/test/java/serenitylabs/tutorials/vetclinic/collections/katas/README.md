@@ -2,6 +2,8 @@
  
 ## Booking pets into a pet hotel
  
+In this kata, we are helping a vet clinic open a hotel for pets on the premises. Pet owners can bring their pets to the hotel and check them in if there is an available room. If no room is available, the pet will be placed on a waiting list. Whenever a pet checks out, a room is freed to the first animal on the waiting list is automatically checked in.
+
 The aim of this kata is to implement a Pet hotel with the following requirements:
 
   - Pet owners should be able to check their pet into the hotel
