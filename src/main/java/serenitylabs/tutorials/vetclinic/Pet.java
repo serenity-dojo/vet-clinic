@@ -5,13 +5,22 @@ import com.google.common.base.Objects;
 public class Pet {
     private final String name;
     private final Breed breed;
+    private final Gender gender;
 
     public Pet(String name, Breed breed) {
         this.name = name;
         this.breed = breed;
+        this.gender = Gender.UNKNOWN;
     }
 
-    public String getName() {
+    public Pet(String name, Breed breed, Gender gender) {
+    	this.name = name;
+        this.breed = breed;
+        this.gender = gender;
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -55,4 +64,14 @@ public class Pet {
     public int hashCode() {
         return Objects.hashCode(name, breed);
     }
+
+	public Gender getGender() {
+		// TODO Auto-generated method stub
+		return gender;
+	}
+
+	public Pet having(Gender male) {
+		// TODO Auto-generated method stub
+		return new Pet(name,breed ,male);
+	}
 }
