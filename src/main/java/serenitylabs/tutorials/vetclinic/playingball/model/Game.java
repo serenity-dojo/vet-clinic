@@ -1,4 +1,4 @@
-package serenitylabs.tutorials.vetclinic.strategy.model;
+package serenitylabs.tutorials.vetclinic.playingball.model;
 
 public enum Game {
     Football, Tennis, Cricket, Handball
