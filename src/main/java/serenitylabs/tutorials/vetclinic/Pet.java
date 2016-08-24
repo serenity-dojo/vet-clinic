@@ -54,4 +54,8 @@ public class Pet {
     public int hashCode() {
         return Objects.hashCode(name, breed);
     }
+		
+		public static PetBuilder OfBreed(Breed dog) {
+			return new PetBuilder(dog);
+	}
 }
