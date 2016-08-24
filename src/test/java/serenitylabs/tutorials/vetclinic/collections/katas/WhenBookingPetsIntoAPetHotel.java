@@ -21,8 +21,9 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void the_hotel_should_initially_have_no_pets_booked() {
-    	  List<Pet> pets = Lists.newArrayList();
-
+    	
+    	  APetHotel hotel = APetHotel.aHotel().named("Silver Inn");
+    	  List<Pet> pets = hotel.getPets();
           assertThat(pets, emptyCollectionOf(Pet.class));
     }
 
