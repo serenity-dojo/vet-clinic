@@ -15,16 +15,18 @@ These tutorials are designed to be used as the basis of small coding exercises (
 
 The domain is a simple one. We are writing an application for a Vet clinic, where you can take your pets to be treated when they are sick. At the vet clinic, we need to be able to register new animals when they arrive for treatment.
 
-## Starting a tutorial
+In the exercises for this tutorial we will be working with Screenplay Questions.
 
-Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
+## Exercise 1 - refactoring a test to use a Question
+
+Refactor the `petra_checks_her_cat_out_of_the_hotel()` test to use a Question instead of an annotation. 
+
+## Exercise 2 - writing a new Question
+
+Write a new test `petra_checks_her_cat_in_when_the_hotel_is_full()`. This test should use the `APetHotel` class to create a new hotel with a number of guests already present:
+
 ```
-$ git checkout tutorial-1/start
+PetHotel petHotel = APetHotel.with(20).petsCheckedIn();
 ```
 
-And to see the solution for tutorial 1, use the solution branch:
-```
-$ git checkout tutorial-1/solution
-```
-
-Go to the tutorial branch to see the step-by-step instructions for that tutorial.
+The test should use a question to confirm that Petra's pet cat Ginger is not in the hotel guest list, but has been placed on the waiting list.
