@@ -2,9 +2,12 @@ package serenitylabs.tutorials.vetclinic.enumerations.exercises;
 
 import com.google.common.collect.ImmutableList;
 import org.junit.Test;
+import serenitylabs.tutorials.vetclinic.Breed;
 import serenitylabs.tutorials.vetclinic.Pet;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -23,7 +26,7 @@ public class WhenWorkingWithASimpleEnumeration {
 
         // TODO: Extract all the dogs from the pets list
 
-        List<Pet> dogs = null;
+        List<Pet> dogs = pets.stream().filter(pet -> pet.getBreed() == Breed.Dog).collect(Collectors.toList());
 
         assertThat(dogs, containsInAnyOrder( Pet.dog().named("Rover"), Pet.dog().named("Lassie")));
 
@@ -31,11 +34,10 @@ public class WhenWorkingWithASimpleEnumeration {
 
     @Test
     public void list_all_known_breeds() {
-
         // TODO: List the names of all the known breeds
-
-        List<String> breeds = null;
-        assertThat(breeds, contains("Cat", "Dog", "Rabbit", "Fish", "Parrot"));
+        Breed[] values = Breed.values();
+        List<String> nameOfBreeds = Arrays.asList(values).stream().map(b -> b.name()).collect(Collectors.toList());
+        assertThat(nameOfBreeds, contains("Cat", "Dog", "Rabbit", "Fish", "Parrot"));
 
     }
 
