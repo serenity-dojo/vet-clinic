@@ -80,14 +80,14 @@ You are now probably getting some non-trivial conditional logic in the `goPlayBa
               }
           }
       
-  3) Implement the game schedule for school sports, e.g.
+  4) Implement the game schedule for school sports, e.g.
       - Write a test case `WhenSchedulingSchoolSports`
       - Write a test to check that tennis should be scheduled in Winter, and that Cricket should be scheduled in Summer.
       - (Advanced): Use a parameterized JUnit test to check sample dates for each month of the year.
     
    Again, you will need to implement any concrete implementations of `PlayBall` that you need for the school sports schedule.
   
-  4) Refactor the `goPlayBallOn()` method to use the recreational and school sports schedulers. One possible implemention is shown here:
+  5) Refactor the `goPlayBallOn()` method to use the recreational and school sports schedulers. One possible implemention is shown here:
        
            public class Child {
            
