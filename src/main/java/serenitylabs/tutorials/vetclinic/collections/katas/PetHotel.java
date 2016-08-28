@@ -1,5 +1,6 @@
 package serenitylabs.tutorials.vetclinic.collections.katas;
 
+import serenitylabs.tutorials.vetclinic.Breed;
 import serenitylabs.tutorials.vetclinic.Pet;
 
 import java.util.*;
@@ -17,9 +18,20 @@ public class PetHotel {
         return new ArrayList<>(pets);
     }
 
-    private enum HotelAvailability { Available, Full}
+    public void feedTheGuests() {
+        for (Pet pet : getPets()) {
+            if (pet.getBreed() == Breed.Cat) {
+                pet.feed(10 * pet.getWeightInKilos(), PetFood.KittyKat);
+            } else if (pet.getBreed() == Breed.Dog) {
+                pet.feed(20 * pet.getWeightInKilos(), PetFood.FidosFood);
+            }
+        }
+    }
+
+    private enum HotelAvailability {Available, Full}
 
     private static final Map<HotelAvailability, CheckInStrategy> CHECK_IN_STRATEGY = new HashMap<>();
+
     {
         CHECK_IN_STRATEGY.put(HotelAvailability.Available, new ConfirmBookingStrategy(pets));
         CHECK_IN_STRATEGY.put(HotelAvailability.Full, new WaitingListStrategy(waitingList));

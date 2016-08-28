@@ -1,8 +1,9 @@
-package serenitylabs.tutorials.vetclinic.collections.katas;
+package serenitylabs.tutorials.vetclinic;
 
 import com.google.common.collect.ImmutableList;
 import serenitylabs.tutorials.vetclinic.Breed;
 import serenitylabs.tutorials.vetclinic.Pet;
+import serenitylabs.tutorials.vetclinic.collections.katas.PetHotel;
 
 import java.util.List;
 import java.util.Random;
@@ -32,7 +33,7 @@ public class APetHotel {
         }
 
         private Pet somePet(int petCount) {
-            return new Pet(someName(petCount), someBreed());
+            return new Pet(someName(petCount), someBreed(), random.nextInt(10) + 2);
         }
 
         private final static Random random = new Random();

@@ -1,6 +1,7 @@
 package serenitylabs.tutorials.vetclinic.collections.katas;
 
 import org.junit.Test;
+import serenitylabs.tutorials.vetclinic.APetHotel;
 import serenitylabs.tutorials.vetclinic.Pet;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -68,7 +69,7 @@ public class WhenBookingPetsIntoAPetHotel {
     public void should_be_able_to_retrieve_checked_in_pets_in_alphabetical_order() throws Exception {
         // GIVEN
         PetHotel hotel = new PetHotel();
-        Pet hazel = Pet.rabbit().named("Hazel");
+        Pet hazel = Pet.cat().named("Hazel");
         Pet rover = Pet.dog().named("Rover");
         Pet felix = Pet.cat().named("Felix");
 
