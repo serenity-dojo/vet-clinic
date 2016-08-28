@@ -2,7 +2,7 @@ package serenitylabs.tutorials.vetclinic;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
-import serenitylabs.tutorials.vetclinic.collections.katas.PetFood;
+import serenitylabs.tutorials.vetclinic.model.FoodDispenser;
 
 import java.util.List;
 
@@ -36,23 +36,12 @@ public class Pet {
 
     public boolean isWellFed() {
 
-        double totalEaten = 0.0;
+        double totalEaten = mealsGiven.stream()
+                                      .filter(meal -> meal.getFoodBrand() == FoodDispenser.rightFoodFor(this))
+                                      .mapToDouble(meal -> meal.getAmountInGrams())
+                                      .sum();
 
-        for(Meal meal : mealsGiven) {
-            if ((breed == Breed.Cat) && (meal.getFootBrand() == PetFood.KittyKat)) {
-                totalEaten = totalEaten + meal.getAmountInGrams();
-            } else if ((breed == Breed.Dog) && (meal.getFootBrand() == PetFood.FidosFood)) {
-                totalEaten = totalEaten + meal.getAmountInGrams();
-            }
-        }
-        double amountNeeded = 0.0;
-        if (breed == Breed.Cat) {
-            amountNeeded = getWeightInKilos() * 10;
-        } else if (breed == Breed.Dog) {
-            amountNeeded = getWeightInKilos() * 20;
-        }
-
-        return (totalEaten >= amountNeeded);
+        return (totalEaten >= FoodDispenser.rightAmountOfFoodFor(this));
     }
 
     public void eat(Meal meal) {

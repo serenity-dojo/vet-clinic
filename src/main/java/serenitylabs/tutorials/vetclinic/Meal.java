@@ -15,7 +15,7 @@ public class Meal {
         return amountInGrams;
     }
 
-    public PetFood getFootBrand() {
+    public PetFood getFoodBrand() {
         return footBrand;
     }
 }

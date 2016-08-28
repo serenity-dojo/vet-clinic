@@ -26,11 +26,11 @@ public class FoodDispenser {
         return new Meal(rightAmountOfFoodFor(pet), rightFoodFor(pet));
     }
 
-    private PetFood rightFoodFor(Pet pet) {
+    public static PetFood rightFoodFor(Pet pet) {
         return BRAND_FOR_BREED.get(pet.getBreed());
     }
 
-    private double rightAmountOfFoodFor(Pet pet) {
+    public static double rightAmountOfFoodFor(Pet pet) {
         return pet.getWeightInKilos() * GRAMS_PER_KILO_BY_PET.get(pet.getBreed());
     }
 }
