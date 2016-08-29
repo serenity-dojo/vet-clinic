@@ -1,6 +1,11 @@
 package serenitylabs.tutorials.vetclinic.enumerations.exercises;
 
 import org.junit.Test;
+import serenitylabs.tutorials.vetclinic.Breed;
+
+
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 public class WhenCreatingAComplexEnum {
 
@@ -18,8 +23,8 @@ public class WhenCreatingAComplexEnum {
         // TODO: Refactor the Breed enum so that it also stores the scientific name (see comment above).
 
         // TODO: Uncommet these assertions and make them work
-//        assertThat(Breed.Cat.scientificName(), equalTo("Felis catus"));
-//        assertThat(Breed.Dog.scientificName(), equalTo("Canis lupus familiaris"));
-//        assertThat(Breed.Rabbit.scientificName(), equalTo("Oryctolagus cuniculus"));
+        assertThat(Breed.Cat.scientificName(), equalTo("Felis catus"));
+        assertThat(Breed.Dog.scientificName(), equalTo("Canis lupus familiaris"));
+     assertThat(Breed.Rabbit.scientificName(), equalTo("Oryctolagus cuniculus"));
     }
 }
