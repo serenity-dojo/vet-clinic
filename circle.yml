@@ -1,6 +1,7 @@
 machine:
-  java: oraclejdk8
-  
+  java:
+    version: oraclejdk8
+    
 test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
