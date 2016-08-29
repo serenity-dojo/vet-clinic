@@ -5,6 +5,8 @@ import com.google.common.base.Objects;
 public class Pet {
     private final String name;
     private final Breed breed;
+    private Gender gender;
+
 
     public Pet(String name, Breed breed) {
         this.name = name;
@@ -24,6 +26,14 @@ public class Pet {
     public static PetBuilder rabbit() { return new PetBuilder(Breed.Rabbit);}
     public static PetBuilder parrot() { return new PetBuilder(Breed.Parrot);}
     public static PetBuilder fish() { return new PetBuilder(Breed.Fish);}
+
+    public Gender getGender() {  return gender;   }
+
+    public Pet ofGender(Gender gender) {
+        this.gender=gender;
+        return  this;
+    }
+
 
     public static class PetBuilder {
         private final Breed breed;
