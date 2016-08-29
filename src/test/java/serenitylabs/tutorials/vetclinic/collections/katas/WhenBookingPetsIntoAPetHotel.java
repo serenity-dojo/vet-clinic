@@ -1,32 +1,81 @@
 package serenitylabs.tutorials.vetclinic.collections.katas;
 
 import org.junit.Test;
+import serenitylabs.tutorials.vetclinic.Pet;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class WhenBookingPetsIntoAPetHotel {
-
-
-    @Test
+     @Test
     public void the_hotel_should_initially_have_no_pets_booked() {
+        PetHotel petHotel = new PetHotel();
+
+        assertThat(petHotel.getPets(),hasSize(0));
     }
 
     @Test
     public void should_be_able_to_check_a_pet_into_the_hotel() throws Exception {
+        PetHotel petHotel = new PetHotel();
+        Pet fido = Pet.dog().named("Fido");
+
+        petHotel.checkIn(fido);
+
+        assertThat(petHotel.getPets(), hasItem(fido));
+
     }
 
     @Test
     public void should_be_able_to_check_in_several_pets() throws Exception {
+        PetHotel petHotel = new PetHotel();
+        Pet fido = Pet.dog().named("Fido");
+        Pet felix = Pet.cat().named("Felix");
+
+        petHotel.checkIn(fido);
+        petHotel.checkIn(felix);
+
+        assertThat(petHotel.getPets(),hasItems(fido,felix));
+
     }
 
     @Test
     public void should_not_be_able_to_check_in_the_same_pet_twice() throws Exception {
+        PetHotel petHotel = new PetHotel();
+        Pet fido = Pet.dog().named("Fido");
+        Pet felix = Pet.cat().named("Felix");
+
+        petHotel.checkIn(fido);
+        petHotel.checkIn(felix);
+        petHotel.checkIn(fido);
+
+        assertThat(petHotel.getPets(), containsInAnyOrder(fido, felix));
     }
 
     @Test
     public void should_be_able_to_retrieve_checked_in_pets_in_alphabetical_order() throws Exception {
+        PetHotel petHotel = new PetHotel();
+        Pet fido = Pet.dog().named("Fido");
+        Pet felix = Pet.cat().named("Felix");
+        Pet star = Pet.fish().named("Star");
+
+        petHotel.checkIn(fido);
+        petHotel.checkIn(felix);
+        petHotel.checkIn(star);
+
+        assertThat(petHotel.getPets(), contains(felix,fido,star) );
+
     }
 
     @Test
     public void should_be_able_to_obtain_a_booking_confirmation_when_we_check_in_a_pet() throws Exception {
+        PetHotel petHotel = new PetHotel();
+        Pet fido = Pet.dog().named("Fido");
+
+        BookingResponse confirmation = petHotel.checkIn(fido);
+
+        assertThat(confirmation.getNumber(),greaterThan(0));
+        assertThat(confirmation.getPet(),equalTo(fido));
+        assertThat(confirmation.isConfirmed(),equalTo(true));
     }
 
     @Test
