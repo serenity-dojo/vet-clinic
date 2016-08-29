@@ -1,85 +1,59 @@
 package serenitylabs.tutorials.vetclinic.collections.katas;
 
-import static org.hamcrest.Matchers.emptyCollectionOf;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
-import java.util.Set;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import com.google.common.collect.Sets;
-
 import serenitylabs.tutorials.vetclinic.Pet;
+
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
 
 public class WhenBookingPetsIntoAPetHotel {
 
 
-	 APetHotel hotel;
-	 Set<Pet> pets ;
-	 
+	APetHotel hotel;
+
 	@Before
-	public void init(){
-       hotel = APetHotel.aHotel().named("Silver Inn");
-   	   pets = hotel.getPets();
-		
+	public void initialize() {
+		hotel = hotel.aHotel().named("Silver Inn");
 	}
-    @Test
+
+	@Test
     public void the_hotel_should_initially_have_no_pets_booked() {
     	
-          assertThat(pets, emptyCollectionOf(Pet.class));
+          assertThat(hotel.getPets(), emptyCollectionOf(Pet.class));
     }
 
     @Test
     public void should_be_able_to_check_a_pet_into_the_hotel() throws Exception {
     	Pet pet = Pet.cat().named("Felix");
-    	pets.add(pet);
-    	hotel.checkIN( pets );
+		hotel.checkIn( pet );
     	assertThat(hotel.getPets().size(), equalTo(1));
     }
 
     @Test
     public void should_be_able_to_check_in_several_pets() throws Exception {
-    	Pet cat1 = Pet.cat().named("Felix");
-    	Pet cat2=Pet.cat().named("Helix");
-    	Pet dog1 = Pet.dog().named("Bruno");
-    	Pet dog2=Pet.dog().named("Shaggy");
-    	pets.add(cat1);
-    	pets.add(cat2);
-    	pets.add(dog1);
-    	pets.add(dog2);
-    	hotel.checkIN( pets );
-    	assertThat(hotel.getPets().size(),greaterThan(1));
-    }
+		Pet fido = Pet.dog().named("Fido");
+		Pet felix = Pet.dog().named("Felix");
+		hotel.checkIn(fido,felix);
+		assertThat(hotel.getPets(), hasItems(fido, felix));
+	}
 
-    @Test
+
+	@Test
     public void should_not_be_able_to_check_in_the_same_pet_twice() throws Exception {
-    	Set<Pet> pets = Sets.newHashSet();
-    	Pet cat1 = Pet.cat().named("Felix");
-    	Pet cat2=Pet.cat().named("Helix");
-    	Pet dog1 = Pet.dog().named("Bruno");
-    	Pet dog2=Pet.dog().named("Bruno");
-    	pets.add(cat1);
-    	pets.add(cat2);
-    	pets.add(dog1);
-    	pets.add(dog2);
-    	hotel.checkIN( pets );
-    	assertThat(hotel.getPets().size(), equalTo(3));
+        Pet fido = Pet.dog().named("Fido");
+        Pet felix = Pet.dog().named("Felix");
+        hotel.checkIn(fido,felix,felix);
+        assertThat(hotel.getPets(), containsInAnyOrder(fido,felix));
     }
 
     @Test
     public void should_be_able_to_retrieve_checked_in_pets_in_alphabetical_order() throws Exception {
-    	Pet cat1 = Pet.cat().named("Felix");
-    	Pet cat2=Pet.cat().named("Helix");
-    	Pet dog1 = Pet.dog().named("Bruno");
-    	pets.add(cat1);
-    	pets.add(cat2);
-    	pets.add(dog1);
-    	hotel.checkIN(pets).sort();
-    	assertThat( hotel.getPets().stream().findFirst().get() ,is(equalTo(dog1)));
+    	Pet felix = Pet.cat().named("Felix");
+    	Pet helix=Pet.cat().named("Helix");
+    	Pet bruno = Pet.dog().named("Bruno");
+    	hotel.checkIn(felix,helix,bruno);
+        assertThat( hotel.getPets(),contains(bruno,felix,helix));
     }
 
     @Test

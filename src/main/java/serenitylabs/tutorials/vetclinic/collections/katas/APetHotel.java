@@ -1,10 +1,12 @@
 package serenitylabs.tutorials.vetclinic.collections.katas;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import serenitylabs.tutorials.vetclinic.Pet;
+
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
+
+import static java.util.Comparator.comparing;
 
 /**
  * A utility class to generate pet hotels with pets already booked
@@ -12,7 +14,7 @@ import serenitylabs.tutorials.vetclinic.Pet;
 public class APetHotel {
 
 	private static String name;
-	private Set<Pet> pets = new HashSet<>();
+	private Set<Pet> pets = new TreeSet<>(comparing(Pet::getName));
 	
 	public String getName() {
 		return name;
@@ -32,14 +34,11 @@ public class APetHotel {
 		pets.addAll( pets2 );
 	}
 
-	public APetHotel checkIN(Set<Pet> pets2) {
-		return new APetHotel(pets2);
-	}
 
+	public void checkIn(Pet... somePet) {
+			pets.addAll(Arrays.asList(somePet));
+    }
 
-	public void sort() {
-		pets = pets.stream().sorted((Pet o1, Pet o2)->o1.getName().compareTo(o2.getName())).collect(Collectors.toSet());
-	}
 
     public static AHotelBuilder aHotel( ) {
         return new AHotelBuilder();

@@ -1,18 +1,17 @@
 package serenitylabs.tutorials.vetclinic.collections.exercises;
 
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import com.google.common.collect.Lists;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.Test;
-
-import com.google.common.collect.Lists;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
 
 
 public class WhenWorkingWithAListOfPetNames {
@@ -86,10 +85,7 @@ public class WhenWorkingWithAListOfPetNames {
     @Test
     public void should_organise_pets_in_reverse_alphabetical_order() {
         List<String> pets = Lists.newArrayList("Felix","Spot","Fido","Rover");
-
-        // TODO
-
-       Collections.reverse(pets);
+        pets.sort((p1, p2) -> p2.compareTo(p1));
         assertThat(pets, contains("Spot","Rover","Fido","Felix"));
     }
 
