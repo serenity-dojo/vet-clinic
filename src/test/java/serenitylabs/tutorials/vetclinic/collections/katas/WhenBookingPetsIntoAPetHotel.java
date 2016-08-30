@@ -14,7 +14,7 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Before
     public void initialize() {
-        hotel = hotel.aHotel().named("Silver Inn");
+        hotel = new APetHotel.AHotelBuilder().capacity(20).named("Silver Inn").build();
     }
 
     @Test
@@ -76,7 +76,8 @@ public class WhenBookingPetsIntoAPetHotel {
         Pet helix = Pet.cat().named("Helix");
         Pet bruno = Pet.dog().named("Bruno");
         //WHEN
-        BookingResponse response = hotel.aHotel().withCapacity(2).checkIn(felix, helix, bruno);
+        APetHotel platinumInn = new APetHotel.AHotelBuilder().capacity(2).named("Platinum Inn").build();
+        BookingResponse response = platinumInn.checkIn(felix, helix, bruno);
         //THEN
         assertThat(response.isConfirmed(), is(false));
 

@@ -13,8 +13,8 @@ import static java.util.Comparator.comparing;
  */
 public class APetHotel {
 
-    private static String name;
-    private int maximumCapacity;
+    private final String name;
+    private final int maximumCapacity;
     private Set<Pet> pets = new TreeSet<>(comparing(Pet::getName));
 
     public String getName() {
@@ -25,13 +25,15 @@ public class APetHotel {
         return pets;
     }
 
-    public APetHotel(String name, int maximumCapacity) {
-        this.name = name;
-        this.maximumCapacity = maximumCapacity;
+    public APetHotel(AHotelBuilder aHotelBuilder) {
+        this.name = aHotelBuilder.name;
+        this.maximumCapacity = aHotelBuilder.maximumCapacity;
     }
 
 
-    public APetHotel(Set<Pet> petsAdded) {
+    public APetHotel(Set<Pet> petsAdded, String name, int maximumCapacity) {
+        this.name = name;
+        this.maximumCapacity = maximumCapacity;
         pets.addAll(petsAdded);
     }
 
@@ -43,20 +45,26 @@ public class APetHotel {
     }
 
 
-    public static AHotelBuilder aHotel() {
-        return new AHotelBuilder();
-    }
-
-
     public static class AHotelBuilder {
 
-        public APetHotel named(String name) {
-            return new APetHotel(name, 0);
+        private String name;
+        private int maximumCapacity;
+
+
+        public AHotelBuilder capacity(int maximumCapacity) {
+            this.maximumCapacity = maximumCapacity;
+            return this;
         }
 
-        public APetHotel withCapacity(int capacity) {
-            return new APetHotel(name, capacity);
+        public AHotelBuilder named(String name) {
+            this.name = name;
+            return this;
         }
+
+        public APetHotel build() {
+            return new APetHotel(this);
+        }
+
 
     }
 }
