@@ -3,6 +3,7 @@ package serenitylabs.tutorials.vetclinic.enumerations.katas;
 import com.google.common.collect.ImmutableList;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import serenitylabs.tutorials.vetclinic.enumerations.colours.Colour;
@@ -66,11 +67,13 @@ public class WhenCalculatingWithColours {
         assertThat(Colour.Red.getOpposite(),is(Colour.Green));
     }
 
+    @Ignore
     @Test
     public void blue_is_the_opposite_of_orange() {
         assertThat(Colour.Blue.getOpposite(),is(Colour.Orange));
     }
 
+    @Ignore
     @Test
     public void yellow_is_the_opposite_of_violet() {
         assertThat(Colour.Yellow.getOpposite(),is(Colour.Violet));
@@ -99,6 +102,7 @@ public class WhenCalculatingWithColours {
     /**
      * This is an example of an alternative approach using JUnitParam
      */
+    @Ignore
     @Parameters({"Red,    Green",
             "Blue,   Orange",
             "Violet, Yellow",
