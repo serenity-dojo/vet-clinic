@@ -58,6 +58,12 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_be_able_to_obtain_a_booking_confirmation_when_we_check_in_a_pet() throws Exception {
+        Pet felix = Pet.cat().named("Felix");
+        Pet helix=Pet.cat().named("Helix");
+        Pet bruno = Pet.dog().named("Bruno");
+        BookingResponse response = hotel.checkIn(felix,helix,bruno);
+        assertThat(response.isConfirmed() ,is(true));
+
     }
 
     @Test
