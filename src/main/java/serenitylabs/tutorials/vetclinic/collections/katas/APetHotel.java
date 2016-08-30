@@ -14,6 +14,7 @@ import static java.util.Comparator.comparing;
 public class APetHotel {
 
     private static String name;
+    private int maximumCapacity;
     private Set<Pet> pets = new TreeSet<>(comparing(Pet::getName));
 
     public String getName() {
@@ -24,8 +25,9 @@ public class APetHotel {
         return pets;
     }
 
-    public APetHotel(String name) {
+    public APetHotel(String name, int maximumCapacity) {
         this.name = name;
+        this.maximumCapacity = maximumCapacity;
     }
 
 
@@ -35,7 +37,8 @@ public class APetHotel {
 
 
     public BookingResponse checkIn(Pet... somePet) {
-        boolean bookingResponse = pets.addAll(Arrays.asList(somePet));
+        boolean bookingResponse;
+        bookingResponse = ((somePet.length <= maximumCapacity) && (pets.size() <= maximumCapacity) && (pets.addAll(Arrays.asList(somePet)))) ? true : false;
         return new BookingResponse(bookingResponse);
     }
 
@@ -44,10 +47,15 @@ public class APetHotel {
         return new AHotelBuilder();
     }
 
+
     public static class AHotelBuilder {
 
         public APetHotel named(String name) {
-            return new APetHotel(name);
+            return new APetHotel(name, 0);
+        }
+
+        public APetHotel withCapacity(int capacity) {
+            return new APetHotel(name, capacity);
         }
 
     }
