@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasSize;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,8 +31,15 @@ PetHotel hotel;
 
     @Test
     public void should_be_able_to_check_in_several_pets() throws Exception {
-        PetHotel hotel = APetHotel.with(3).addMultiplePets();
-        assertThat(hotel.getPets().size(),equalTo(3));
+        Pet Fish = Pet.OfBreed(Breed.Fish).named("Fish");
+        hotel.checkIn(Fish);
+        Pet Dog = Pet.OfBreed(Breed.Dog).named("Dog");
+        hotel.checkIn(Dog);
+
+
+
+
+        assertThat(hotel.getPets().size(),equalTo(2));
 }
 
     @Test
@@ -50,15 +58,27 @@ PetHotel hotel;
         hotel.checkIn(Dog);
         Pet Cat = Pet.OfBreed(Breed.Cat).named("Cat");
         hotel.checkIn(Cat);
+
         assertThat(hotel.getPets(),contains(Cat,Dog,Fish));
     }
 
     @Test
     public void should_be_able_to_obtain_a_booking_confirmation_when_we_check_in_a_pet() throws Exception {
+        BookingResponse bookingResponse = hotel.checkIn( Pet.OfBreed(Breed.Fish).named("Fish"));
+        assertThat(bookingResponse.isConfirmed(),equalTo(true));
     }
 
     @Test
     public void should_not_be_able_to_check_in_pets_beyond_hotel_capacity() throws Exception {
+        Pet Fish = Pet.OfBreed(Breed.Fish).named("Fish");
+        hotel.checkIn(Fish);
+        Pet Dog = Pet.OfBreed(Breed.Dog).named("Dog");
+        hotel.checkIn(Dog);
+        Pet Cat = Pet.OfBreed(Breed.Cat).named("Cat");
+        hotel.checkIn(Cat);
+        Pet Parrot = Pet.OfBreed(Breed.Parrot).named("Parrot");
+        hotel.checkIn(Cat);
+        assertThat(hotel.getPets(),hasSize(3));
     }
 
     @Test

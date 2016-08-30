@@ -9,16 +9,16 @@ import static java.util.Comparator.comparing;
 
 public class PetHotel {
 
-	private final int MAX_PETS = 20;
+	private final int MAX_PETS = 3;
 
-	private Set<Pet> pets = new TreeSet<>(comparing(Pet::getName));
+	private Collection<Pet> pets = new TreeSet<>(comparing(Pet::getName));
+
 
 	private enum HotelAvailability {Available,Full};
 	private Queue<Pet> petsInWaitingList = new LinkedList<>();
 
-	public Set<Pet> getPets() {
-		//return new ArrayList<>(pets);
-		return pets;
+	public List<Pet> getPets() {
+		return new ArrayList<>(pets);
 	}
 
 	private static final Map<HotelAvailability,CheckInStrategy> CHECK_IN_STRATEGY = new HashMap<>();
@@ -33,11 +33,8 @@ public class PetHotel {
 
 
 	public BookingResponse checkIn(Pet pet) {
-		if(pets.add(pet)) {
-			CheckInStrategy checkInStrategy = CHECK_IN_STRATEGY.get(getCurrentAvailability());
-			return checkInStrategy.attemptToCheckIn(pet);
-		}
-	    return null;
+		CheckInStrategy checkInStrategy = CHECK_IN_STRATEGY.get(getCurrentAvailability());
+		return checkInStrategy.attemptToCheckIn(pet);
 	 }
 
 }
