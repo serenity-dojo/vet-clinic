@@ -16,7 +16,7 @@ public class WhenFeedingThePets {
         PetHotel hotel = APetHotel.with(10).petsCheckedIn();
 
         // WHEN
-        hotel.feedTheGuests();
+        hotel.feed();
 
         // THEN
         hotel.getPets().forEach(
