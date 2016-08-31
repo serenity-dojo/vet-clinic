@@ -39,9 +39,8 @@ public class APetHotel {
 
 
     public BookingResponse checkIn(Pet... somePet) {
-        boolean bookingResponse;
-        bookingResponse = ((somePet.length <= maximumCapacity) && (pets.size() <= maximumCapacity) && (pets.addAll(Arrays.asList(somePet)))) ? true : false;
-        return new BookingResponse(bookingResponse);
+        BookingStrategy bookingStrategy = ((somePet.length <= maximumCapacity) && (pets.size() <= maximumCapacity) && (pets.addAll(Arrays.asList(somePet)))) ? BookingStatus.AVAILABLE : BookingStatus.FULL;
+        return bookingStrategy.checkIn(somePet);
     }
 
 

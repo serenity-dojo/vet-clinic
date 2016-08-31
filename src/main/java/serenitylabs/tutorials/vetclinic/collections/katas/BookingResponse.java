@@ -13,4 +13,8 @@ public class BookingResponse {
     public boolean isConfirmed() {
         return booked;
     }
+
+    public boolean isNotified() {
+        return !booked;
+    }
 }
