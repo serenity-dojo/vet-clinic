@@ -3,6 +3,7 @@ package serenitylabs.tutorials.vetclinic;
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 import serenitylabs.tutorials.vetclinic.collections.katas.PetFood;
+import serenitylabs.tutorials.vetclinic.model.FoodDispenser;
 
 import java.util.List;
 
@@ -34,10 +35,41 @@ public class Pet {
     public static PetBuilder dog() { return new PetBuilder(Breed.Dog);}
     public static PetBuilder cat() { return new PetBuilder(Breed.Cat);}
 
+    // Kiran Changes
     public boolean isWellFed() {
 
+        double totalEaten = getTotalEaten();
+        double amountNeeded = getAmountNeeded();
+
+        return (totalEaten >= amountNeeded);
+    }
+
+    private double getTotalEaten() {
         double totalEaten = 0.0;
 
+        totalEaten = getTotalEaten(totalEaten);
+        return totalEaten;
+    }
+
+    private double getAmountNeeded() {
+        double amountNeeded = 0.0;
+        amountNeeded = getAmountNeeded(amountNeeded);
+        return amountNeeded;
+    }
+
+    // Kiran Changes
+    private double getAmountNeeded(double amountNeeded) {
+
+        if (breed == Breed.Cat) {
+            amountNeeded = getWeightInKilos() * 10;
+        } else if (breed == Breed.Dog) {
+            amountNeeded = getWeightInKilos() * 20;
+        }
+        return amountNeeded;
+    }
+
+    // Kiran Changes
+    private double getTotalEaten(double totalEaten) {
         for(Meal meal : mealsGiven) {
             if ((breed == Breed.Cat) && (meal.getFoodBrand() == PetFood.KittyKat)) {
                 totalEaten = totalEaten + meal.getAmountInGrams();
@@ -45,18 +77,12 @@ public class Pet {
                 totalEaten = totalEaten + meal.getAmountInGrams();
             }
         }
-        double amountNeeded = 0.0;
-        if (breed == Breed.Cat) {
-            amountNeeded = getWeightInKilos() * 10;
-        } else if (breed == Breed.Dog) {
-            amountNeeded = getWeightInKilos() * 20;
-        }
-
-        return (totalEaten >= amountNeeded);
+        return totalEaten;
     }
 
-    public void feed(double amountInGrams, PetFood foodBrand) {
-        mealsGiven.add(new Meal(amountInGrams, foodBrand));
+    public void eat(Meal meal) {
+
+        mealsGiven.add(meal);
     }
 
     public static class PetBuilder {
