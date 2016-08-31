@@ -53,6 +53,11 @@
             <artifactId>serenity-screenplay</artifactId>
             <version>${serenity.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-screenplay-webdriver</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

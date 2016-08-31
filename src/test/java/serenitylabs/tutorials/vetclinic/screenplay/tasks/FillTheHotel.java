@@ -3,22 +3,25 @@ package serenitylabs.tutorials.vetclinic.screenplay.tasks;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.annotations.Step;
+import serenitylabs.tutorials.vetclinic.model.Breed;
+import serenitylabs.tutorials.vetclinic.model.Pet;
 import serenitylabs.tutorials.vetclinic.screenplay.abilities.ManageTheHotel;
-
-import static serenitylabs.tutorials.vetclinic.screenplay.tasks.APetHotel.somePet;
 
 public class FillTheHotel implements Task {
     private final int numberOfPets;
+    private final Breed breed;
 
-    public FillTheHotel(int numberOfPets) {
+    public FillTheHotel(int numberOfPets, Breed breed) {
         this.numberOfPets = numberOfPets;
+        this.breed = breed;
     }
 
     @Step("{0} books in #numberOfPets pets")
     @Override
     public <T extends Actor> void performAs(T actor) {
         for(int petcount = 1; petcount <= numberOfPets; petcount++) {
-            actor.usingAbilityTo(ManageTheHotel.class).bookPet(somePet(petcount));
+            Pet pet = new Pet("Pet #" + petcount, breed);
+            actor.usingAbilityTo(ManageTheHotel.class).checkInPet(pet);
         }
     }
 
@@ -33,8 +36,11 @@ public class FillTheHotel implements Task {
             this.numberOfPets = numberOfPets;
         }
 
-        public Task pets() {
-            return new FillTheHotel(numberOfPets);
+        public Task cats() {
+            return new FillTheHotel(numberOfPets, Breed.Cat);
+        }
+        public Task dogs() {
+            return new FillTheHotel(numberOfPets, Breed.Dog);
         }
     }
 }
