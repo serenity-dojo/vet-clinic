@@ -80,24 +80,69 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_not_be_able_to_check_in_pets_beyond_hotel_capacity() throws Exception {
+        PetHotel hotel = APetHotel.with(PetHotel.MAXIMUM_PETS).petsCheckedIn();
+
+        hotel.checkIn(Pet.dog().named("Lassie"));
+
+        assertThat(hotel.getPets(),hasSize(20));
     }
 
     @Test
     public void should_notify_owner_that_the_hotel_is_full() throws Exception {
+        PetHotel hotel = APetHotel.with(20).petsCheckedIn();
+
+        BookingResponse response = hotel.checkIn(Pet.dog().named("Lassie"));
+
+        assertThat(response.isConfirmed(),is(false));
+        assertThat(response.isOnWaitingList(),is(true));
+
     }
 
 
     @Test
     public void should_place_pets_on_a_waiting_list_when_the_hotel_is_full() throws Exception {
+        PetHotel hotel = APetHotel.with(20).petsCheckedIn();
+
+        Pet lassie = Pet.dog().named("Lassie");
+
+        hotel.checkIn(lassie);
+
+        assertThat(hotel.getWaitingList(),hasItem(lassie));
     }
 
     @Test
     public void pets_on_the_waiting_list_should_be_added_to_the_hotel_when_a_place_is_freed() throws Exception {
+        PetHotel hotel = APetHotel.with(19).petsCheckedIn();
+
+        Pet lassie = Pet.dog().named("Lassie");
+        Pet fido = Pet.dog().named("Fido");
+
+        hotel.checkIn(fido);
+        hotel.checkIn(lassie);
+
+        hotel.checkOut(fido);
+
+        assertThat(hotel.getPets(),hasItem(lassie));
     }
 
 
     @Test
     public void pets_on_the_waiting_list_should_be_admitted_on_a_first_come_first_served_basis() throws Exception {
+
+        PetHotel hotel = APetHotel.with(19).petsCheckedIn();
+
+        Pet lassie = Pet.dog().named("Lassie");
+        Pet fido = Pet.dog().named("Fido");
+        Pet felix = Pet.cat().named("Felix");
+
+        hotel.checkIn(fido);
+        hotel.checkIn(felix);
+        hotel.checkIn(lassie);
+
+        hotel.checkOut(fido);
+
+        assertThat(hotel.getPets(),hasItem(felix));
+        assertThat(hotel.getPets(),not(hasItem(lassie)));
     }
 
 }

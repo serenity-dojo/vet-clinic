@@ -12,6 +12,19 @@ public class PetHotel {
 
     public static final int MAXIMUM_PETS = 20;
     private Collection<Pet> pets = new TreeSet<>(Comparator.comparing(Pet::getName));
+    private final Queue<Pet> waitingList = new LinkedList<>();
+
+    public Collection<Pet> getWaitingList() {
+        return waitingList;
+    }
+
+    public void checkOut(Pet pet) {
+        pets.remove(pet);
+
+        if(!waitingList.isEmpty())
+        checkIn(waitingList.poll());
+
+    }
 
 
     private enum HotelAvailability{Available,Full}
@@ -23,7 +36,7 @@ public class PetHotel {
     private static final Map<HotelAvailability,CheckInStrategy> CHECK_IN_STRATEGY = new HashMap<>();
     {
         CHECK_IN_STRATEGY.put(HotelAvailability.Available,new ConfirmBookingStrategy(pets));
-        //CHECK_IN_STRATEGY.put(HotelAvailability.Full,new WaitingListStrategy(waitingList));
+        CHECK_IN_STRATEGY.put(HotelAvailability.Full,new WaitingListStrategy(waitingList));
     }
 
 
