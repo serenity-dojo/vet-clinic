@@ -59,6 +59,5 @@ public class WhenCheckingInToThePetHotel {
                 seeThat(TheGuests.registeredInTheHotel(), not(hasItem(ginger))),
                 seeThat(TheGuests.onTheWaitingList(), hasItem(ginger))
         );
-
     }
 }
