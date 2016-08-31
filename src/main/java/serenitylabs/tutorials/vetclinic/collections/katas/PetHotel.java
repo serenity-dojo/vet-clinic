@@ -11,18 +11,18 @@ public class PetHotel {
 
 	private final int MAX_PETS = 3;
 
-	private Collection<Pet> pets = new TreeSet<>(comparing(Pet::getName));
+	private static Collection<Pet> pets = new TreeSet<>(comparing(Pet::getName));
 
 
 	private enum HotelAvailability {Available,Full};
-	private Queue<Pet> petsInWaitingList = new LinkedList<>();
+	private static Queue<Pet> petsInWaitingList = new LinkedList<>();
 
 	public List<Pet> getPets() {
 		return new ArrayList<>(pets);
 	}
 
 	private static final Map<HotelAvailability,CheckInStrategy> CHECK_IN_STRATEGY = new HashMap<>();
-	{
+	static{
 		CHECK_IN_STRATEGY.put(HotelAvailability.Available,new ConfirmBookingStrategy(pets));
 		CHECK_IN_STRATEGY.put(HotelAvailability.Full,new WaitingListStrategy(petsInWaitingList));
 	}

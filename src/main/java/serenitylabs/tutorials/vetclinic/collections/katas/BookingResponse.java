@@ -20,7 +20,7 @@ public abstract class BookingResponse implements BookingAcknowledgment {
 	}
 
 	public static BookingResponse waitingFor(Pet pet) {
-		return new BookingConfirmation(bookingNumberCounter.incrementAndGet(), pet);
+		return new PlacedOnWaitingList(bookingNumberCounter.incrementAndGet(), pet);
 	}
 
 	public Pet getPet() {

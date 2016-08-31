@@ -17,6 +17,6 @@ public class PlacedOnWaitingList extends BookingResponse{
 
     @Override
     public boolean isOnWaitingList() {
-        return false;
+        return true;
     }
 }
