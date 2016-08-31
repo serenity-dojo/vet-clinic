@@ -6,7 +6,6 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasSize;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -115,15 +114,16 @@ private final int MAX_HOTEL_CAPACITY = 3;
     @Test
     public void pets_on_the_waiting_list_should_be_admitted_on_a_first_come_first_served_basis() throws Exception {
 
-        Pet rohuFish = Pet.OfBreed(Breed.Fish).named("Rohu");
+    	 
+        Pet rohuFish = Pet.OfBreed(Breed.Fish).named("A");
 
         hotel.checkIn(rohuFish);
-        hotel.checkIn(Pet.OfBreed(Breed.Dog).named("Shera"));
-        hotel.checkIn(Pet.OfBreed(Breed.Cat).named("Billi"));
+        hotel.checkIn(Pet.OfBreed(Breed.Dog).named("B"));
+        hotel.checkIn(Pet.OfBreed(Breed.Cat).named("C"));
 
-        Pet mona = Pet.OfBreed(Breed.Cat).named("Mona");
+        Pet mona = Pet.OfBreed(Breed.Cat).named("D");
         hotel.checkIn(mona);
-        hotel.checkIn(Pet.OfBreed(Breed.Parrot).named("Mittu"));
+        hotel.checkIn(Pet.OfBreed(Breed.Parrot).named("E"));
         hotel.checkOut(rohuFish);
 
         assertThat(hotel.getPets(),hasItem(mona));
