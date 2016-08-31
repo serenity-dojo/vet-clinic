@@ -1,5 +1,6 @@
 <application>
   <component name="EditorSettings">
     <option name="USE_SOFT_WRAPS" value="" />
+    <option name="IS_WHEEL_FONTCHANGE_ENABLED" value="true" />
   </component>
 </application>
