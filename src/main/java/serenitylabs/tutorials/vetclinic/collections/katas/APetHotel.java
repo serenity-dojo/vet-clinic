@@ -30,13 +30,21 @@ public class APetHotel {
         private final static Random random = new Random();
 
         private Breed someBreed() {
-            return Breed.values()[ random.nextInt(Breed.values().length) ];
+            return Breed.values()[random.nextInt(Breed.values().length)];
         }
 
-        private final static List<String> PET_NAMES = ImmutableList.of("Fido","Felix","Rover","Spot");
+        private final static List<String> PET_NAMES = ImmutableList.of("Fido", "Felix", "Rover", "Spot");
 
         private String someName(int petCount) {
             return PET_NAMES.get(random.nextInt(PET_NAMES.size())) + " " + petCount;
+        }
+
+        public PetHotel petsCheckedIn() {
+            PetHotel hotel = new PetHotel();
+            for(int count =0;count< petCount;count++){
+                hotel.checkIn(somePet(count));
+            }
+            return hotel;
         }
     }
 }

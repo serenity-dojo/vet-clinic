@@ -3,6 +3,10 @@ package serenitylabs.tutorials.vetclinic.collections.exercises;
 import com.google.common.collect.Sets;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 import java.util.Set;
 
 public class WhenWorkingWithASetOfPets {
@@ -12,6 +16,8 @@ public class WhenWorkingWithASetOfPets {
         Set<String> names = Sets.newHashSet();
 
         // TODO
+        names.add("Fido");
+        assertThat(names,contains("Fido"));
     }
 
     @Test
@@ -23,6 +29,7 @@ public class WhenWorkingWithASetOfPets {
         names.add("Fido");
 
         // TODO
+        assertThat(names,containsInAnyOrder("Fido","Felix"));
     }
 
     @Test
@@ -32,6 +39,7 @@ public class WhenWorkingWithASetOfPets {
         names.addAll(Sets.newHashSet("Felix","Spot"));
 
         // TODO
+        assertThat(names,containsInAnyOrder("Fido","Felix","Spot"));
     }
 
 
