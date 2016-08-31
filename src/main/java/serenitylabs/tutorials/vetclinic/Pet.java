@@ -10,8 +10,9 @@ public class Pet {
         this.name = name;
         this.breed = breed;
     }
+ 
 
-    public String getName() {
+	public String getName() {
         return name;
     }
 
@@ -54,4 +55,8 @@ public class Pet {
     public int hashCode() {
         return Objects.hashCode(name, breed);
     }
+		
+		public static PetBuilder OfBreed(Breed breed) {
+			return new PetBuilder(breed);
+	}
 }
