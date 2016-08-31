@@ -28,7 +28,7 @@ public class PetHotel {
 	}
 
 	private HotelAvailability getCurrentAvailability(){
-		return	(pets.size()>MAX_PETS) ? HotelAvailability.Full:HotelAvailability.Available;
+		return	(pets.size()>=MAX_PETS) ? HotelAvailability.Full:HotelAvailability.Available;
 	}
 
 
@@ -36,5 +36,12 @@ public class PetHotel {
 		CheckInStrategy checkInStrategy = CHECK_IN_STRATEGY.get(getCurrentAvailability());
 		return checkInStrategy.attemptToCheckIn(pet);
 	 }
+
+	public void checkOut(Pet pet) {
+		pets.remove(pet);
+		if (!petsInWaitingList.isEmpty()) {
+			checkIn(petsInWaitingList.poll());
+		}
+	}
 
 }
