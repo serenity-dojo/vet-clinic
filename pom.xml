@@ -42,6 +42,12 @@
             <artifactId>JUnitParams</artifactId>
             <version>1.0.5</version>
         </dependency>
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
