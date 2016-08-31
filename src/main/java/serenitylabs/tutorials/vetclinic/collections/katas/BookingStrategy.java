@@ -7,5 +7,5 @@ import serenitylabs.tutorials.vetclinic.Pet;
  */
 public interface BookingStrategy {
 
-    public  BookingResponse checkIn(Pet... pet);
+    public  BookingResponse checkIn( Pet pet);
 }

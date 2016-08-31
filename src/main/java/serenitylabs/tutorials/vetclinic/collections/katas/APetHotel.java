@@ -2,9 +2,7 @@ package serenitylabs.tutorials.vetclinic.collections.katas;
 
 import serenitylabs.tutorials.vetclinic.Pet;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 import static java.util.Comparator.comparing;
 
@@ -16,6 +14,7 @@ public class APetHotel {
     private final String name;
     private final int maximumCapacity;
     private Set<Pet> pets = new TreeSet<>(comparing(Pet::getName));
+    private Queue<Pet> waitingPets = new LinkedList<>();
 
     public String getName() {
         return name;
@@ -37,10 +36,34 @@ public class APetHotel {
         pets.addAll(petsAdded);
     }
 
+    public void checkOut(Pet pet) {
+        pets.remove(pet);
+        if (!waitingPets.isEmpty()) {
+            checkIn(waitingPets.poll());
+        }
+    }
 
-    public BookingResponse checkIn(Pet... somePet) {
-        BookingStrategy bookingStrategy = ((somePet.length <= maximumCapacity) && (pets.size() <= maximumCapacity) && (pets.addAll(Arrays.asList(somePet)))) ? BookingStatus.AVAILABLE : BookingStatus.FULL;
+
+    private enum HotelAvailability { Available, Full}
+
+    private static final Map<HotelAvailability, BookingStrategy> BOOKING_STRATEGY = new HashMap<>();
+    {
+        BOOKING_STRATEGY.put(HotelAvailability.Available, new ConfirmBookingStrategy(pets));
+        BOOKING_STRATEGY.put(HotelAvailability.Full, new WaitingListStrategy(waitingPets));
+    }
+
+    private HotelAvailability currentAvailability() {
+        return ((pets.size() < maximumCapacity))  ? HotelAvailability.Available : HotelAvailability.Full;
+    }
+
+    public BookingResponse checkIn(Pet somePet) {
+        BookingStrategy bookingStrategy = BOOKING_STRATEGY.get(currentAvailability());
         return bookingStrategy.checkIn(somePet);
+    }
+
+
+    public  Collection<Pet> getWaitingList() {
+        return new LinkedList(waitingPets);
     }
 
 
