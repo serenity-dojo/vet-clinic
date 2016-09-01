@@ -19,7 +19,7 @@ public class Main {
 		Pet fido=new Pet("Fido",Breed.Dog,20);
 		Pet puppy=new Pet("Puppy",Breed.Dog,30);
 		Pet tomy=new Pet("Tomy",Breed.Dog,10);
-		Pet brrom=new Pet("Broom",Breed.Dog,10);
+		Pet broom=new Pet("Broom",Breed.Dog,10);
 		Pet pety=new Pet("Pety",Breed.Dog,10);
 		Pet browny=new Pet("Browny",Breed.Dog,10);
 		
@@ -27,26 +27,33 @@ public class Main {
 		List<Pet> list=new ArrayList<>();
 		Map<String,Pet> map_collection=new HashMap<>();
 		Map<String,Pet> new_Map_collection=new HashMap<>();
-		Comparator<Pet> byName= (Pet p1,Pet p2)-> p1.getName().compareTo(p2.getName());
+		//Comparator<Pet> byName= (Pet p1,Pet p2)-> p1.getName().compareTo(p2.getName());
 		
 		map_collection.put(fido.getName(), fido);
 		map_collection.put(puppy.getName(), puppy);
-		map_collection.put(tomy.getName(), browny);
+		map_collection.put(tomy.getName(), tomy);
+		  map_collection.putIfAbsent("Broom", broom);	
+		  
+		    System.out.println("Using Map===" +map_collection.size());
+		    map_collection.replace("Broom", tomy);
+			map_collection.forEach((Key,Value)-> System.out.println(Value));
+		
+		
 		
 		new_Map_collection.put("Pety", pety);
 		new_Map_collection.put("Tomy", puppy);
 		new_Map_collection.put("Brownly", pety);
-	    map_collection.putIfAbsent("Brrom", brrom);		 
-	    
-	    new_Map_collection.forEach((key,value)->
+		
+	  
+	//    new_Map_collection.forEach((key,value)->
 	    //code is different in video tutor
-	    map_collection.merge(key, value, 
-	    		(existingkey, newvalue)->
-	    		{      
-	    			return existingkey;
-	    		})	
-	    		
-	    		);
+//	    map_collection.merge(key, value, 
+//	    		(existingkey, newvalue)->
+//	    		{      
+//	    			return existingkey;
+//	    		})	
+//	    		
+//	    		);
 	    
 	    
 	    
