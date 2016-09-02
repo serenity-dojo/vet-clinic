@@ -17,19 +17,18 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 public class WhenCalculatingWithColours {
     @Test
     public void should_know_about_all_the_main_colours() {
-
         List<String> colors =Arrays.asList(Colour.values()).stream().map(colour -> colour.toString()).collect(Collectors.toList());
         assertThat(colors,containsInAnyOrder("Red","Green","Blue","Orange","Violet","Yellow","Black","White"));
-
-
     }
 
     @Test
     public void should_identify_primary_colours() {
+        assertThat(Colour.primaryColors(),containsInAnyOrder("Red","Blue","Green"));
     }
 
     @Test
     public void should_identify_non_primary_colours() {
+        assertThat(Colour.nonPrimaryColors(),containsInAnyOrder("Orange","Violet","Yellow","Black","White"));
     }
 
     @Test
