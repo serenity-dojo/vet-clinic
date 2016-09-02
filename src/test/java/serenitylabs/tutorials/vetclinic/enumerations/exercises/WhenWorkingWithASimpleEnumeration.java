@@ -1,14 +1,19 @@
 package serenitylabs.tutorials.vetclinic.enumerations.exercises;
 
-import com.google.common.collect.ImmutableList;
-import org.junit.Test;
-import serenitylabs.tutorials.vetclinic.Pet;
-
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.Test;
+
+import serenitylabs.tutorials.vetclinic.Breed;
+import serenitylabs.tutorials.vetclinic.Pet;
+
+import com.google.common.collect.ImmutableList;
 
 public class WhenWorkingWithASimpleEnumeration {
 
@@ -20,11 +25,7 @@ public class WhenWorkingWithASimpleEnumeration {
                 Pet.dog().named("Lassie"),
                 Pet.rabbit().named("Fiver")
                 );
-
-        // TODO: Extract all the dogs from the pets list
-
-        List<Pet> dogs = null;
-
+        List<Pet> dogs =   pets.stream().filter(pet -> pet.getBreed().equals(Breed.Dog)).collect(Collectors.toList());
         assertThat(dogs, containsInAnyOrder( Pet.dog().named("Rover"), Pet.dog().named("Lassie")));
 
     }
@@ -32,9 +33,10 @@ public class WhenWorkingWithASimpleEnumeration {
     @Test
     public void list_all_known_breeds() {
 
-        // TODO: List the names of all the known breeds
 
-        List<String> breeds = null;
+        List<String> breeds =  Stream.of(Breed.values())
+                .map(Enum::name)
+                .collect(Collectors.toList());
         assertThat(breeds, contains("Cat", "Dog", "Rabbit", "Fish", "Parrot"));
 
     }

@@ -1,6 +1,11 @@
 package serenitylabs.tutorials.vetclinic.enumerations.exercises;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 import org.junit.Test;
+
+import serenitylabs.tutorials.vetclinic.Gender;
 import serenitylabs.tutorials.vetclinic.Pet;
 
 public class WhenCreatingASimpleEnum {
@@ -10,7 +15,8 @@ public class WhenCreatingASimpleEnum {
 
         // TODO: Add a gender field to the Pet class that takes two possible values: Male, Female and Unknown
 
-        // TODO: assertThat(unidentifiedTabby.getGender(), equalTo(Gender.Unknown));
+    	Pet unidentifiedTabby = Pet.dog().named("Tabby");
+        assertThat(unidentifiedTabby.getGender(), equalTo(Gender.UNKNOWN));
 
     }
 
@@ -19,10 +25,9 @@ public class WhenCreatingASimpleEnum {
 
         // TODO: Refactor the Pet builder method to allow the following construct:
 
-        Pet lassie = null;
+        Pet lassie = Pet.dog().named("lassie").having(Gender.MALE);
 
-        // TODO:
-        // assertThat(lassie.getGender(), equalTo(Gender.Male));
+        assertThat(lassie.getGender(), equalTo(Gender.MALE));
 
     }
 
