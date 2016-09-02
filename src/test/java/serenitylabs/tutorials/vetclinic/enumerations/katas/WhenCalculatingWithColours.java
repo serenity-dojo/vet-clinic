@@ -6,10 +6,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import serenitylabs.tutorials.vetclinic.enumerations.colours.Colour;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+
 @RunWith(JUnitParamsRunner.class)
 public class WhenCalculatingWithColours {
     @Test
     public void should_know_about_all_the_main_colours() {
+
+        List<String> colors =Arrays.asList(Colour.values()).stream().map(colour -> colour.toString()).collect(Collectors.toList());
+        assertThat(colors,containsInAnyOrder("Red","Green","Blue","Orange","Violet","Yellow","Black","White"));
+
+
     }
 
     @Test
