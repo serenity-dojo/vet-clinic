@@ -25,7 +25,25 @@ gradle-app.setting
 .idea
 *.iml
 
-### Eclipse template
+### IdeaIntelliJ template
+debugger.xml
+debugger.renderers.xml
+.project
+diff.xml
+editor.xml
+github_settings.xml
+gradle.run.settings.xml
+IntelliLang.xml
+jdk.table.xml
+mavenVersion.xml
+project.default.xml
+proxy.settings.xml
+ui.lnf.xml
+usageView.xml
+vcs.xml
+web-browsers.xml
+*.iml
+
 
 .metadata
 bin/
@@ -41,6 +59,7 @@ local.properties
 
 # Eclipse Core
 .project
+
 
 *.ipr
 *.iws
