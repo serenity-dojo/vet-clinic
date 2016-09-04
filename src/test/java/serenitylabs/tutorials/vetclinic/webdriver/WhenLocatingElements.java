@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ public class WhenLocatingElements {
 
     @Before
     public void setup() {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.get("http://todomvc.com/examples/dojo");
     }
