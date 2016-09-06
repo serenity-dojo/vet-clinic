@@ -68,22 +68,22 @@ public class WhenCalculatingWithColours {
 
     @Test
     public void red_is_the_opposite_of_green() {
-    	assertThat(Colour.Red.theOpposite(), is("Green"));
+    	assertThat(Colour.Red.theOpposite(), is(Colour.Green));
     }
 
     @Test
     public void blue_is_the_opposite_of_orange() {
-    	assertThat(Colour.Blue.theOpposite(), is("Orange"));
+    	assertThat(Colour.Blue.theOpposite(), is(Colour.Orange));
     }
 
     @Test
     public void yellow_is_the_opposite_of_violet() {
-    	assertThat(Colour.Yellow.theOpposite(), is("Violet"));
+    	assertThat(Colour.Yellow.theOpposite(), is(Colour.Violet));
     }
 
     @Test
     public void black_is_the_opposite_of_white() {
-    	assertThat(Colour.Black.theOpposite(), is("White"));
+    	assertThat(Colour.Black.theOpposite(), is(Colour.White));
     }
 
 
@@ -96,7 +96,7 @@ public class WhenCalculatingWithColours {
             "Black,  White"})
     @Test
     public void should_identify_opposite_colours(Colour colour, Colour expectedOpposite) throws Exception {
-    	assertThat(colour.theOpposite(),is(expectedOpposite.theOpposite()));
+    	assertThat(colour.theOpposite(),is(expectedOpposite));
     }
    
     @Test
