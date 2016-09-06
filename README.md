@@ -2,29 +2,28 @@
 
 This project is used as the basis of a number of tutorials and exercises, as part of the *Professional Java Development and Test Automation Skills* program (see http://johnfergusonsmart.com/products). Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
 
-These tutorials are designed to be used as the basis of small coding exercises (similar to very short coding katas) that you can learn and practice until you are familiar with a particular technique. The approach is outlined here:
+This set of exercises covers Enumerations.
 
-![Learning from the tutorials](src/documentation/images/tutorial-process.png)
+## Working with Enumerations
 
-1. Clone this repository and check out the starting point for the tutorial you want to do.
-2. Watch the tutorial and follow along on your own machine.
-3. Redo the tutorial following the step-by-step instructions given in the tutorial's README file.
-4. Redo the exercise without the instructions.
+### Step 1 - Implement the tests in the `WhenWorkingWithASimpleEnumeration` class.
 
-## The problem domain
+### Step 2 - Implement the tests in the `WhenCreatingASimpleEnum` class.
 
-The domain is a simple one. We are writing an application for a Vet clinic, where you can take your pets to be treated when they are sick. At the vet clinic, we need to be able to register new animals when they arrive for treatment.
+### Step 3 - Implement all the tests in the `WhenCreatingAComplexEnum` class.
 
-## Starting a tutorial
 
-Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
-```
-$ git checkout tutorial-1/start
-```
+## Coding Kata - a colour calculator
 
-And to see the solution for tutorial 1, use the solution branch:
-```
-$ git checkout tutorial-1/solution
-```
+In traditional art, artists refer to eight main colours: Red, Orange, Yellow, Green, Blue, Violet, as well as Black and White. Red, Yellow and Blue are known as "Primary Colours". Colours that create the most contrast when placed together are known as "Opposite Colours": these are Black-White, Red-Green, Blue-Yellow and Orange-Violet. 
 
-Go to the tutorial branch to see the step-by-step instructions for that tutorial.
+The coding kata will involve writing a colour enumeration that lists all of the colours mentioned above, and for any colour can provide the following methods:
+  - isPrimary() - should return true if the colour is a primary, and false otherwise
+  - opposite() - returns the opposite of this colour
+
+Make sure that the code contains no if or switch statements.
+  
+When doing this exercise, you should work in two stages. 
+  - For the first stage, complete the empty test scenarios in the order to implement the requirements.
+  - For the second stage, do the same thing but by writing the test scenarios yourself.
+
