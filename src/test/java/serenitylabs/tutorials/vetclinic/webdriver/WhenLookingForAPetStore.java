@@ -29,24 +29,7 @@ public class WhenLookingForAPetStore {
         service.start();
 
     }
-    @Test
-    public void should_find_pet_stores() {
 
-        WebDriver driver = new ChromeDriver();
-
-        driver.get("https://duckduckgo.com/");
-
-        WebElement input = driver.findElement(By.id("search_form_input_homepage"));
-
-        input.sendKeys("pet store");
-
-        WebElement searchButton = driver.findElement(By.id("search_button_homepage"));
-        searchButton.click();
-
-        assertThat(driver.getTitle(), equalTo("pet store at DuckDuckGo"));
-
-        driver.quit();
-    }
 
     @AfterClass
     public static void createAndStopService() {
@@ -63,6 +46,25 @@ public class WhenLookingForAPetStore {
 
     @After
     public void quitDriver() {
+        driver.quit();
+    }
+
+    @Test
+    public void should_find_pet_stores() {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://duckduckgo.com/");
+
+        WebElement input = driver.findElement(By.id("search_form_input_homepage"));
+
+        input.sendKeys("pet store");
+
+        WebElement searchButton = driver.findElement(By.id("search_button_homepage"));
+        searchButton.click();
+
+        assertThat(driver.getTitle(), equalTo("pet store at DuckDuckGo"));
+
         driver.quit();
     }
 }
