@@ -15,16 +15,49 @@ These tutorials are designed to be used as the basis of small coding exercises (
 
 The domain is a simple one. We are writing an application for a Vet clinic, where you can take your pets to be treated when they are sick. At the vet clinic, we need to be able to register new animals when they arrive for treatment.
 
-## Starting a tutorial
+## Exercises
 
-Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
-```
-$ git checkout tutorial-1/start
-```
+These exercises involve working with the AngularJS TodoMVC web site (http://todomvc.com/examples/angularjs/#/).
 
-And to see the solution for tutorial 1, use the solution branch:
-```
-$ git checkout tutorial-1/solution
-```
+### Exercise 1 - Write a test to add "Buy some milk" to the todo list
+    
+#### Step 1: Create a WebDriver instance and open the "http://todomvc.com/examples/angularjs/#/" URL.
 
-Go to the tutorial branch to see the step-by-step instructions for that tutorial.
+Create a new Firefox webdriver instance:
+
+    WebDriver driver = new FirefoxDriver();
+    
+Since this is an asynchronous application, configure WebDriver to wait up to 2 seconds if elements are not yet present on the page.
+
+    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+     
+Open the TodoMVC application:
+
+    driver.get("http://todomvc.com/examples/angularjs/#/");
+     
+#### Step 2: Enter 'Buy some milk' into the todo field
+    
+Identify the todo input field on the web page and use the "Find By Id" strategy to locate it:
+    
+    WebElement inputField = driver.findElement(By.id("new-todo"));
+    inputField.sendKeys("Buy some milk");
+
+#### Step 3: Hit RETURN to add the todo item
+
+Enter RETURN into the todo field:
+
+    inputField.sendKeys(Keys.RETURN);
+
+#### Step 4: Check the contents of the list
+
+Use the `getText()` method to get the text of the list box:
+
+    WebElement todoListContents = driver.findElement(By.id("todo-list"));
+    assertThat(todoListContents.getText(), containsString("Buy some milk"));
+        
+#### Step 5: Close the browser
+
+Close the browser using `driver.quit()`
+
+
+   
