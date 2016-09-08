@@ -1,11 +1,19 @@
 package serenitylabs.tutorials.vetclinic.playingball.model;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class Child {
 
-    public Game goPlayBallOn(LocalDate someDay) {
-        // TODO
-        return null;
+    SportsSchedule sportSchedule;
+
+    public Child(SportsSchedule sportSchedule) {
+        this.sportSchedule = sportSchedule;
     }
+
+    public Game goPlayBallOn(LocalDate someDay) {
+
+       return sportSchedule.forDate(someDay).play();
+    }
+
 }
