@@ -13,7 +13,7 @@ public class SportsSchedule {
 
     public PlayBall forDate(LocalDate currentDay) {
         if (currentDay.getDayOfWeek()== DayOfWeek.WEDNESDAY)
-            return sportsSchedule.forGameOnByWeek(currentDay);
+            return sportsSchedule.forGameOn(currentDay);
         else
             return recreationalSportScheduled.forGameOn(currentDay);
 

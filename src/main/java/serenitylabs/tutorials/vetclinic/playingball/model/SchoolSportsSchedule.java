@@ -20,16 +20,13 @@ public class SchoolSportsSchedule implements GameSchedule {
             return new PlayCricket();
         }
 
-        if (currentDay.getDayOfWeek() == DayOfWeek.WEDNESDAY)
-            return new PlayTennis();
-
         return new PlayTennis();
     }
 
-    @Override
+  /*  @Override
     public PlayBall forGameOnByWeek(LocalDate currentDay) {
         if (currentDay.getDayOfWeek()==DayOfWeek.WEDNESDAY)
             return new PlayTennis();
         return new PlayHandBall();
-    }
+    }*/
 }

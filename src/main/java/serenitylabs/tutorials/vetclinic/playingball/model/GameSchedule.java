@@ -8,5 +8,5 @@ import java.time.LocalDate;
 public interface GameSchedule {
     PlayBall forGameOn(LocalDate someDay);
 
-    PlayBall forGameOnByWeek(LocalDate currentDay);
+   // PlayBall forGameOnByWeek(LocalDate currentDay);
 }
