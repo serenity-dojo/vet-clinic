@@ -55,9 +55,9 @@ public class WhenPlayingBall {
         SportsSchedule sportsSchedule = new SportsSchedule();
         Child bill = new Child(sportsSchedule);
 
-        Game gamePlayed = bill.goPlayBallOn(A_WEDNESDAY);
+        Game gamePlayed = bill.goPlayBallOn(A_MONDAY);
 
-        assertThat(gamePlayed, equalTo(Game.Tennis));
+        assertThat(gamePlayed, equalTo(Game.Handball));
 
     }
 }
