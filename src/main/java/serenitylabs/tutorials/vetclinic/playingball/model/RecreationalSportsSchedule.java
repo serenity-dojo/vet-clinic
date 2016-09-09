@@ -16,9 +16,4 @@ public class RecreationalSportsSchedule implements GameSchedule {
             return new PlayHandBall();
 
     }
-
-    /*@Override
-    public PlayBall forGameOnByWeek(LocalDate currentDay) {
-        return null;
-    }*/
 }
