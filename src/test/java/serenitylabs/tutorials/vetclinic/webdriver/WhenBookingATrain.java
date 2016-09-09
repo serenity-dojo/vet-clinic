@@ -5,19 +5,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.equalTo;
 import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.ArriveBefore;
 import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.LeaveAfter;
 
@@ -39,7 +36,19 @@ public class WhenBookingATrain {
         theTrainShould(ArriveBefore, 10, 15, TravelDay.Tomorrow);
         planTrip();
 
-        List<WebElement> tripOptions = driver.findElements(By.cssSelector(".journeyValue"));
+        TripPreferences displayedTripPreferences = displayedTripPreferences();
+
+        TripPreferences expectedTripPreferences
+                = TripPreferences.arrivingOrDeparting("arrive before")
+                .from("Town Hall Station, Sydney")
+                .to("Parramatta Station, Parramatta")
+                .arrivingOn("Tomorrow")
+                .at("10","15");
+
+        assertThat(displayedTripPreferences, equalTo(expectedTripPreferences));
+    }
+
+    private TripPreferences displayedTripPreferences() {
 
         String arriveOrDepart = new Select(driver.findElement(By.id("SelectArriveDepart"))).getFirstSelectedOption().getText();
         String displayedOrigin = driver.findElement(By.id("name_origin")).getAttribute("value");
@@ -48,15 +57,11 @@ public class WhenBookingATrain {
         String arrivalHour = new Select(driver.findElement(By.id("selectHour"))).getFirstSelectedOption().getText();
         String arrivalMinute = new Select(driver.findElement(By.id("selectMinute"))).getFirstSelectedOption().getText();
 
-        assertThat(tripOptions.size(), is(greaterThan(0)));
-
-        assertThat(arriveOrDepart, equalTo("arrive before"));
-        assertThat(displayedOrigin, containsString("Town Hall"));
-        assertThat(displayedDestination, containsString("Parramatta"));
-        assertThat(arriveOrDepart, equalTo("arrive before"));
-        assertThat(arrivalDay, containsString("Tomorrow"));
-        assertThat(arrivalHour, equalTo("10"));
-        assertThat(arrivalMinute, equalTo("15"));
+        return TripPreferences.arrivingOrDeparting(arriveOrDepart)
+                              .from(displayedOrigin)
+                              .to(displayedDestination)
+                              .arrivingOn(arrivalDay)
+                              .at(arrivalHour, arrivalMinute);
     }
 
     private void planTrip() {
