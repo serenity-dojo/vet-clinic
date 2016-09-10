@@ -23,6 +23,7 @@ public class WhenCheckingPetIntoTheHotel {
 
     @Before
     public void initialises_actor_pet_and_hotel() {
+        //Given
         petra = Actor.named("Petra the pet owner");
         ginger = Pet.cat().named("Ginger");
         hotel = new PetHotel("Silver Inn");
@@ -30,17 +31,18 @@ public class WhenCheckingPetIntoTheHotel {
 
     @Test
     public void when_cheking_a_pet_into_the_hotel() {
-
+        //When
         petra.attemptsTo(
                 Checkin.aPet(ginger).into(hotel));
-
+        //Then
         assertThat(hotel.getPets(), hasItem(ginger));
     }
 
     @Test
     public void when_checkingout_a_pet_into_the_hotel() {
+        //When
         petra.attemptsTo(CheckOut.aPet(ginger).from(hotel));
-
+        //Then
         assertThat(hotel.getPets(), not(hasItem(ginger)));
     }
 }
