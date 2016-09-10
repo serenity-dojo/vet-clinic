@@ -63,4 +63,8 @@ public class PetHotel {
         }
     }
 
+    @Override
+    public String toString(){
+       return PetHotel.called(hotelName).hotelName ;
+    }
 }
