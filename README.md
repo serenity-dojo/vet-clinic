@@ -17,38 +17,5 @@ The domain is a simple one. We are writing an application for a Vet clinic, wher
 
 ## Exercises
 
-These exercises involve working with the Sydney Trains web site (http://www.sydneytrains.info). 
-The test skeletons for these exercises can be found in the `WhenInteractingWithElementsAndForms` class.
-
-### Exercise 1 - Enter a text value into a field
-
-Write a test that enters 'Town Hall' into the 'From' field in the 'Plan Your Trip' form.
-
-### Exercise 2 - Enter a text value into a field
-
-Write a test that enters 'Town Hall' into the 'From' field, 'Parramatta' into the 'To' field, and clicks on 'View Trip'.
-
-### Exercise 3 - Checkboxes
-
-Write a test that checks the 'Remember me' checkbox.
-
-### Exercise 4 - Radio buttons
-
-Write a test that selects the 'Arrive before' option.
-
-### Exercise 5 - Dropdown lists
-
-Write a test that selects "12" in the departure hour.
-
-
-## Kata
-
-The coding kata for this lesson involves writing a complete test to simulate a user planning a trip from Town Hall to Parramatta, 
-arriving tomorrow before 10:15am. On the result page, check that more than one trip option is displayed and that all of the 
-search preferences are also correctly displayed, including:
-   - From and To stations
-   - Leave after/arrive before preference
-   - Arrival Hour and minute
-   - Arrival Day
-    
+Refactor the WhenBookingATrain test to use WebDriver page objects.
     
