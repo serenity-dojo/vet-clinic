@@ -1,15 +1,18 @@
 package domain;
 
+import java.time.LocalDate;
+
 /**
  * Created by pravyada on 9/12/2016.
  */
-public class Cat extends Animal {
+public class Cat extends Animal implements NeedsVaccinations {
 
 
 
     private final String name;
     private final String breed;
     private final String color;
+    private LocalDate lastVaccinationDate;
 
 
     /**
@@ -48,7 +51,17 @@ public class Cat extends Animal {
 
     @Override
     public String complains() {
-        return "Mewo";
+        return "Meow";
+    }
+
+    @Override
+    public void wasVaccinatedOn(LocalDate vaccinationDate) {
+        this.lastVaccinationDate = vaccinationDate;
+    }
+
+    @Override
+    public LocalDate nextVaccinationDate() {
+        return lastVaccinationDate.plusYears(1);
     }
 
     public static class CatBuilder {

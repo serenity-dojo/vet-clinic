@@ -2,16 +2,20 @@ package domain;
 
 // Immutable java class without setter methods
 // Builder pattern used
+
+import java.time.LocalDate;
+
 /**
  * @author pravyada
  *
  */
-public class Dog extends Animal {
+public class Dog extends Animal implements NeedsVaccinations {
 
 	private final String name;
 	private final String breed;
 	private final String color;
-	
+	private LocalDate lastVaccinationDate;
+
 
 	/**
 	 * @param name
@@ -53,6 +57,17 @@ public class Dog extends Animal {
 	public String complains() {
 
 		return "Grrrr";
+	}
+
+	@Override
+	public void wasVaccinatedOn(LocalDate vaccinationDate) {
+	this.lastVaccinationDate = vaccinationDate;
+	}
+
+	@Override
+	public LocalDate nextVaccinationDate() {
+
+		return  lastVaccinationDate.plusMonths(6);
 	}
 
 	public static class DogBuilder {

@@ -32,6 +32,6 @@ public class WhenCreateANewDog {
 	@Test
 	public void a_cat_complains_by_meowing(){
 		Cat felix = Cat.called("Felix").ofBreed("Siemense").ofColor("While");
-		assertThat(felix.complains(),is(equalTo("Mewo")));
+		assertThat(felix.complains(),is(equalTo("Meow")));
 	}
 }
