@@ -6,7 +6,7 @@ package domain;
  * @author pravyada
  *
  */
-public class Dog {
+public class Dog extends Animal {
 
 	private final String name;
 	private final String breed;
@@ -47,6 +47,12 @@ public class Dog {
 
 	public static DogBuilder called(String name) {
 		return new DogBuilder(name);
+	}
+
+	@Override
+	public String complains() {
+
+		return "Grrrr";
 	}
 
 	public static class DogBuilder {

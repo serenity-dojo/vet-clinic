@@ -4,6 +4,11 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+
 @SuppressWarnings("deprecation")
 public class WhenCreateANewDog {
 	@Test
@@ -16,5 +21,17 @@ public class WhenCreateANewDog {
 		Assert.assertEquals("Fido", fido.getName());
 		Assert.assertEquals("LabroDog", fido.getBreed());
 		Assert.assertEquals("black", fido.getColor());
+	}
+
+	@Test
+	public void a_dog_complains_by_grawling(){
+		Dog fido = Dog.called("Fido").ofBreed("LabroDog").ofColor("black");
+		assertThat(fido.complains(),is(equalTo("Grrrr")));
+	}
+
+	@Test
+	public void a_cat_complains_by_meowing(){
+		Cat felix = Cat.called("Felix").ofBreed("Siemense").ofColor("While");
+		assertThat(felix.complains(),is(equalTo("Mewo")));
 	}
 }
