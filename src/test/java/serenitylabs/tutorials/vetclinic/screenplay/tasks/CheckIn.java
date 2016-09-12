@@ -26,6 +26,8 @@ public class CheckIn implements Performable {
         return new CheckInBuilder(pet);
     }
 
+
+
     public static class CheckInBuilder {
         private final Pet pet;
 

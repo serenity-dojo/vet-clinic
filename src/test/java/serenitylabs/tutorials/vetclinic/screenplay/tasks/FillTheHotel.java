@@ -21,6 +21,7 @@ public class FillTheHotel implements Task {
         for(int petcount = 1; petcount <= numberOfPets; petcount++) {
             Pet pet = new Pet("Pet #" + petcount, breed);
             // TODO: Register the pet with the hotel
+            actor.usingAbilityTo(ManageTheHotel.class).checkInPet(pet);
         }
     }
 
