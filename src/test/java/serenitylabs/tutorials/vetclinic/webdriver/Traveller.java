@@ -1,59 +1,61 @@
 package serenitylabs.tutorials.vetclinic.webdriver;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
-import java.text.DecimalFormat;
 
 public class Traveller {
     private final WebDriver driver;
 
-    public Traveller(WebDriver driver) {
+    TripPlannerForm tripPlannerForm;
+    TripSummaryView tripSummaryView;
 
+    public Traveller(WebDriver driver) {
         this.driver = driver;
+
+        tripPlannerForm = new TripPlannerForm();
+        tripSummaryView = new TripSummaryView();
+
+        PageFactory.initElements(driver, tripPlannerForm);
+        PageFactory.initElements(driver, tripSummaryView);
+
     }
 
 
     public void planTrip() {
-        driver.findElement(TripPlannerForm.SUBMIT_BUTTON).click();
+        tripPlannerForm.submitButton.click();
     }
 
-    private static final DecimalFormat TIME_UNIT_FORMAT = new DecimalFormat("##");
-
     public void theTrainShould(DeparturePreference departurePreference,
-                                int hour,
-                                int minute,
-                                TravelDay travelDay) {
+                               int hour,
+                               int minute,
+                               TravelDay travelDay) {
+
         driver.findElement(TripPlannerForm.departureButtonFor(departurePreference)).click();
 
-        new Select(driver.findElement(TripPlannerForm.TRAVEL_DAY))
-                .selectByIndex(travelDay.getDaysInFuture());
+        new Select(tripPlannerForm.travelDay).selectByIndex(travelDay.getDaysInFuture());
 
-        Select hourList = new Select(driver.findElement(TripPlannerForm.TIME_HOUR));
-        hourList.selectByVisibleText(TIME_UNIT_FORMAT.format(hour));
-
-        Select minuteList = new Select(driver.findElement(TripPlannerForm.TIME_MINUTE));
-        minuteList.selectByVisibleText(TIME_UNIT_FORMAT.format(minute));
+        tripPlannerForm.selectDepartureOrArrivalTime(hour, minute);
 
     }
 
     public void destinationStationIs(String station) {
-        driver.findElement(TripPlannerForm.DESTINATION).sendKeys(station);
+        tripPlannerForm.destination.sendKeys(station);
     }
 
     public void departureStationIs(String station) {
-        driver.findElement(TripPlannerForm.DEPARTURE).sendKeys(station);
+        tripPlannerForm.departure.sendKeys(station);
     }
 
 
     public TripPreferences displayedTripPreferences() {
 
-        String arriveOrDepart = new Select(driver.findElement(TripSummaryView.ARRIVE_OR_DEPART)).getFirstSelectedOption().getText();
-        String displayedOrigin = driver.findElement(TripSummaryView.ORIGIN).getAttribute("value");
-        String displayedDestination = driver.findElement(TripSummaryView.DESTINATION).getAttribute("value");
-        String arrivalDay = new Select(driver.findElement(TripSummaryView.DAY)).getFirstSelectedOption().getText();
-        String arrivalHour = new Select(driver.findElement(TripSummaryView.HOUR)).getFirstSelectedOption().getText();
-        String arrivalMinute = new Select(driver.findElement(TripSummaryView.MINUTE)).getFirstSelectedOption().getText();
+        String arriveOrDepart = new Select(tripSummaryView.arriveOrDepart).getFirstSelectedOption().getText();
+        String displayedOrigin = tripSummaryView.origin.getAttribute("value");
+        String displayedDestination = tripSummaryView.destination.getAttribute("value");
+        String arrivalDay = new Select(tripSummaryView.day).getFirstSelectedOption().getText();
+        String arrivalHour = new Select(tripSummaryView.hour).getFirstSelectedOption().getText();
+        String arrivalMinute = new Select(tripSummaryView.minute).getFirstSelectedOption().getText();
 
         return TripPreferences.arrivingOrDeparting(arriveOrDepart)
                 .from(displayedOrigin)
