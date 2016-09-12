@@ -1,4 +1,4 @@
-package serenitylabs.tutorials.vetclinic.screenplay;
+package serenitylabs.tutorials.vetclinic.screenplay.tasks;
 
 import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
@@ -7,30 +7,25 @@ import net.thucydides.core.annotations.Step;
 import serenitylabs.tutorials.vetclinic.model.Pet;
 import serenitylabs.tutorials.vetclinic.model.PetHotel;
 
-/**
- * Created by sapurani on 9/9/2016.
- */
-public class CheckIn implements Performable{
-
+public class CheckIn implements Performable {
     private final Pet pet;
     private final PetHotel petHotel;
 
-    public CheckIn(Pet pet, PetHotel petHotels) {
-        
+    public CheckIn(Pet pet, PetHotel petHotel) {
         this.pet = pet;
-        this.petHotel = petHotels;
+        this.petHotel = petHotel;
     }
-
 
     @Step("{0} checks #pet into #petHotel")
     @Override
-    public <T extends Actor> void performAs(T t) {
+    public <T extends Actor> void performAs(T actor) {
         petHotel.checkIn(pet);
     }
 
-    public static  CheckInBuilder apet(Pet pet){
-        return  new CheckInBuilder(pet);
+    public static CheckInBuilder aPet(Pet pet) {
+        return new CheckInBuilder(pet);
     }
+
     public static class CheckInBuilder {
         private final Pet pet;
 
