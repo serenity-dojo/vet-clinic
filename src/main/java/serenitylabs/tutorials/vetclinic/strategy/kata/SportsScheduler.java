@@ -6,19 +6,21 @@ import java.time.LocalDate;
 /**
  * Created by pravyada on 9/12/2016.
  */
-public class Child {
-
+public class SportsScheduler implements GameSchedule {
 
     GameSchedule schoolSportScheduled = new SchoolSportScheduler();
     GameSchedule recreationaSportScheduled = new RecreationalSportsSchedule();
 
-    public Game goPlayBallOn(LocalDate someDay) {
+    @Override
+    public PlayBall forGameOn(LocalDate someDay) {
         if(someDay.getDayOfWeek() == DayOfWeek.WEDNESDAY){
-            return schoolSportScheduled.forGameOn(someDay).play();
+            return schoolSportScheduled.forGameOn(someDay);
         }else {
-            return recreationaSportScheduled.forGameOn(someDay).play();
+            return recreationaSportScheduled.forGameOn(someDay);
         }
     }
 
-
+    public void play(){
+        System.out.println("Playing game");
+    }
 }
