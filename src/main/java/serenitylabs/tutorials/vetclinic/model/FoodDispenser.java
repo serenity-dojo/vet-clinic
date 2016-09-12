@@ -35,6 +35,6 @@ public class FoodDispenser {
     }
 
     private double rightAmountFor(Pet pet) {
-        return AMOUNT_OF_FOOD.get(pet.getBreed());
+        return pet.getWeightInKilos()*AMOUNT_OF_FOOD.get(pet.getBreed());
     }
 }
