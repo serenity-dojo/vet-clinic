@@ -17,11 +17,14 @@ public class WhenSchedulingRecreationalSport {
     private LocalDate A_SATURDAY = LocalDate.of(2016,8,27);
     private LocalDate A_FRIDAY = LocalDate.of(2016,8,26);
     @Test
-    public void should_play_football_on_the_weekends(){
+    public void play_football_on_the_weekends_and_play_handball_on_the_weekdays(){
 
         RecreationalSportsSchedule recreationalSportsSchedule = new RecreationalSportsSchedule();
         PlayBall playBall = recreationalSportsSchedule.forGameOn(A_SATURDAY);
 
         assertThat(playBall.play(),is(equalTo(Game.FOOTBOLL)));
     }
+
+
+
 }

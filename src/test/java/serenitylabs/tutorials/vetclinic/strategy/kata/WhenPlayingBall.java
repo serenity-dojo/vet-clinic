@@ -1,5 +1,6 @@
 package serenitylabs.tutorials.vetclinic.strategy.kata;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.time.DayOfWeek;
@@ -14,34 +15,42 @@ import static org.hamcrest.Matchers.equalTo;
 /**
  * Created by pravyada on 9/12/2016.
  */
-public class WhenPlaingBall {
+public class WhenPlayingBall {
 
     private LocalDate A_SUNDAY = LocalDate.of(2016,8,28);
     private LocalDate A_SATURDAY = LocalDate.of(2016,8,27);
     private LocalDate A_FRIDAY = LocalDate.of(2016,8,26);
+    SportsSchedule sportsSchedule ;
+
+    @Before
+    public void initializeSchedule(){
+        sportsSchedule = new SportsSchedule();
+    }
     @Test
     public void should_play_football_on_sunday(){
-    Child bill = new Child();
-    Game gamePalyed = bill.goPlayBallOn(A_SUNDAY);
-    assertThat(gamePalyed,is(equalTo(Game.FOOTBOLL)));
+
+    Child bill = new Child(sportsSchedule);
+    Game gamePlayed = bill.goPlayBallOn(A_SUNDAY);
+    assertThat(gamePlayed,is(equalTo(Game.FOOTBOLL)));
     }
 
     @Test
     public void should_play_football_on_saturday(){
-        Child bill = new Child();
+        Child bill = new Child(sportsSchedule);
         Game gamePlayed = bill.goPlayBallOn(A_SATURDAY);
+        assertThat(gamePlayed,is(equalTo(Game.FOOTBOLL)));
     }
 
     @Test
     public void should_play_handball_on_weekdays(){
-        Child bill = new Child();
+        Child bill = new Child(sportsSchedule);
         Game gamePalyed = bill.goPlayBallOn(A_FRIDAY);
         assertThat(gamePalyed,is(equalTo(Game.HANDBOLL)));
     }
 
     @Test
     public void should_play_tennis_on_wensday(){
-        Child bill = new Child();
+        Child bill = new Child(sportsSchedule);
         Game gamePalyed = bill.goPlayBallOn(A_FRIDAY.minusDays(1));
         assertThat(gamePalyed,is(equalTo(Game.HANDBOLL)));
     }

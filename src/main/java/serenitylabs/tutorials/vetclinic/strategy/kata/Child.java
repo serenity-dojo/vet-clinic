@@ -8,17 +8,12 @@ import java.time.LocalDate;
  */
 public class Child {
 
-
-    GameSchedule schoolSportScheduled = new SchoolSportScheduler();
-    GameSchedule recreationaSportScheduled = new RecreationalSportsSchedule();
-
-    public Game goPlayBallOn(LocalDate someDay) {
-        if(someDay.getDayOfWeek() == DayOfWeek.WEDNESDAY){
-            return schoolSportScheduled.forGameOn(someDay).play();
-        }else {
-            return recreationaSportScheduled.forGameOn(someDay).play();
-        }
+    SportsSchedule sportsSchedule;
+    Child(SportsSchedule sportsSchedule){
+        this.sportsSchedule = sportsSchedule;
     }
 
-
+    public Game goPlayBallOn(LocalDate someDay) {
+        return sportsSchedule.forDate(someDay).play();
+    }
 }

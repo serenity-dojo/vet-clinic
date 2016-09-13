@@ -4,23 +4,17 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 /**
- * Created by pravyada on 9/12/2016.
+ * Created by pravyada on 9/13/2016.
  */
-public class SportsScheduler implements GameSchedule {
-
+public class SportsSchedule {
     GameSchedule schoolSportScheduled = new SchoolSportSchedule();
     GameSchedule recreationaSportScheduled = new RecreationalSportsSchedule();
 
-    @Override
-    public PlayBall forGameOn(LocalDate someDay) {
-        if(someDay.getDayOfWeek() == DayOfWeek.WEDNESDAY){
+    public PlayBall forDate(LocalDate someDay) {
+        if(someDay.getDayOfWeek()== DayOfWeek.WEDNESDAY)
             return schoolSportScheduled.forGameOn(someDay);
-        }else {
+        else
             return recreationaSportScheduled.forGameOn(someDay);
-        }
     }
 
-    public void play(){
-        System.out.println("Playing game");
-    }
 }
