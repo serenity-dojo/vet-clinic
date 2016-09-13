@@ -39,7 +39,7 @@ public class WhenSchedulingSchoolSports {
     }
     @Test
     public void should_play_tennis_in_winter_month_and_cricket_in_summer_month(){
-    GameSchedule gameSchedule = new SchoolSportSchedule();
+    GameSchedule gameSchedule = new SchoolSportsSchedule();
         assertThat(gameSchedule.forGameOn(someDate).play(),equalTo(expectedGame));
     }
 }

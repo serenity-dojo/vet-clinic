@@ -8,7 +8,7 @@ import java.time.LocalDate;
  */
 public class SportsScheduler implements GameSchedule {
 
-    GameSchedule schoolSportScheduled = new SchoolSportSchedule();
+    GameSchedule schoolSportScheduled = new SchoolSportsSchedule();
     GameSchedule recreationaSportScheduled = new RecreationalSportsSchedule();
 
     @Override

@@ -7,14 +7,14 @@ import java.time.LocalDate;
  * Created by pravyada on 9/13/2016.
  */
 public class SportsSchedule {
-    GameSchedule schoolSportScheduled = new SchoolSportSchedule();
-    GameSchedule recreationaSportScheduled = new RecreationalSportsSchedule();
+    GameSchedule scheduledSchoolSport = new SchoolSportsSchedule();
+    GameSchedule scheduleRecreationalSport = new RecreationalSportsSchedule();
 
     public PlayBall forDate(LocalDate someDay) {
         if(someDay.getDayOfWeek()== DayOfWeek.WEDNESDAY)
-            return schoolSportScheduled.forGameOn(someDay);
+            return scheduledSchoolSport.forGameOn(someDay);
         else
-            return recreationaSportScheduled.forGameOn(someDay);
+            return scheduleRecreationalSport.forGameOn(someDay);
     }
 
 }
