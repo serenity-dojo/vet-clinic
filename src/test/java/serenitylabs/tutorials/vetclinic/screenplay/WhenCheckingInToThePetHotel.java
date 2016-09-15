@@ -9,14 +9,15 @@ import serenitylabs.tutorials.vetclinic.model.GuestList;
 import serenitylabs.tutorials.vetclinic.model.Pet;
 import serenitylabs.tutorials.vetclinic.model.PetHotel;
 import serenitylabs.tutorials.vetclinic.model.WaitingList;
+import serenitylabs.tutorials.vetclinic.screenplay.abilities.Manage;
+import serenitylabs.tutorials.vetclinic.screenplay.questions.TheGuest;
 import serenitylabs.tutorials.vetclinic.screenplay.questions.TheGuestsOnTheWaitingList;
-import serenitylabs.tutorials.vetclinic.screenplay.questions.TheRegisteredGuests;
-import serenitylabs.tutorials.vetclinic.screenplay.tasks.APetHotel;
 import serenitylabs.tutorials.vetclinic.screenplay.tasks.CheckIn;
-import serenitylabs.tutorials.vetclinic.screenplay.tasks.CheckOut;
+import serenitylabs.tutorials.vetclinic.screenplay.tasks.FillTheHotel;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasItemInArray;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(SerenityRunner.class)
@@ -36,22 +37,20 @@ public class WhenCheckingInToThePetHotel {
     @Test
     public void petra_checks_her_cat_in_when_the_hotel_is_full() {
         // GIVEN
-
         Actor petra = Actor.named("Petra the pet owner");
         Pet ginger = Pet.cat().named("Ginger");
-        PetHotel petHotel = APetHotel.with(20).petsCheckedIn();
 
-        petra.wasAbleTo(CheckIn.aPet(ginger).into(petHotel));
+        Actor harry = Actor.named("Harry the hotel manager");
+        harry.can(Manage.the(petHotel));
+        harry.wasAbleTo(FillTheHotel.with(20).cats());
 
-        // WHEN
-        petra.attemptsTo(
-                CheckOut.aPet(ginger).from(petHotel)
-        );
+        //WHEN
+        petra.attemptsTo(CheckIn.aPet(ginger).into(petHotel));
 
         // THEN
-        petra.should(
-                seeThat(TheRegisteredGuests.in(petHotel), not(hasItem(ginger))),
-                seeThat(TheGuestsOnTheWaitingList.forHotel(petHotel), hasItem(ginger))
+        harry.should(
+                seeThat(TheGuest.registeredInHotel(), not(hasItem(ginger))),
+                seeThat(TheGuest.OnWaitingList(), hasItem(ginger))
         );
 
     }
