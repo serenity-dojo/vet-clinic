@@ -3,11 +3,12 @@ package serenitylabs.tutorials.vetclinic.webdriver;
 import net.serenitybdd.core.annotations.findby.By;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -19,9 +20,16 @@ import static org.hamcrest.Matchers.equalTo;
 public class WhenLocatingElements {
     WebDriver driver;
 
+    @BeforeClass()
+    public static void setUpClass(){
+
+     /*   System.setProperty("webdriver.chrome.driver",
+                "C:\\Users\\siddharthk\\Downloads\\chromedriver_win32\\chromedriver.exe");*/
+    }
+
     @Before
     public void setup() {
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.get("http://todomvc.com/examples/dojo");
     }
@@ -29,7 +37,7 @@ public class WhenLocatingElements {
     @Test
     public void finding_the_new_todo_field_by_id() {
         // TODO: Find the New Todo field by ID
-        WebElement todoField = null;
+        WebElement todoField = driver.findElement(By.id("new-todo"));
 
         assertThat(todoField.getAttribute("placeholder"), equalTo("What needs to be done?"));
     }
@@ -37,16 +45,15 @@ public class WhenLocatingElements {
     @Test
     public void finding_the_quote_by_tag() {
         // TODO: Find the Quote field by its HTML tag
-        WebElement quote = null;
+        WebElement quote = driver.findElement(By.tagName("blockquote"));
 
         assertThat(quote.getText(), containsString("Dojo saves you time"));
     }
 
-
     @Test
     public void finding_the_source_link_by_link_text() {
         // TODO: Find the 'Source' link by link text
-        WebElement completedButton = null;
+        WebElement completedButton = driver.findElement(By.linkText("Source"));
 
         assertThat(completedButton.getText(), equalTo("Source"));
     }
@@ -54,15 +61,15 @@ public class WhenLocatingElements {
     @Test
     public void finding_the_new_todo_field_by_css() {
         // TODO: Find the New Todo field by CSS
-        WebElement todoField = null;
+        WebElement todoField = driver.findElement(By.cssSelector("#new-todo"));
 
         assertThat(todoField.getAttribute("placeholder"), equalTo("What needs to be done?"));
     }
 
     @Test
-    public void finding_the_new_todo_field_by_class() {
+    public void finding_the_quote_class() {
         // TODO: Find the Quote text by classname
-        WebElement quote = null;
+        WebElement quote = driver.findElement(By.className("quote"));
 
         assertThat(quote.getText(), containsString("Dojo saves you time"));
     }
@@ -70,7 +77,7 @@ public class WhenLocatingElements {
     @Test
     public void finding_the_quote_by_css() {
         // TODO: Find the Quote field using a CSS selector
-        WebElement quote = null;
+        WebElement quote = driver.findElement(By.cssSelector(".speech-bubble"));
 
         assertThat(quote.getText(), containsString("Dojo saves you time"));
     }
@@ -78,7 +85,7 @@ public class WhenLocatingElements {
     @Test
     public void finding_the_new_todo_field_by_xpath() {
         // TODO: Find the New Todo field by XPath
-        WebElement todoField = null;
+        WebElement todoField = driver.findElement(By.xpath("//*[@id='new-todo']"));
 
         assertThat(todoField.getAttribute("placeholder"), equalTo("What needs to be done?"));
     }
@@ -91,7 +98,7 @@ public class WhenLocatingElements {
         addTodo("Feed the cat");
 
         // TODO: Use the findElements method to find a list of WebElements corresponding to the todo list entries
-        List<WebElement> todoItems = null;
+        List<WebElement> todoItems = driver.findElements(By.cssSelector("#todo-list li"));
 
         assertThat(todoItems.size(), equalTo(3));
     }
