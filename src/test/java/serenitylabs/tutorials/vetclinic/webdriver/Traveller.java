@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.HashMap;
 import java.util.Map;
 
-import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.ArriveBefore;
-import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.LeaveAfter;
+import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.ARRIVE_BEFORE;
+import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.LEAVE_AFTER;
 
 /**
  * Created by siddharthk on 9/18/2016.
@@ -24,16 +24,15 @@ public class Traveller {
         driver.findElement(WelcomePageLocators.VIEW_TRIP).click();
     }
 
-    private static Map<DeparturePreference, By> departurePreferenceSelector = new HashMap<>();
+    private static Map<DeparturePreference, By> DEPARTURE_PREFERENCE_SELECTOR = new HashMap<>();
     static {
-        departurePreferenceSelector.put(ArriveBefore, WelcomePageLocators.ARRIVE_BEFORE);
-        departurePreferenceSelector.put(LeaveAfter, WelcomePageLocators.LEAVE_AFTER);
-
+        DEPARTURE_PREFERENCE_SELECTOR.put(ARRIVE_BEFORE, WelcomePageLocators.ARRIVE_BEFORE);
+        DEPARTURE_PREFERENCE_SELECTOR.put(LEAVE_AFTER, WelcomePageLocators.LEAVE_AFTER);
     }
 
     public void theTrainShould(DeparturePreference departurePreference, String hour, String minutes, Day travelDay) {
 
-        driver.findElement(departurePreferenceSelector.get(departurePreference)).click();
+        driver.findElement(DEPARTURE_PREFERENCE_SELECTOR.get(departurePreference)).click();
 
         new Select(driver.findElement(WelcomePageLocators.TRAVEL_DATE)).selectByIndex(travelDay.getDay());
 
@@ -42,7 +41,6 @@ public class Traveller {
 
         Select minute = new Select(driver.findElement(WelcomePageLocators.MINUTES));
         minute.selectByVisibleText(minutes);
-
     }
 
     public void arrivalStationIs(String arrivalStation) {

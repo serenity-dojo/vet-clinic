@@ -9,7 +9,7 @@ public class WelcomePageLocators {
 
     public static final By HOURS = By.cssSelector("#itdTimeHour");
     public static final By TRAVEL_DATE = By.cssSelector("#itdDate");
-    public static final By ARRIVE_BEFORE = By.cssSelector("#itdDate");
+    public static final By ARRIVE_BEFORE = By.cssSelector("#itdTripDateTimeArr");
     public static final By LEAVE_AFTER = By.id("itdTripDateTimeDep");
     public static final By VIEW_TRIP = By.name("btnTripPlannerSubmit");
     public static By FROM_STATION = By.id("display_origin");

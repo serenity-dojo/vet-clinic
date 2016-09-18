@@ -4,26 +4,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 import static serenitylabs.tutorials.vetclinic.webdriver.Day.Tomorrow;
-import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.ArriveBefore;
-import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.LeaveAfter;
+import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.ARRIVE_BEFORE;
 
 public class WhenBookingATrain {
     WebDriver driver;
@@ -49,7 +39,7 @@ public class WhenBookingATrain {
         Traveller traveller = new Traveller(driver);
         traveller.departureStationIs("Town Hall");
         traveller.arrivalStationIs("Parramatta");
-        traveller.theTrainShould(ArriveBefore, "10", "15", Tomorrow);
+        traveller.theTrainShould(ARRIVE_BEFORE, "10", "15", Tomorrow);
 
         //WHEN
         traveller.planTheTrip();
@@ -65,8 +55,6 @@ public class WhenBookingATrain {
                 .arrivingBeforeOrLeaveAfter("arrive before","10","15")
                 .on("Tomorrow");
     }
-
-
 
     @After
     public void shutdown() {
