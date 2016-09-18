@@ -1,13 +1,25 @@
 package serenitylabs.tutorials.vetclinic.webdriver;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class TripSummaryView {
 
-    public static final By ARRIVE_OR_DEPART = By.id("SelectArriveDepart");
-    public static final By ORIGIN = By.id("name_origin");
-    public static final By DESTINATION = By.id("name_destination");
-    public static final By DAY = By.id("itdDateDayMonthYear");
-    public static final By HOUR = By.id("selectHour");
-    public static final By MINUTE = By.id("selectMinute");
+    @FindBy(id="SelectArriveDepart")
+    public   WebElement arriveOrDepart;
+
+    @FindBy(id="name_origin")
+    public  WebElement origin;
+
+    @FindBy(id="name_destination")
+    public  WebElement destination;
+
+    @FindBy(id = "itdDateDayMonthYear")
+    public  WebElement day;
+
+    @FindBy(id ="selectHour")
+    public  WebElement hour;
+
+    @FindBy(id ="selectMinute")
+    public  WebElement minute;
 }

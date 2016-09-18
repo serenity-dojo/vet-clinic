@@ -1,6 +1,8 @@
 package serenitylabs.tutorials.vetclinic.webdriver;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,21 +12,32 @@ import static serenitylabs.tutorials.vetclinic.webdriver.DeparturePreference.Lea
 
 public class TripPlannerForm {
 
-    public static final By TRAVEL_DAY = By.cssSelector("#itdDate");
-    public static final By TIME_HOUR = By.cssSelector("#itdTimeHour");
-    public static final By TIME_MINUTE = By.cssSelector("#itdTimeMinute");
-    public static final By DESTINATION = By.id("display_destination");
-    public static final By DEPARTURE = By.id("display_origin");
+    @FindBy(css = "#itdDate")
+    public  WebElement travelDay;
 
-    static final Map<DeparturePreference, By> DEPARTURE_RADIO_BUTTONS = new HashMap<>();
-    static {
+    @FindBy(css = "#itdTimeHour")
+    public  WebElement timeHour;
+
+    @FindBy(css = "#itdTimeMinute")
+    public  WebElement timeMinute;
+
+    @FindBy(id = "display_destination")
+    public  WebElement destination;
+
+    @FindBy(id = "display_origin")
+    public  WebElement origin;
+
+     final Map<DeparturePreference, By> DEPARTURE_RADIO_BUTTONS = new HashMap<>();
+
+     {
         DEPARTURE_RADIO_BUTTONS.put(ArriveBefore, By.id("itdTripDateTimeArr"));
         DEPARTURE_RADIO_BUTTONS.put(LeaveAfter, By.id("itdTripDateTimeDep"));
     }
 
-    public static final By SUBMIT_BUTTON = By.name("btnTripPlannerSubmit");
+    @FindBy(id = "btnTripPlannerSubmit")
+    public  WebElement viewTrip;
 
-    public static By departureButtonFor(DeparturePreference departurePreference) {
+    public  By departureButtonFor(DeparturePreference departurePreference) {
         return DEPARTURE_RADIO_BUTTONS.get(departurePreference);
     }
 }
