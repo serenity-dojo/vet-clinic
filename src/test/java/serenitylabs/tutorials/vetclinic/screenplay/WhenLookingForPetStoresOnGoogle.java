@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.questions.page.TheWebPage;
 import net.thucydides.core.annotations.Managed;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ import static net.serenitybdd.screenplay.EventualConsequence.eventually;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.containsString;
 
+
 @RunWith(SerenityRunner.class)
 public class WhenLookingForPetStoresOnGoogle {
 
@@ -24,6 +26,7 @@ public class WhenLookingForPetStoresOnGoogle {
     @Managed(driver="chrome")
     WebDriver petesBrowser;
 
+    @Ignore
     @Test
     public void should_find_local_pet_stores() {
 
