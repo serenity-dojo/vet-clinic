@@ -17,7 +17,7 @@ import static net.serenitybdd.screenplay.EventualConsequence.eventually;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.containsString;
 
-
+@Ignore
 @RunWith(SerenityRunner.class)
 public class WhenLookingForPetStoresOnGoogle {
 
