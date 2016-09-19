@@ -1,11 +1,7 @@
 machine:
   java:
     version: oraclejdk8
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> upstream/kata/screenplay-abilities/start
+upstream/kata/screenplay-abilities/start
 test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
