@@ -1,30 +1,81 @@
-# Vet Clinic Tutorial Project
+# Collections Katas
+ 
+## Booking pets into a pet hotel
+ 
+In this kata, we are helping a vet clinic open a hotel for pets on the premises. Pet owners can bring their pets to the hotel and check them in if there is an available room. If no room is available, the pet will be placed on a waiting list. Whenever a pet checks out, a room is freed to the first animal on the waiting list is automatically checked in.
 
-This project is used as the basis of a number of tutorials and exercises, as part of the *Professional Java Development and Test Automation Skills* program (see http://johnfergusonsmart.com/products). Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
+The aim of this kata is to implement a Pet hotel with the following requirements:
 
-These tutorials are designed to be used as the basis of small coding exercises (similar to very short coding katas) that you can learn and practice until you are familiar with a particular technique. The approach is outlined here:
+  - Pet owners should be able to check their pet into the hotel
+  - Pet owners should receive a confirmation that their pet has been successfully checked in
+  - The hotel owner should be able to list all of the pets in the hotel in alphabetical order
+  - The hotel should have a maximum capacity of 20 animals. 
+  - When a pet owner checks in their pet and the hotel is full, they should receive a confirmation that their pet has been placed on a waiting list.
+  - When a pet checks out of the hotel, the first animal on the waiting list should be automatically checked in.
+  
+When you first do the exercise, implement the features by progressively making all of the acceptance tests in the  pass, one after the other. The `WhenBookingPetsIntoAPetHotel` test class contains a sequence of unit tests for each feature to be implemented. The last line in each test is a Hamcrest assertion that is commented out. Uncomment the assertion, then follow the steps below to implement each feature and make the tests pass.
 
-![Learning from the tutorials](src/documentation/images/tutorial-process.png)
+Once you have finished, repeat the exercise, but first deleting all of the tests and then rewriting them using a TDD approach (i.e. Write a failing test for a feature, make it pass, refactor the code, move to the next feature).
 
-1. Clone this repository and check out the starting point for the tutorial you want to do.
-2. Watch the tutorial and follow along on your own machine.
-3. Redo the tutorial following the step-by-step instructions given in the tutorial's README file.
-4. Redo the exercise without the instructions.
+## The Steps
 
-## The problem domain
+# Step 1 - Check a pet into the hotel (part 1)
+_Test case:_ `the_hotel_should_initially_have_no_pets_booked()`
 
-The domain is a simple one. We are writing an application for a Vet clinic, where you can take your pets to be treated when they are sick. At the vet clinic, we need to be able to register new animals when they arrive for treatment.
+Create a new class `PetHotel` and give it a method `getPets()` that returns null. Make sure the test fails, then get the `getPets()` method to return an empty collection of `Pet` instances.
 
-## Starting a tutorial
+# Step 2 - Check a pet into the hotel (part 2)
 
-Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
-```
-$ git checkout tutorial-1/start
-```
+_Test case:_ `should_be_able_to_check_a_pet_into_the_hotel()`
 
-And to see the solution for tutorial 1, use the solution branch:
-```
-$ git checkout tutorial-1/solution
-```
+Add a method `checkIn()` to the `PetHotel` class, that takes a `Pet` as a parameter, and demonstrate that when you check a pet into the hotel, it can be retrieved via the `getPets()` method. Implement the list of pets in the `PetHotel` class as an `ArrayList`.
 
-Go to the tutorial branch to see the step-by-step instructions for that tutorial.
+# Step 3 - Check a pet into the hotel (part 3)
+
+_Test case:_ `should_be_able_to_check_in_several_pets()`
+
+Demonstrate that you can check several pets into the hotel, and that they all can be retrieved via the `getPets()` method.
+
+# Step 4 - Check a pet into the hotel (part 4)
+
+_Test case:_ `should_not_be_able_to_check_in_the_same_pet_twice()`
+
+Demonstrate that if you check in the same pet twice, it should have no effect on the current pet list. Refactor the pet list field to use a `TreeMap` instead of an `ArrayList`.
+
+# Step 5 - Pet owners should receive a confirmation that their pet has been successfully checked in
+
+_Test case:_ `should_be_able_to_obtain_a_booking_confirmation_when_we_check_in_a_pet()`
+
+Demonstrate that when an owner checks in a pet, they receive a `BookingResponse` object which contains a reference to the pet, a booking number, and a method `isConfirmed()` that returns `true`.
+
+
+# Step 6 - The hotel owner should be able to list all of the pets in the hotel in alphabetical order
+
+_Test case:_ `should_be_able_to_retrieve_checked_in_pets_in_alphabetical_order()`
+
+Make this work by refactoring the pet list field to use a `TreeMap` with a Java 8 comparator.
+ 
+# Step 7 - The hotel should have a maximum capacity of 20 animals. 
+
+_Test case:_ `should_not_be_able_to_check_in_pets_beyond_hotel_capacity()`
+
+This test should check that when an owner checks in a pet when the hotel is full, the pet is not added to the pet list.
+
+# Step 8
+
+_Test case:_ `should_notify_owner_that_the_hotel_is_full()`
+
+Ensure that when an owner checks in a pet to a full hotel, the hotel returns a `Response` that indicates that the booking is not confirmed (`isConfirmed()` returns false), and that the pet has been placed on a waiting list (via a new method, 'isOnWaitingList()` is true).
+
+# Step 9
+
+_Test case:_ `pets_on_the_waiting_list_should_be_added_to_the_hotel_when_a_place_is_freed()`
+
+Ensure that when a pet checks out of the hotel, the first pet on the waiting list is automatically checked in.
+
+# Step 10
+
+_Test case:_ `pets_on_the_waiting_list_should_be_admitted_on_a_first_come_first_served_basis()`
+
+Ensure that pets on the waiting list are checked in on a first-come-first-served basis.
+
