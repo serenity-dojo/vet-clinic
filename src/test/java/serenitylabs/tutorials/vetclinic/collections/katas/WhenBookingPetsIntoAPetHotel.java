@@ -52,7 +52,7 @@ public class WhenBookingPetsIntoAPetHotel {
         PetHotel petHotel=new PetHotel();
         Pet fido= Pet.dog().named("Fido");
         Pet felix= Pet.cat().named("Felix");
-        
+
         petHotel.checkIn(fido);
         petHotel.checkIn(felix);
 
@@ -110,20 +110,69 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_notify_owner_that_the_hotel_is_full() throws Exception {
+
+        // Given
+        PetHotel petHotel=APetHotel.with(20).petsCheckIn();
+        Pet fido= Pet.dog().named("Fido");
+        // When
+        BookingResponse bookingResponse= petHotel.checkIn(fido);
+        // Then
+        assertThat(bookingResponse.isConfirmed(), is(false));
+        assertThat(bookingResponse.isOnWaitingList(), is(true));
+
+
     }
 
 
     @Test
     public void should_place_pets_on_a_waiting_list_when_the_hotel_is_full() throws Exception {
+
+        // Given
+        PetHotel petHotel=APetHotel.with(20).petsCheckIn();
+        Pet fido= Pet.dog().named("Fido");
+        // When
+         petHotel.checkIn(fido);
+        // Then
+        assertThat(petHotel.getWaitingList(), hasItem(fido));
+
     }
 
     @Test
     public void pets_on_the_waiting_list_should_be_added_to_the_hotel_when_a_place_is_freed() throws Exception {
+
+        // Given
+        PetHotel petHotel=APetHotel.with(19).petsCheckIn();
+        Pet fido= Pet.dog().named("Fido");
+        Pet felix= Pet.cat().named("Felix");
+        // Pet roger= Pet.rabbit().named("Roger");
+
+        petHotel.checkIn(fido);
+        petHotel.checkIn(felix);
+        // petHotel.checkIn(roger);
+        petHotel.checkOut(fido);
+        // Then
+        assertThat(petHotel.getPets(), hasItem(felix));
+
     }
 
 
     @Test
     public void pets_on_the_waiting_list_should_be_admitted_on_a_first_come_first_served_basis() throws Exception {
+
+        PetHotel hotel = APetHotel.with(19).petsCheckIn();
+        Pet felix = Pet.cat().named("FELIX");
+        Pet fido = Pet.dog().named("FIDO");
+        Pet roger = Pet.rabbit().named("ROGER");
+
+        hotel.checkIn(felix);
+        hotel.checkIn(fido);
+        hotel.checkIn(roger);
+
+        //WHEN
+        hotel.checkOut(felix);
+
+        //Then
+        assertThat(hotel.getPets(), hasItem(fido));
     }
 
 }
