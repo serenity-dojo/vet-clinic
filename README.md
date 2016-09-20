@@ -15,16 +15,40 @@ These tutorials are designed to be used as the basis of small coding exercises (
 
 The domain is a simple one. We are writing an application for a Vet clinic, where you can take your pets to be treated when they are sick. At the vet clinic, we need to be able to register new animals when they arrive for treatment.
 
-## Starting a tutorial
+## Exercises
 
-Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
-```
-$ git checkout tutorial-1/start
-```
+These exercises involve working with the Sydney Trains web site (http://www.sydneytrains.info). 
+The test skeletons for these exercises can be found in the `WhenInteractingWithElementsAndForms` class.
 
-And to see the solution for tutorial 1, use the solution branch:
-```
-$ git checkout tutorial-1/solution
-```
+### Exercise 1 - Enter a text value into a field
 
-Go to the tutorial branch to see the step-by-step instructions for that tutorial.
+Write a test that enters 'Town Hall' into the 'From' field in the 'Plan Your Trip' form.
+
+### Exercise 2 - Enter a text value into a field
+
+Write a test that enters 'Town Hall' into the 'From' field, 'Parramatta' into the 'To' field, and clicks on 'View Trip'.
+
+### Exercise 3 - Checkboxes
+
+Write a test that checks the 'Remember me' checkbox.
+
+### Exercise 4 - Radio buttons
+
+Write a test that selects the 'Arrive before' option.
+
+### Exercise 5 - Dropdown lists
+
+Write a test that selects "12" in the departure hour.
+
+
+## Kata
+
+The coding kata for this lesson involves writing a complete test to simulate a user planning a trip from Town Hall to Parramatta, 
+arriving tomorrow before 10:15am. On the result page, check that more than one trip option is displayed and that all of the 
+search preferences are also correctly displayed, including:
+   - From and To stations
+   - Leave after/arrive before preference
+   - Arrival Hour and minute
+   - Arrival Day
+    
+    
