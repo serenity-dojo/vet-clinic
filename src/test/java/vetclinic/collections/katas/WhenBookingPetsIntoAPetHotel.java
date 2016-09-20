@@ -48,6 +48,13 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_be_able_to_retrieve_checked_in_pets_in_alphabetical_order() throws Exception {
+        Pet tommy = Pet.dog().named("Tommy");
+        Pet shaggy = Pet.dog().named("Shaggy");
+        Pet bruno = Pet.dog().named("Bruno");
+        aPetHotel.checkIn(tommy);
+        aPetHotel.checkIn(shaggy);
+        aPetHotel.checkIn(bruno);
+        assertThat(aPetHotel.getPets(),contains(bruno,shaggy,tommy));
     }
 
     @Test

@@ -12,7 +12,7 @@ import java.util.*;
 public class APetHotel {
     private final String name;
     private final int count;
-    private Collection<Pet> pets = new LinkedHashSet<>();
+    private Collection<Pet> pets = new TreeSet<>(Comparator.comparing(Pet::getName));
 
     public APetHotel(String hotelName, int petCount) {
         this.name=hotelName;
