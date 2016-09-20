@@ -72,7 +72,6 @@ public class WhenBookingPetsIntoAPetHotel {
         petHotel.checkIn(siemens);
 
         //THEN
-        //TODO
         assertThat(petHotel.getPets(),contains(roger,siemens,fido,felix));
     }
 
