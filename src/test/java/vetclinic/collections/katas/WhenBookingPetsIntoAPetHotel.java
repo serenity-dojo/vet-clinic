@@ -12,7 +12,7 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Before
     public void petHotelSetUp(){
-        aPetHotel = APetHotel.with(20).named("Silver Inn");
+        aPetHotel = APetHotel.with(4).named("Silver Inn");
     }
 
     @Test
@@ -66,6 +66,23 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_not_be_able_to_check_in_pets_beyond_hotel_capacity() throws Exception {
+        //GIVEN
+        Pet tommy = Pet.dog().named("Tommy");
+        Pet shaggy = Pet.dog().named("Shaggy");
+        Pet bruno = Pet.dog().named("Bruno");
+        Pet meow = Pet.cat().named("Meows");
+        aPetHotel.checkIn(tommy);
+        aPetHotel.checkIn(shaggy);
+        aPetHotel.checkIn(bruno);
+        aPetHotel.checkIn(meow);
+
+        //WHEN
+        Pet fido = Pet.dog().named("Fido");
+        aPetHotel.checkIn(fido);
+
+        //THEN
+        assertThat(aPetHotel.getPets(),not(hasItem(fido)));
+
     }
 
     @Test

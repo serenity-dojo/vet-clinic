@@ -32,6 +32,8 @@ public class APetHotel {
         return new BookingConfirmation();
     }
 
+
+
     public static class PetHotelBuilder {
         private final int petCount;
 
@@ -55,6 +57,9 @@ public class APetHotel {
 
         private final static List<String> PET_NAMES = ImmutableList.of("Fido","Felix","Rover","Spot");
 
+        public void checkInDefaultPets() {
+            somePet(petCount);
+    }
         private String someName(int petCount) {
             return PET_NAMES.get(random.nextInt(PET_NAMES.size())) + " " + petCount;
         }
