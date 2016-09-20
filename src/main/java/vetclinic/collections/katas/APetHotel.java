@@ -4,10 +4,7 @@ import com.google.common.collect.ImmutableList;
 import vetclinic.Breed;
 import vetclinic.Pet;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * A utility class to generate pet hotels with pets already booked
@@ -15,7 +12,7 @@ import java.util.Random;
 public class APetHotel {
     private final String name;
     private final int count;
-    private Collection<Pet> pets = new ArrayList();
+    private Collection<Pet> pets = new LinkedHashSet<>();
 
     public APetHotel(String hotelName, int petCount) {
         this.name=hotelName;

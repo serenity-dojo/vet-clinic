@@ -1,7 +1,6 @@
 package vetclinic.collections.katas;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import vetclinic.Pet;
 
@@ -38,7 +37,7 @@ public class WhenBookingPetsIntoAPetHotel {
         assertThat(aPetHotel.getPets(),hasItems(tommy,meow));
     }
 
-    @Ignore
+    @Test
     public void should_not_be_able_to_check_in_the_same_pet_twice() throws Exception {
         Pet tommy = Pet.dog().named("Tommy");
         aPetHotel.checkIn(tommy);
