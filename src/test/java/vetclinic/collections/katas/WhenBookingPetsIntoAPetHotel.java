@@ -2,6 +2,7 @@ package vetclinic.collections.katas;
 
 import org.junit.Before;
 import org.junit.Test;
+import vetclinic.Pet;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -22,6 +23,9 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_be_able_to_check_a_pet_into_the_hotel() throws Exception {
+        Pet tommy = Pet.dog().named("Tommy");
+        aPetHotel.checkIn(tommy);
+        assertThat(aPetHotel.getPets().size(),is(equalTo(1)));
     }
 
     @Test

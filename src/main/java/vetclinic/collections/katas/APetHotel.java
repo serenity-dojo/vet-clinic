@@ -30,6 +30,10 @@ public class APetHotel {
         return pets;
     }
 
+    public void checkIn(Pet pet) {
+        pets.add(pet);
+    }
+
     public static class PetHotelBuilder {
         private final int petCount;
 
