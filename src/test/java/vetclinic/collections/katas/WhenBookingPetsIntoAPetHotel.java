@@ -87,6 +87,23 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_notify_owner_that_the_hotel_is_full() throws Exception {
+        //GIVEN
+        Pet tommy = Pet.dog().named("Tommy");
+        Pet shaggy = Pet.dog().named("Shaggy");
+        Pet bruno = Pet.dog().named("Bruno");
+        Pet meow = Pet.cat().named("Meows");
+        aPetHotel.checkIn(tommy);
+        aPetHotel.checkIn(shaggy);
+        aPetHotel.checkIn(bruno);
+        aPetHotel.checkIn(meow);
+
+        //WHEN
+        Pet fido = Pet.dog().named("Fido");
+        BookingConfirmation bookingConfirmation =aPetHotel.checkIn(fido);
+
+        //THEN
+        assertThat(bookingConfirmation.isConfirmed(),is(false));
+        assertThat(bookingConfirmation.isWaiting(),is(true));
     }
 
 

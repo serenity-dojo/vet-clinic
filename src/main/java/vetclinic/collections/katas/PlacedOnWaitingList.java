@@ -13,6 +13,6 @@ public class PlacedOnWaitingList extends BookingConfirmation {
 
     @Override
     public boolean isWaiting() {
-        return false;
+        return true;
     }
 }
