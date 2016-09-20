@@ -27,8 +27,9 @@ public class APetHotel {
         return pets;
     }
 
-    public void checkIn(Pet pet) {
+    public BookingConfirmation checkIn(Pet pet) {
         pets.add(pet);
+        return new BookingConfirmation();
     }
 
     public static class PetHotelBuilder {
