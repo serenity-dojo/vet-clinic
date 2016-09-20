@@ -2,7 +2,7 @@ package serenitylabs.tutorials.vetclinic;
 
 import com.google.common.base.Objects;
 
-public class Pet {
+public class Pet implements Comparable<String >{
     private final String name;
     private final Breed breed;
 
@@ -24,6 +24,11 @@ public class Pet {
     public static PetBuilder rabbit() { return new PetBuilder(Breed.Rabbit);}
     public static PetBuilder parrot() { return new PetBuilder(Breed.Parrot);}
     public static PetBuilder fish() { return new PetBuilder(Breed.Fish);}
+
+    @Override
+    public int compareTo(String o) {
+        return 0;
+    }
 
     public static class PetBuilder {
         private final Breed breed;

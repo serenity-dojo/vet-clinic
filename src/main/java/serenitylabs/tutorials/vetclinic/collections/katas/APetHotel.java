@@ -1,6 +1,7 @@
 package serenitylabs.tutorials.vetclinic.collections.katas;
 
 import com.google.common.collect.ImmutableList;
+import domain.PetHotel;
 import serenitylabs.tutorials.vetclinic.Breed;
 import serenitylabs.tutorials.vetclinic.Pet;
 
@@ -23,7 +24,7 @@ public class APetHotel {
             this.petCount = petCount;
         }
 
-        private Pet somePet(int petCount) {
+        public Pet somePet(int petCount) {
             return new Pet(someName(petCount), someBreed());
         }
 
@@ -37,6 +38,14 @@ public class APetHotel {
 
         private String someName(int petCount) {
             return PET_NAMES.get(random.nextInt(PET_NAMES.size())) + " " + petCount;
+        }
+
+        public PetHotel petsCheckedIn() {
+            PetHotel hotel = new PetHotel();
+            for(int count = 0; count < petCount; count++) {
+                hotel.checkIn(somePet(count));
+            }
+            return hotel;
         }
     }
 }
