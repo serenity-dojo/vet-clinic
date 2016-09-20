@@ -5,7 +5,6 @@ package vetclinic.collections.katas;
  */
 public class PlacedOnWaitingList extends BookingConfirmation {
 
-
     @Override
     public boolean isConfirmed() {
         return false;

@@ -13,6 +13,11 @@ public class APetHotel {
     private final String name;
     private final int count;
     private Collection<Pet> pets = new TreeSet<>(Comparator.comparing(Pet::getName));
+    private  Queue<Pet> waitingPets = new LinkedList<>();
+
+    public Queue<Pet> getWaitingPets() {
+        return waitingPets;
+    }
 
     public APetHotel(String hotelName, int petCount) {
         this.name=hotelName;
@@ -33,6 +38,7 @@ public class APetHotel {
         pets.add(pet);
         return new ConfirmedBooking();
         }
+        waitingPets.add(pet);
         return new PlacedOnWaitingList();
     }
 
@@ -41,6 +47,15 @@ public class APetHotel {
     private boolean currentAvailability() {
         return ((pets.size() < count))  ? true : false;
     }
+
+    public void checkOut(Pet pet) {
+        pets.remove(pet);
+        if(!waitingPets.isEmpty()){
+            pets.add(waitingPets.poll());
+        }
+
+    }
+
     public static class PetHotelBuilder {
         private final int petCount;
 

@@ -66,7 +66,7 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_not_be_able_to_check_in_pets_beyond_hotel_capacity() throws Exception {
-        //GIVEN
+        //GIVEN HOTEL CAPACITY IS 4
         Pet tommy = Pet.dog().named("Tommy");
         Pet shaggy = Pet.dog().named("Shaggy");
         Pet bruno = Pet.dog().named("Bruno");
@@ -87,7 +87,7 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_notify_owner_that_the_hotel_is_full() throws Exception {
-        //GIVEN
+        //GIVEN HOTEL CAPACITY IS 4
         Pet tommy = Pet.dog().named("Tommy");
         Pet shaggy = Pet.dog().named("Shaggy");
         Pet bruno = Pet.dog().named("Bruno");
@@ -109,15 +109,72 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_place_pets_on_a_waiting_list_when_the_hotel_is_full() throws Exception {
+        //GIVEN HOTEL CAPACITY IS 4
+        Pet tommy = Pet.dog().named("Tommy");
+        Pet shaggy = Pet.dog().named("Shaggy");
+        Pet bruno = Pet.dog().named("Bruno");
+        Pet meow = Pet.cat().named("Meows");
+        aPetHotel.checkIn(tommy);
+        aPetHotel.checkIn(shaggy);
+        aPetHotel.checkIn(bruno);
+        aPetHotel.checkIn(meow);
+
+        //WHEN
+        Pet fido = Pet.dog().named("Fido");
+        BookingResponse response =aPetHotel.checkIn(fido);
+
+        //THEN
+        assertThat(aPetHotel.getWaitingPets(),hasItem(fido));
     }
 
     @Test
     public void pets_on_the_waiting_list_should_be_added_to_the_hotel_when_a_place_is_freed() throws Exception {
+
+        //GIVEN HOTEL CAPACITY IS 4
+        Pet tommy = Pet.dog().named("Tommy");
+        Pet shaggy = Pet.dog().named("Shaggy");
+        Pet bruno = Pet.dog().named("Bruno");
+        Pet meow = Pet.cat().named("Meows");
+        aPetHotel.checkIn(tommy);
+        aPetHotel.checkIn(shaggy);
+        aPetHotel.checkIn(bruno);
+        aPetHotel.checkIn(meow);
+
+        Pet fido = Pet.dog().named("Fido");
+        BookingResponse response =aPetHotel.checkIn(fido);
+
+        //WHEN
+        aPetHotel.checkOut(tommy);
+
+        //THEN
+        assertThat(aPetHotel.getWaitingPets(),not(hasItem(fido)));
+        assertThat(aPetHotel.getPets(),hasItems(shaggy,bruno,meow,fido));
     }
 
 
     @Test
     public void pets_on_the_waiting_list_should_be_admitted_on_a_first_come_first_served_basis() throws Exception {
+        //GIVEN HOTEL CAPACITY IS 4
+        Pet tommy = Pet.dog().named("Tommy");
+        Pet shaggy = Pet.dog().named("Shaggy");
+        Pet bruno = Pet.dog().named("Bruno");
+        Pet meow = Pet.cat().named("Meows");
+        aPetHotel.checkIn(tommy);
+        aPetHotel.checkIn(shaggy);
+        aPetHotel.checkIn(bruno);
+        aPetHotel.checkIn(meow);
+
+        //WHEN
+        Pet fido = Pet.dog().named("Fido");
+        aPetHotel.checkIn(fido);
+
+        Pet felix = Pet.dog().named("Fido");
+        aPetHotel.checkIn(felix);
+
+
+
+        //THEN
+        assertThat(aPetHotel.getWaitingPets(),contains(fido,felix));
     }
 
 }
