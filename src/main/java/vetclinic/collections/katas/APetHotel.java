@@ -28,12 +28,19 @@ public class APetHotel {
     }
 
     public BookingConfirmation checkIn(Pet pet) {
+
+        if(currentAvailability()){
         pets.add(pet);
-        return new BookingConfirmation();
+        return new ConfirmedBooking();
+        }
+        return new PlacedOnWaitingList();
     }
 
 
 
+    private boolean currentAvailability() {
+        return ((pets.size() < count))  ? true : false;
+    }
     public static class PetHotelBuilder {
         private final int petCount;
 

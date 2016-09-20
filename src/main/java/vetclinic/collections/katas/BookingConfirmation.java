@@ -3,10 +3,10 @@ package vetclinic.collections.katas;
 /**
  * Created by sapurani on 9/20/2016.
  */
-public class BookingConfirmation {
+public abstract  class BookingConfirmation {
 
-    public  boolean isConfirmed() {
-        return true;
-    }
+    public  abstract  boolean isConfirmed();
+    public  abstract  boolean isWaiting();
+
 
 }
