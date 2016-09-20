@@ -33,19 +33,18 @@ public class APetHotel {
     }
 
     public BookingConfirmation checkIn(Pet pet) {
-
-        if(currentAvailability()){
-        pets.add(pet);
-        return new ConfirmedBooking();
-        }
-        waitingPets.add(pet);
-        return new PlacedOnWaitingList();
+        BookingStratgey bookingStrategy = BOOKING_STARTEGY.get(currentAvailability());
+        return bookingStrategy.checkIn(pet);
     }
 
 
+    private static final Map<HotelAvailability,BookingStratgey> BOOKING_STARTEGY= new HashMap<>();{
+        BOOKING_STARTEGY.put(HotelAvailability.AVAILABLE,new ConfirmBookingStrategy(pets));
+        BOOKING_STARTEGY.put(HotelAvailability.FULL,new WaitingStrategy(waitingPets));
+    }
 
-    private boolean currentAvailability() {
-        return ((pets.size() < count))  ? true : false;
+    private HotelAvailability currentAvailability() {
+        return ((pets.size() < count))  ? HotelAvailability.AVAILABLE : HotelAvailability.FULL;
     }
 
     public void checkOut(Pet pet) {

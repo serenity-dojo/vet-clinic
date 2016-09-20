@@ -6,4 +6,6 @@ package vetclinic.collections.katas;
 public interface BookingResponse {
     public    boolean isConfirmed();
     public    boolean isWaiting();
+
+
 }

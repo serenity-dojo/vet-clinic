@@ -23,44 +23,73 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_be_able_to_check_a_pet_into_the_hotel() throws Exception {
+        //GIVEN
         Pet tommy = Pet.dog().named("Tommy");
+
+        //WHEN
         aPetHotel.checkIn(tommy);
+
+        //THEN
         assertThat(aPetHotel.getPets(),hasItem(tommy));
     }
 
     @Test
     public void should_be_able_to_check_in_several_pets() throws Exception {
+
+        //GIVEN
         Pet tommy = Pet.dog().named("Tommy");
         Pet meow=Pet.cat().named("Meow");
+
+        //WHENS
         aPetHotel.checkIn(tommy);
         aPetHotel.checkIn(meow);
+
+        //THEN
         assertThat(aPetHotel.getPets(),hasItems(tommy,meow));
     }
 
     @Test
     public void should_not_be_able_to_check_in_the_same_pet_twice() throws Exception {
+
+        //GIVEN
         Pet tommy = Pet.dog().named("Tommy");
         aPetHotel.checkIn(tommy);
+
+        //WHEN
         aPetHotel.checkIn(tommy);
+
+        //THEN
         assertThat(aPetHotel.getPets(),contains(tommy));
         assertThat(aPetHotel.getPets().size(),is(equalTo(1)));
     }
 
     @Test
     public void should_be_able_to_retrieve_checked_in_pets_in_alphabetical_order() throws Exception {
+
+        //GIVEN
         Pet tommy = Pet.dog().named("Tommy");
         Pet shaggy = Pet.dog().named("Shaggy");
         Pet bruno = Pet.dog().named("Bruno");
+
+        //WHEN
         aPetHotel.checkIn(tommy);
         aPetHotel.checkIn(shaggy);
         aPetHotel.checkIn(bruno);
+
+        //THEN
         assertThat(aPetHotel.getPets(),contains(bruno,shaggy,tommy));
     }
 
     @Test
     public void should_be_able_to_obtain_a_booking_confirmation_when_we_check_in_a_pet() throws Exception {
+
+        //GIVEN
         Pet tommy = Pet.dog().named("Tommy");
+
+        //WHEN
         BookingConfirmation confirmation = aPetHotel.checkIn(tommy);
+
+        //THEN
         assertThat(confirmation.isConfirmed(),is(true));
     }
 
