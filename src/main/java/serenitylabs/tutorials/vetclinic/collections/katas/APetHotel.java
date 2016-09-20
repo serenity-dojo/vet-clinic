@@ -11,6 +11,7 @@ import java.util.Random;
  * A utility class to generate pet hotels with pets already booked
  */
 public class APetHotel {
+
     public static PetAdder with(int petCount) {
         return new PetAdder(petCount);
     }
@@ -37,6 +38,14 @@ public class APetHotel {
 
         private String someName(int petCount) {
             return PET_NAMES.get(random.nextInt(PET_NAMES.size())) + " " + petCount;
+        }
+
+        public PetHotel petsCheckIn() {
+            PetHotel petHotel= new PetHotel();
+            for (int i=0;i<petCount; i++)
+                petHotel.checkIn(Pet.dog().named("Fido-"+i));
+
+           return petHotel;
         }
     }
 }
