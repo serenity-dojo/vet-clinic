@@ -17,7 +17,7 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void the_hotel_should_initially_have_no_pets_booked() {
-        assertThat(aPetHotel.getPets().size(),is(equalTo(0)));
+        assertThat(aPetHotel.getPets(),emptyCollectionOf(Pet.class));
 
     }
 
@@ -30,6 +30,11 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void should_be_able_to_check_in_several_pets() throws Exception {
+        Pet tommy = Pet.dog().named("Tommy");
+        Pet meow=Pet.cat().named("Meow");
+        aPetHotel.checkIn(tommy);
+        aPetHotel.checkIn(meow);
+        assertThat(aPetHotel.getPets(),hasItems(tommy,meow));
     }
 
     @Test
