@@ -38,5 +38,13 @@ public class APetHotel {
         private String someName(int petCount) {
             return PET_NAMES.get(random.nextInt(PET_NAMES.size())) + " " + petCount;
         }
+
+        public PetHotel petsCheckedIn() {
+            PetHotel hotel = new PetHotel();
+            for(int count =0; count< petCount; count++){
+            hotel.checkIn(somePet(count));}
+
+            return hotel;
+        }
     }
 }
