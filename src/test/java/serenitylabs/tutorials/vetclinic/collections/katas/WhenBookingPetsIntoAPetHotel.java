@@ -101,20 +101,21 @@ public class WhenBookingPetsIntoAPetHotel {
         //THEN
 
         assertThat(bookingResponse.isOnWaiting(),is(equalTo(true)));
+        assertThat(petHotel.getPets().size(),equalTo(20));
     }
 
     @Test
     public void should_notify_owner_that_the_hotel_is_full() throws Exception {
         //GIVEN
-        PetHotel petHotel = APetHotel.with(PetHotel.MAX_SIZE).petsCheckedIn();
+        PetHotel petHotel = APetHotel.with(19).petsCheckedIn();
 
         //WHEN
         Pet fido = Pet.dog().named("Fido");
         BookingResponse bookingResponse = petHotel.checkIn(fido);
 
         //THEN
-
-        //assertThat();
+        assertThat(petHotel.getPets(),hasItem(fido));
+        assertThat(petHotel.getAvailablility(),equalTo(HotelAvailability.Full));
     }
 
 
@@ -133,11 +134,44 @@ public class WhenBookingPetsIntoAPetHotel {
 
     @Test
     public void pets_on_the_waiting_list_should_be_added_to_the_hotel_when_a_place_is_freed() throws Exception {
+
+        //GIVEN
+        PetHotel petHotel = APetHotel.with(19).petsCheckedIn();
+
+        Pet roger = Pet.dog().named("Roger");
+        Pet siemens = Pet.cat().named("Siemens");
+
+        petHotel.checkIn(roger);
+        petHotel.checkIn(siemens);
+
+        //WHEN
+        petHotel.checkOut(roger);
+
+        assertThat(petHotel.getPets(),hasItem(siemens));
+
     }
 
 
     @Test
     public void pets_on_the_waiting_list_should_be_admitted_on_a_first_come_first_served_basis() throws Exception {
+
+        //GIVEN
+        PetHotel petHotel = APetHotel.with(19).petsCheckedIn();
+
+        Pet roger = Pet.dog().named("Roger");
+        Pet siemens = Pet.cat().named("Siemens");
+        Pet fido = Pet.dog().named("fido");
+
+        petHotel.checkIn(roger);
+        petHotel.checkIn(siemens);
+        petHotel.checkIn(fido);
+
+        //WHEN
+        petHotel.checkOut(roger);
+
+        assertThat(petHotel.getPets(),not(hasItem(fido)));
+        assertThat(petHotel.getPets(),hasItem(siemens));
+
     }
 
 }

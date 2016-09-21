@@ -40,4 +40,7 @@ private static final Map<HotelAvailability,CheckInStrategy> CHECK_IN_STRATEGY  =
     }
 
 
+    public HotelAvailability getAvailablility() {
+         return petList.size()<MAX_SIZE ? HotelAvailability.Available : HotelAvailability.Full;
+    }
 }
