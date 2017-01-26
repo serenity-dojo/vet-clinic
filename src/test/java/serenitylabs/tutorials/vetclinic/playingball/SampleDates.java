@@ -16,6 +16,9 @@ public class SampleDates {
     public static final LocalDate A_FRIDAY = LocalDate.of(2016, SEPTEMBER, 2);
 
     public static final LocalDate A_DATE_IN_JANUARY = LocalDate.of(2016, Month.JANUARY, 1);
+    public static final LocalDate A_DATE_IN_FEBRUARY = LocalDate.of(2016, Month.FEBRUARY, 1);
+    public static final LocalDate A_DATE_IN_MARCH = LocalDate.of(2016, Month.MARCH, 1);
+    public static final LocalDate A_DATE_IN_APRIL = LocalDate.of(2016, Month.APRIL, 1);
     public static final LocalDate A_DATE_IN_MAY = LocalDate.of(2016, Month.MAY, 31);
     public static final LocalDate A_DATE_IN_JUNE = LocalDate.of(2016, Month.JUNE, 1);
     public static final LocalDate A_DATE_IN_JULY = LocalDate.of(2016, Month.JULY, 15);
@@ -23,5 +26,6 @@ public class SampleDates {
     public static final LocalDate A_DATE_IN_SEPTEMBER = LocalDate.of(2016, Month.SEPTEMBER, 30);
     public static final LocalDate A_DATE_IN_OCTOBER = LocalDate.of(2016, Month.OCTOBER, 1);
     public static final LocalDate A_DATE_IN_NOVEMBER = LocalDate.of(2016, Month.NOVEMBER, 1);
+    public static final LocalDate A_DATE_IN_DECEMBER = LocalDate.of(2016, Month.DECEMBER, 1);
 
 }

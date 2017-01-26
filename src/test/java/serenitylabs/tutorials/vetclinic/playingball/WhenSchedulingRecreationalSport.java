@@ -3,8 +3,8 @@ package serenitylabs.tutorials.vetclinic.playingball;
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
-import serenitylabs.tutorials.vetclinic.playingball.model.Game;
 import serenitylabs.tutorials.vetclinic.playingball.model.GameSchedule;
+import serenitylabs.tutorials.vetclinic.playingball.model.Game;
 import serenitylabs.tutorials.vetclinic.playingball.model.RecreationalSportsSchedule;
 
 import java.time.LocalDate;

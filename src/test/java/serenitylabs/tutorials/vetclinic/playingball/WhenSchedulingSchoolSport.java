@@ -3,8 +3,8 @@ package serenitylabs.tutorials.vetclinic.playingball;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import serenitylabs.tutorials.vetclinic.playingball.model.Game;
 import serenitylabs.tutorials.vetclinic.playingball.model.GameSchedule;
+import serenitylabs.tutorials.vetclinic.playingball.model.Game;
 import serenitylabs.tutorials.vetclinic.playingball.model.SchoolSportsSchedule;
 
 import java.time.LocalDate;
@@ -22,7 +22,7 @@ public class WhenSchedulingSchoolSport {
     private final Game expectedGame;
 
     @Parameterized.Parameters
-    public static Collection<Object[]> testdata() {
+    public static Collection<Object[]> testData() {
         return Arrays.asList(new Object[][] {
                 { A_DATE_IN_JANUARY,    Game.Tennis },
                 { A_DATE_IN_MAY,        Game.Tennis },
@@ -39,7 +39,6 @@ public class WhenSchedulingSchoolSport {
         this.someDate = someDate;
         this.expectedGame = expectedGame;
     }
-
 
     @Test
     public void should_play_cricket_in_the_summer_months_and_tennis_in_winter_months() {
