@@ -1,6 +1,6 @@
 package serenitylabs.tutorials.vetclinic;
 
-import serenitylabs.tutorials.vetclinic.collections.katas.PetFood;
+import serenitylabs.tutorials.vetclinic.PetFood;
 
 public class Meal {
     private final double amountInGrams;
