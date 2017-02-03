@@ -19,12 +19,12 @@ The domain is a simple one. We are writing an application for a Vet clinic, wher
 
 Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
 ```
-$ git checkout tutorial-1/start
+$ git checkout kata/collections/start
 ```
 
 And to see the solution for tutorial 1, use the solution branch:
 ```
-$ git checkout tutorial-1/solution
+$ git checkout kata/collections/solution
 ```
 
 Go to the tutorial branch to see the step-by-step instructions for that tutorial.
