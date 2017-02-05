@@ -1,0 +1,6 @@
+<application>
+  <component name="CodeInsightSettings">
+    <option name="SHOW_FULL_SIGNATURES_IN_PARAMETER_INFO" value="true" />
+    <option name="SHOW_SOURCE_INFERRED_ANNOTATIONS" value="false" />
+  </component>
+</application>
