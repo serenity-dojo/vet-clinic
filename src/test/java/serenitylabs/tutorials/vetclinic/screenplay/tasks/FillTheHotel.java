@@ -5,7 +5,6 @@ import net.serenitybdd.screenplay.Task;
 import net.thucydides.core.annotations.Step;
 import serenitylabs.tutorials.vetclinic.model.Breed;
 import serenitylabs.tutorials.vetclinic.model.Pet;
-import serenitylabs.tutorials.vetclinic.screenplay.abilities.ManageTheHotel;
 
 public class FillTheHotel implements Task {
     private final int numberOfPets;
@@ -21,7 +20,7 @@ public class FillTheHotel implements Task {
     public <T extends Actor> void performAs(T actor) {
         for(int petcount = 1; petcount <= numberOfPets; petcount++) {
             Pet pet = new Pet("Pet #" + petcount, breed);
-            actor.usingAbilityTo(ManageTheHotel.class).checkInPet(pet);
+            // TODO: Register the pet with the hotel
         }
     }
 
