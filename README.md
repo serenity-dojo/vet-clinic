@@ -41,6 +41,8 @@ We'll do this using what's known as the Builder Pattern. The Builder Pattern is 
     - Add the `andOfColour("Black")` method that creates a new instance of `Dog` using a constructor with the three parameters, `name`,`breed`, and `colour`.
     - Add the `coulour` field to the `Dog` class.
 
+### Step 6 - Write a new builder
+
 - Write a new builder for a new `Appointment` class. An appointment has a pet name, an owner, a time, and an optional reason. First, make the following test pass:
   ```
   private static final LocalDateTime TODAY_AT_2_PM = LocalDateTime.now().withHour(2).withMinute(0);
