@@ -12,4 +12,5 @@ public class WhenWeCreateANewDog {
         Assert.assertEquals("Labrador", fido.getBreed());
         Assert.assertEquals("Black", fido.getColour());
     }
+
 }
