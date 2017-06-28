@@ -18,13 +18,12 @@ Lets start by seeing how we create a Dog.
 
   - Add a test called `a_new_dog_should_have_a_name()`, that demonstrates how you can create a new Dog instance with a given name. Use a simple default constructor and a String field `name` with a getter and setter.
 
-### Step 3- Adding a breed
-Now we need to cater for the breed of the dog. We can do this by simply adding another field called 'breed'
+### Step 3- Adding a date of birth
+Add a 'date-of-birth' field to the Dog class:
+  - Refactor your test and the Dog class to use a constructor that takes two parameters: `name` and `dateOfBirth`.
 
-  - Refactor your test and the Dog class to use a constructor that takes two parameters: `name` and `breed`.
-
-### Step 5 - Adding a colour
-Now let's add a third attribute for colour. We could add a third parameter to the constructor, and a fourth, and so on, but the constructor would start to get hard to read, and it would be easy to mix up the parameter order.
+### Step 4- Adding a breed
+Now we need to cater for the breed of the dog. We can do this by simply adding another field called 'breed'. We could add a third parameter to the constructor, and a fourth, and so on, but the constructor would start to get hard to read, and it would be easy to mix up the parameter order.
 
 We need a more readable way of creating a dog, where the person using the Dog API can easily see what attributes are available, and a person reading the code can easily see what attributes were used to create a particular dog.
 
@@ -32,14 +31,18 @@ We'll do this using what's known as the Builder Pattern. The Builder Pattern is 
 
  - Start by writing the builder expression that we would like to see as a user of our API. Try to make it as readable as possible. For example:
     ```
-    Dog fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black");
+    Dog fido = Dog.called("Fido").ofBreed("Labrador").bornOn(theFourthOfJuly);
     ```
 
     - Generate the `called("Fido)` method and make it return a new instance of the `DogBreeder` class.
     - Create the `DogBreeder` class with a single `name` field.
     - Add the `ofBreed("Labrador")` to the `DogBreader` class and make it return the current `DogBreader` instance.
-    - Add the `andOfColour("Black")` method that creates a new instance of `Dog` using a constructor with the three parameters, `name`,`breed`, and `colour`.
-    - Add the `coulour` field to the `Dog` class.
+    - Add the `bornOn()` method that creates a new instance of `Dog` using a constructor with the three parameters, `name`,`breed`, and `dateOfBirth`.
+    - Add the `breed` field to the `Dog` class.
+
+### Step 5 - Add an optional colour field
+
+Now we need to add a field for the colour of the dog. Colour is an optional field. Use interfaces to create an interface that caters for the mandatory fields (name, breed and date of birth) and the optional one (colour).
 
 ### Step 6 - Write a new builder
 
