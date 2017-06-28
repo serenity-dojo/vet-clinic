@@ -69,10 +69,3 @@ Now we need to add a field for the colour of the dog. Colour is an optional fiel
     Assert.assertEquals("He is sick",appointment.getReason().get());
   }
   ```
-
-
-
-
-
-
-  -
