@@ -1,6 +1,6 @@
 # Vet Clinic Tutorial Project
 
-This project is used as the basis of a number of tutorials and exercises, as part of the *[http://serenitydojo.teachable.com/p/professional-java-development-skills](Professional Java Development and Test Automation Skills)* program. Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
+This project is used as the basis of a number of tutorials and exercises, as part of the *[Professional Java Development and Test Automation Skills](http://serenitydojo.teachable.com/p/professional-java-development-skills])* program. Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
 
 These tutorials are designed to be used as the basis of small coding exercises (similar to very short coding katas) that you can learn and practice until you are familiar with a particular technique. The approach is outlined here:
 
