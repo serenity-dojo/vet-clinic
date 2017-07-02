@@ -3,14 +3,12 @@ package serenitylabs.tutorials.vetclinic.playingball;
 import org.junit.Before;
 import org.junit.Test;
 import serenitylabs.tutorials.vetclinic.playingball.model.Child;
-import serenitylabs.tutorials.vetclinic.playingball.model.Game;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static serenitylabs.tutorials.vetclinic.playingball.SampleDates.A_SUNDAY;
 import static serenitylabs.tutorials.vetclinic.playingball.model.Game.*;
 
 public class WhenToldToPlayBall {
