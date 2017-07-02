@@ -6,15 +6,15 @@ public class Child {
 
     public void goPlay(Game game) {
         if (game == Football) {
-            System.out.print("Kick the ball");
+            new PlayFootball().play();
         } else if (game == Tennis) {
-            System.out.print("Serve the ball");
+            new PlayTennis().play();
         } else if (game == Cricket) {
-            System.out.print("Hit the wicket");
+            new PlayCricket().play();
         } else if (game == Handball) {
-            System.out.print("Throw the ball");
+            new PlayHandball().play();
         } else if (game == Hockey) {
-            System.out.print("Hit the ball with the stick");
+            new PlayHockey().play();
         }
     }
 }
