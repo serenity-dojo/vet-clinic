@@ -6,11 +6,13 @@ public class Dog {
     private final LocalDate dateOfBirth;
     private final String name;
     private final String breed;
+    private final String colour;
 
-    public Dog(String name, String breed, LocalDate dateOfBirth) {
+    public Dog(String name, String breed, String colour, LocalDate dateOfBirth) {
         this.name = name;
         this.breed = breed;
         this.dateOfBirth = dateOfBirth;
+        this.colour = colour;
     }
 
     public String getName() {
@@ -21,7 +23,7 @@ public class Dog {
         return dateOfBirth;
     }
 
-    public static DogBreeder called(String name) {
+    public static WithBreed called(String name) {
         return new DogBreeder(name);
     }
 
@@ -29,9 +31,18 @@ public class Dog {
         return breed;
     }
 
-    public static class DogBreeder {
+    public String getColour() {
+        return colour;
+    }
+
+    public interface WithBreed {
+        DogBreeder ofBreed(String breed);
+    }
+
+    public static class DogBreeder implements WithBreed {
         private String name;
-        private String breed    ;
+        private String breed;
+        private String colour;
 
         public DogBreeder(String name) {
             this.name = name;
@@ -42,8 +53,13 @@ public class Dog {
             return this;
         }
 
+        public DogBreeder ofColour(String colour) {
+            this.colour = colour;
+            return this;
+        }
+
         public Dog bornOn(LocalDate dateOfBirth) {
-            return new Dog(name, breed, dateOfBirth);
+            return new Dog(name, breed, colour, dateOfBirth);
         }
     }
 }
