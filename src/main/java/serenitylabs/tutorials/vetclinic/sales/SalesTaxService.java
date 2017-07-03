@@ -4,7 +4,8 @@ import serenitylabs.tutorials.vetclinic.sales.model.LineItem;
 import serenitylabs.tutorials.vetclinic.sales.model.TaxEntry;
 
 public class SalesTaxService {
-    public TaxEntry salesTaxEntryFor(LineItem crisps) {
+
+    public TaxEntry salesTaxEntryFor(LineItem item) {
         return null;
     }
 }

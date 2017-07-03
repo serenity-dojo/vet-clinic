@@ -20,14 +20,14 @@ public class WhenApplyingSalesTax {
         LineItem crisps = LineItem.forASaleOf(1)
                                        .itemCalled("salt and vinegar crisps")
                                        .inCategory(Snacks)
-                                       .withAUnitPriceOf(1.50);
+                                       .withAUnitPriceOf(3.00);
 
         // WHEN
         SalesTaxService salesTaxService = new SalesTaxService();
         TaxEntry calculatedTaxEntry = salesTaxService.salesTaxEntryFor(crisps);
 
         // THEN
-        TaxEntry expectedTaxEntry = TaxEntry.atRateOf(NINE_PERCENT).withName("Reduced").forAnAmountOf(0.14);
+        TaxEntry expectedTaxEntry = TaxEntry.atRateOf(NINE_PERCENT).withName("Reduced").forAnAmountOf(0.27);
 
         assertThat(calculatedTaxEntry, equalTo(expectedTaxEntry));
 
