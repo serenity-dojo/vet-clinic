@@ -36,8 +36,8 @@ public class SalesTax {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SalesTax salesTax = (SalesTax) o;
-        return Double.compare(salesTax.rate, rate) == 0 &&
-                Double.compare(salesTax.amount, amount) == 0 &&
+        return (Math.abs(salesTax.rate - rate) < 0.001) &&
+                (Math.abs(salesTax.amount - amount) < 0.001) &&
                 Objects.equals(name, salesTax.name);
     }
 
