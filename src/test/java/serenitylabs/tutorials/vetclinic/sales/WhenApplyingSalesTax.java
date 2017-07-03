@@ -54,14 +54,14 @@ public class WhenApplyingSalesTax {
     @Test
     public void items_should_be_charged_at_the_correct_rate() {
         // GIVEN
-        LineItem item = LineItem.forASaleOf(quantity)
+        LineItem crisps = LineItem.forASaleOf(quantity)
                 .itemCalled(name)
                 .inCategory(cateogory)
                 .withAUnitPriceOf(unitPrice);
 
         // WHEN
         SalesTaxService salesTaxService = new SalesTaxService();
-        SalesTax calculatedSalesTax = salesTaxService.salesTaxEntryFor(item);
+        SalesTax calculatedSalesTax = salesTaxService.salesTaxEntryFor(crisps);
 
         // THEN
         SalesTax expectedSalesTax = SalesTax.atRateOf(expectedRate).withName(expectedRateName).forAnAmountOf(expectedAmount);
