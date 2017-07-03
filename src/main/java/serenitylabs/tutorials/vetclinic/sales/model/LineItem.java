@@ -1,6 +1,5 @@
 package serenitylabs.tutorials.vetclinic.sales.model;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 public class LineItem {
@@ -34,6 +33,10 @@ public class LineItem {
 
     public ProductCategory getCategory() {
         return category;
+    }
+
+    public double getTotal() {
+        return quanity * unitCost;
     }
 
     @Override
