@@ -1,10 +1,8 @@
 package serenitylabs.tutorials.vetclinic.sales;
 
-import org.junit.Assert;
 import org.junit.Test;
 import serenitylabs.tutorials.vetclinic.sales.model.LineItem;
-import serenitylabs.tutorials.vetclinic.sales.model.TaxEntry;
-//import serenitylabs.tutorials.vetclinic.sales.service.SalesTaxService;
+import serenitylabs.tutorials.vetclinic.sales.model.SalesTax;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,13 +22,12 @@ public class WhenApplyingSalesTax {
 
         // WHEN
         SalesTaxService salesTaxService = new SalesTaxService();
-        TaxEntry calculatedTaxEntry = salesTaxService.salesTaxEntryFor(crisps);
+        SalesTax calculatedSalesTax = salesTaxService.salesTaxEntryFor(crisps);
 
         // THEN
-        TaxEntry expectedTaxEntry = TaxEntry.atRateOf(NINE_PERCENT).withName("Reduced").forAnAmountOf(0.27);
+        SalesTax expectedSalesTax = SalesTax.atRateOf(NINE_PERCENT).withName("Reduced").forAnAmountOf(0.27);
 
-        assertThat(calculatedTaxEntry, equalTo(expectedTaxEntry));
-
+        assertThat(calculatedSalesTax, equalTo(expectedSalesTax));
 
     }
 }

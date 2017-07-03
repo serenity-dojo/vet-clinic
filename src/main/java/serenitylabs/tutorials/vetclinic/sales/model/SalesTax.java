@@ -2,12 +2,12 @@ package serenitylabs.tutorials.vetclinic.sales.model;
 
 import java.util.Objects;
 
-public class TaxEntry {
+public class SalesTax {
     private final String name;
     private final double rate;
     private final double amount;
 
-    public TaxEntry(String name, double rate, double amount) {
+    public SalesTax(String name, double rate, double amount) {
         this.name = name;
         this.rate = rate;
         this.amount = amount;
@@ -35,10 +35,10 @@ public class TaxEntry {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TaxEntry taxEntry = (TaxEntry) o;
-        return Double.compare(taxEntry.rate, rate) == 0 &&
-                Double.compare(taxEntry.amount, amount) == 0 &&
-                Objects.equals(name, taxEntry.name);
+        SalesTax salesTax = (SalesTax) o;
+        return Double.compare(salesTax.rate, rate) == 0 &&
+                Double.compare(salesTax.amount, amount) == 0 &&
+                Objects.equals(name, salesTax.name);
     }
 
     @Override
@@ -73,8 +73,8 @@ public class TaxEntry {
             return this;
         }
 
-        public TaxEntry forAnAmountOf(double amount) {
-            return new TaxEntry(name, rate, amount);
+        public SalesTax forAnAmountOf(double amount) {
+            return new SalesTax(name, rate, amount);
         }
     }
 }

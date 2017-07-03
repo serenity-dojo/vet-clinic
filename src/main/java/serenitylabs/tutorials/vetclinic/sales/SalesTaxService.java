@@ -1,11 +1,11 @@
 package serenitylabs.tutorials.vetclinic.sales;
 
 import serenitylabs.tutorials.vetclinic.sales.model.LineItem;
-import serenitylabs.tutorials.vetclinic.sales.model.TaxEntry;
+import serenitylabs.tutorials.vetclinic.sales.model.SalesTax;
 
 public class SalesTaxService {
 
-    public TaxEntry salesTaxEntryFor(LineItem item) {
+    public SalesTax salesTaxEntryFor(LineItem item) {
         return null;
     }
 }
