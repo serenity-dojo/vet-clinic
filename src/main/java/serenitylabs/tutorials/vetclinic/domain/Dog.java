@@ -1,11 +1,12 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dog {
+public class Dog extends Animal {
     private final String name;
     private final String breed;
     private final List<String> colour;
@@ -19,7 +20,7 @@ public class Dog {
 
     @Override
     public String toString() {
-        return name + " the " + (colour + " " + breed).toLowerCase();
+        return name + " the " + (Joiner.on(" and").join(colour) + " " + breed).toLowerCase();
     }
 
     public String getName() {
@@ -36,6 +37,11 @@ public class Dog {
 
     public static DogBuilder called(String name) {
         return new DogBuilder(name);
+    }
+
+    @Override
+    public String complains() {
+        return "Grrrr";
     }
 
     public static class DogBuilder {
