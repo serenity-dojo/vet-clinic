@@ -2,25 +2,48 @@
 
 This project is used as the basis of a number of tutorials and exercises, as part of the *Professional Java Development and Test Automation Skills* program (see http://johnfergusonsmart.com/products). Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
 
-## Vet Clinic Tutorial 2 - Hamcrest Matchers
+## Vet Clinic Tutorial 3 - Polymorphism
 
-In this exercise we will learn about more expressive ways of writing assertions with Hamcrest matchers
+In this exercise we will learn about using polymorphism in Java.
 
-### Step 1 - Replace JUnit asserts with Hamcrest asserts
+### Step 1 - Add a new test class
+Create a new test class called WhenCollectingAnimals and add a test called `a_list_of_animals_can_contain_cats_and_dogs`. This class should illustrate how you can add a cat and a dog to a list of animals, of type `List<Animal>`. Create an empty Animal class, and make sure the test fails.
 
-Open the `WhenCalculatingTotalPrices` class and replace the JUnit assert statement in `total_consultation_price_should_include_20_percent_tax()` with an equivalent Hamcrest assertion.
+### Step 2 - Cats and Dogs are Animals
 
-### Step 2 - Hamcrest comparaison assertions
+Make the Cat and Dog class extend the Animal class. This should make your test pass.
 
-Replace the `equalTo` matcher with a `greaterThan` matcher.
+### Step 3 - Adding a polymorphic method
 
-### Step 3 - Hamcrest String matchers
+Create a new test called `a_dog_complains_by_growling` and make it pass. The assertion should look like this:
+```
+assertThat(fido.complaint(), is(equalTo("Grrrr")));
+```
 
-Write a new test to check that when you create a new Dog instance, the toString() method should return a sentence like "Fido the black laborador". Write Hamcrest checks to verify that the string:
-    - Starts with the name of the dog, 
-    - Ends with the breed, and
-    - Contains the colour.
-    
-### Step 4 - Hamcrest collection matchers
+### Step 4 - Cats meow
 
-Modify the code to allow dogs to have more than one colour. Write a new test called `a_dog_can_have_several_colours()` to drive this, and check the results with the Hamcrest collection matchers.
+Create a new test called `a_cat_complains_by_meowing` and make it pass. The assertion should look like this:
+```
+assertThat(felix.complaint(), is(equalTo("Meow")));
+```
+
+### Step 5 - Animals complain
+
+Add an abstract `complain()` method to the Animal class. 
+
+Demonstrate that this works in a test called `cats_and_dogs_complain_to_the_assistant`. Create a `ComplaintRegister` class and a `VetAssistant` class, and illustrate in your test that dogs and cats complain differently. For example:
+
+```
+...
+ComplaintRegister complaintRegister = new ComplaintRegister();
+VetAssistant assistant = new VetAssistant(complaintRegister);
+
+assistant.recordComplainFrom(fido)
+assistant.recordComplainFrom(felix)
+assertThat(complaintRegister.getComplains(), hasItems("Grrrr", Meow");
+
+```
+
+# Step 6 Vaccinations 
+
+Write a new test called `the_vet_should_know_when_a_pet_vaccination_is_due`. Assuming that dogs need vaccinations every 6 months and cats need vaccintions every 12 months, do this with polymorphism using interfaces, and by creating a `NeedsVaccination` interface.
