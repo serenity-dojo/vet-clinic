@@ -14,14 +14,14 @@ public class WhenWeCreateANewDog {
 
         Assert.assertEquals("Fido",fido.getName());
         Assert.assertEquals("Labrador", fido.getBreed());
-        Assert.assertEquals("Black", fido.getColour());
+        Assert.assertTrue(fido.getColour().contains("Black"));
     }
 
     @Test
     public void a_dog_should_be_printed_in_a_readable_form() {
         Dog fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black");
 
-        assertThat(fido.toString(), is(equalToIgnoringCase("Fido the Black Labrador")));
+        assertThat(fido.toString(), is(equalToIgnoringCase("Fido the black Labrador")));
 
         assertThat(fido.toString(), startsWith("Fido"));
         assertThat(fido.toString(), endsWith("labrador"));
@@ -31,7 +31,7 @@ public class WhenWeCreateANewDog {
     @Test
     public void a_dog_can_have_several_colours() {
         Dog fido = Dog.called("Fido").ofBreed("Labrador")
-                      .andOfColour("Black","White");
+                .andOfColour("Black","White");
 
         assertThat(fido.getColour(), contains("Black", "White"));
         assertThat(fido.getColour(), hasItem("Black"));

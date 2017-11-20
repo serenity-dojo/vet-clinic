@@ -1,5 +1,6 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Dog {
 
     @Override
     public String toString() {
-        return name + " the " + (colour + " " + breed).toLowerCase();
+        return name + " the " + (Joiner.on(" and").join(colour) + " " + breed).toLowerCase();
     }
 
     public String getName() {
