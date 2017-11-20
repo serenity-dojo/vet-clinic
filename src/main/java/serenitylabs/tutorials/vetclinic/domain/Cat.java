@@ -34,19 +34,19 @@ public class Cat {
         return new ArrayList(colour);
     }
 
-    public static DogBuilder called(String name) {
-        return new DogBuilder(name);
+    public static CatBuilder called(String name) {
+        return new CatBuilder(name);
     }
 
-    public static class DogBuilder {
+    public static class CatBuilder {
         private final String name;
         private String breed;
 
-        public DogBuilder(String name) {
+        public CatBuilder(String name) {
             this.name = name;
         }
 
-        public DogBuilder ofBreed(String breed) {
+        public CatBuilder ofBreed(String breed) {
             this.breed = breed;
             return this;
         }
