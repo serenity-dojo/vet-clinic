@@ -27,10 +27,6 @@ public class Dog {
         return dateOfBirth;
     }
 
-    public static WithBreed called(String name) {
-        return new DogBreeder(name);
-    }
-
     public String getBreed() {
         return breed;
     }
@@ -47,48 +43,4 @@ public class Dog {
         return favouriteToy;
     }
 
-    public interface WithBreed {
-        WithColour ofBreed(String breed);
-    }
-
-    public interface WithColour {
-        DogBreeder ofColour(String colour);
-    }
-
-    public static class DogBreeder implements WithBreed, WithColour {
-        private String name;
-        private String breed;
-        private String colour;
-        private String favouriteFood;
-        private String favouriteToy;
-
-        public DogBreeder(String name) {
-            this.name = name;
-        }
-
-        public WithColour ofBreed(String breed) {
-            this.breed = breed;
-            return this;
-        }
-
-        public DogBreeder ofColour(String colour) {
-            this.colour = colour;
-            return this;
-        }
-
-        public Dog bornOn(LocalDate dateOfBirth) {
-            return new Dog(name, breed, colour, favouriteFood, favouriteToy, dateOfBirth);
-        }
-
-        public DogBreeder withFavouriteFood(String favouriteFood) {
-            this.favouriteFood = favouriteFood;
-            return this;
-        }
-
-        public DogBreeder withFavouriteToy(String favouriteToy) {
-            this.favouriteToy = favouriteToy;
-            return this;
-        }
-
-    }
 }
