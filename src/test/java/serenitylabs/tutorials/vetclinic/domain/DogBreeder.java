@@ -2,7 +2,7 @@ package serenitylabs.tutorials.vetclinic.domain;
 
 import java.time.LocalDate;
 
-public class DogBreeder implements WithBreed, WithColour {
+public class DogBreeder implements WithBreed, WithColour, WithName {
     private String name;
     private String breed;
     private String colour;
@@ -42,11 +42,11 @@ public class DogBreeder implements WithBreed, WithColour {
         return this;
     }
 
-    public static DogBreeder aLargeDog() {
+    public static WithName aLargeDog() {
         return aDog().ofBreed("Labrador");
     }
 
-    public static DogBreeder aSmallDog() {
+    public static WithName aSmallDog() {
         return aDog().ofBreed("Poodle");
     }
 }

@@ -11,6 +11,7 @@ public class WhenWeCreateANewDog {
 
     @Test
     public void a_new_dog_should_have_a_name_a_breed_a_colour_and_a_date_of_birth() {
+
         Dog fido = DogBreeder.aLargeDog()
                 .called("Fido")
                 .ofColour("black")
