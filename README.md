@@ -1,6 +1,6 @@
 # Vet Clinic Tutorial Project
 
-This project is used as the basis of a number of tutorials and exercises, as part of the *Professional Java Development and Test Automation Skills* program (see http://johnfergusonsmart.com/products). Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
+This project is used as the basis of a number of tutorials and exercises, as part of the *[Professional Java Development and Test Automation Skills](http://serenitydojo.teachable.com/p/professional-java-development-skills])* program. Each tutorial explores a different technique or practice essential to modern Java developers or Engineers in Test. 
 
 These tutorials are designed to be used as the basis of small coding exercises (similar to very short coding katas) that you can learn and practice until you are familiar with a particular technique. The approach is outlined here:
 
@@ -17,6 +17,7 @@ The domain is a simple one. We are writing an application for a Vet clinic, wher
 
 ## Exercises
 
+<<<<<<< HEAD
 These exercises involve working with the Sydney Trains web site (http://www.sydneytrains.info). 
 The test skeletons for these exercises can be found in the `WhenInteractingWithElementsAndForms` class.
 
@@ -52,3 +53,16 @@ search preferences are also correctly displayed, including:
    - Arrival Day
     
     
+=======
+Each tutorial has two main branches, one for the starting point for the tutorial, and one for a sample solution. The format for the branch names uses a simple naming convention to identify the starting point and the sample solutions for each tutorial. For example, to start tutorial 1, check out the `start` branch like this:
+```
+$ git checkout kata/collections/start
+```
+
+And to see the solution for tutorial 1, use the solution branch:
+```
+$ git checkout kata/collections/solution
+```
+
+Go to the tutorial branch to see the step-by-step instructions for that tutorial.
+>>>>>>> fff8d46d77410d730d12dca5fba832d6bd433d4b
