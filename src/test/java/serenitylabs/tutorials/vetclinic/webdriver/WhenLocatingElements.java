@@ -27,9 +27,9 @@ public class WhenLocatingElements {
     }
 
     @Test
-    public void finding_the_new_todo_field_by_id() {
-        // TODO: Find the New Todo field by ID
-        WebElement todoField = driver.findElement(By.id("new-todo"));
+    public void finding_the_new_todo_field_by_css_class() {
+        // TODO: Find the New Todo field by CSS class
+        WebElement todoField = driver.findElement(By.className("new-todo"));
 
         assertThat(todoField.getAttribute("placeholder"), equalTo("What needs to be done?"));
     }
@@ -54,7 +54,7 @@ public class WhenLocatingElements {
     @Test
     public void finding_the_new_todo_field_by_css() {
         // TODO: Find the New Todo field by CSS
-        WebElement todoField = driver.findElement(By.cssSelector("#new-todo"));
+        WebElement todoField = driver.findElement(By.cssSelector(".new-todo"));
 
         assertThat(todoField.getAttribute("placeholder"), equalTo("What needs to be done?"));
     }
@@ -78,7 +78,7 @@ public class WhenLocatingElements {
     @Test
     public void finding_the_new_todo_field_by_xpath() {
         // TODO: Find the New Todo field by XPath
-        WebElement todoField = driver.findElement(By.xpath("//*[@id='new-todo']"));
+        WebElement todoField = driver.findElement(By.xpath("//*[@class='new-todo']"));
 
         assertThat(todoField.getAttribute("placeholder"), equalTo("What needs to be done?"));
     }
@@ -91,13 +91,13 @@ public class WhenLocatingElements {
         addTodo("Feed the cat");
 
         // TODO: Use the findElements method to find a list of WebElements corresponding to the todo list entries
-        List<WebElement> todoItems = driver.findElements(By.cssSelector("#todo-list li"));
+        List<WebElement> todoItems = driver.findElements(By.cssSelector(".todo-list li"));
 
         assertThat(todoItems.size(), equalTo(3));
     }
 
     private void addTodo(String item) {
-        WebElement todoInputField = driver.findElement(By.cssSelector("#new-todo"));
+        WebElement todoInputField = driver.findElement(By.cssSelector(".new-todo"));
         todoInputField.sendKeys(item);
         todoInputField.sendKeys(Keys.RETURN);
     }
