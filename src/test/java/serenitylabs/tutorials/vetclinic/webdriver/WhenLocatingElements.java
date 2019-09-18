@@ -27,8 +27,8 @@ public class WhenLocatingElements {
     }
 
     @Test
-    public void finding_the_new_todo_field_by_id() {
-        // TODO: Find the New Todo field by ID
+    public void finding_the_new_todo_field_by_css_class() {
+        // TODO: Find the New Todo field by CSS class
         WebElement todoField = null;
 
         assertThat(todoField.getAttribute("placeholder"), equalTo("What needs to be done?"));
