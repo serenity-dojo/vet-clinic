@@ -23,12 +23,12 @@ public class WhenAddingATodoItem {
         driver.get("http://todomvc.com/examples/angularjs/#/");
 
         // WHEN
-        WebElement inputField = driver.findElement(By.id("new-todo"));
+        WebElement inputField = driver.findElement(By.className("new-todo"));
         inputField.sendKeys("Buy some milk");
         inputField.sendKeys(Keys.RETURN);
 
         // THEN
-        WebElement todoListContents = driver.findElement(By.id("todo-list"));
+        WebElement todoListContents = driver.findElement(By.className("todo-list"));
         assertThat(todoListContents.getText(), containsString("Buy some milk"));
 
         driver.quit();
