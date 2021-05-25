@@ -14,8 +14,8 @@ public class WhenWeCreateANewDog {
     public void a_new_dog_should_have_a_name() {
         LocalDateTime dateOfBirth = LocalDateTime.now();
 
-        Dog fido = Dog.called("Fido")
-                .ofBreed("Labrador")
+        Dog fido = DogBreeder.aLargeDog()
+                .called("Fido")
                 .ofColour("Black")
                 .bornOn(dateOfBirth);
 
@@ -30,33 +30,33 @@ public class WhenWeCreateANewDog {
    @Test
     public void a_dog_can_have_an_optional_favourite_food() {
 
-        Dog fido = Dog.called("Fido")
-                .ofBreed("Labrador")
+        Dog sport = DogBreeder.aSmallDog()
+                 .called("Sport")
                 .ofColour("Black")
                 .hasFavouriteFood("Pizza")
                 .bornOn(THE_FOURTH_OF_JULY);
 
-        Assert.assertEquals("Fido", fido.getName());
-        Assert.assertEquals("Labrador", fido.getBreed());
-        Assert.assertEquals(THE_FOURTH_OF_JULY, fido.getDateOfBirth());
-        Assert.assertEquals("Black", fido.getColour());
-        Assert.assertEquals("Pizza", fido.getFavouriteFood());
+        Assert.assertEquals("Sport", sport.getName());
+        Assert.assertEquals("Poodle", sport.getBreed());
+        Assert.assertEquals(THE_FOURTH_OF_JULY, sport.getDateOfBirth());
+        Assert.assertEquals("Black", sport.getColour());
+        Assert.assertEquals("Pizza", sport.getFavouriteFood());
     }
 
     @Test
     public void a_dog_can_have_an_optional_favourite_toy() {
-        Dog fido = Dog.called("Fido")
-                .ofBreed("Labrador")
+        Dog jackie = DogBreeder.aGuardDog()
+                .called("Jackie")
                 .ofColour("Black")
                 .hasFavouriteFood("Pizza")
                 .hasFavouriteToy("Ball")
                 .bornOn(THE_FOURTH_OF_JULY);
 
-        Assert.assertEquals("Fido", fido.getName());
-        Assert.assertEquals("Labrador", fido.getBreed());
-        Assert.assertEquals(THE_FOURTH_OF_JULY, fido.getDateOfBirth());
-        Assert.assertEquals("Black", fido.getColour());
-        Assert.assertEquals("Pizza", fido.getFavouriteFood());
-        Assert.assertEquals("Ball", fido.getFavouriteToy());
+        Assert.assertEquals("Jackie", jackie.getName());
+        Assert.assertEquals("Bull Dog", jackie.getBreed());
+        Assert.assertEquals(THE_FOURTH_OF_JULY, jackie.getDateOfBirth());
+        Assert.assertEquals("Black", jackie.getColour());
+        Assert.assertEquals("Pizza", jackie.getFavouriteFood());
+        Assert.assertEquals("Ball", jackie.getFavouriteToy());
     }
 }

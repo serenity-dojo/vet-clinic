@@ -20,11 +20,7 @@ public class Dog {
         this.favouriteToy = favouriteToy;
     }
 
-    public static WithBreed called(String name) {
-        return new DogBuilder(name);
-    }
-
-    public String getName(){
+      public String getName(){
         return name;
     }
     public String getBreed(){
@@ -37,49 +33,4 @@ public class Dog {
     public String getFavouriteFood() {return favouriteFood;}
     public String getFavouriteToy() {return favouriteToy;}
 
-    interface WithBreed{
-        ofColour ofBreed(String breed);
-    }
-
-    interface ofColour{
-        DogBuilder ofColour (String colour);
-    }
-
-
-    public static class DogBuilder implements WithBreed  , ofColour{
-        private String name;
-        private String breed;
-        private LocalDateTime birthday;
-        private String colour;
-        private String favouriteFood;
-        private String favouriteToy;
-
-        public DogBuilder(String name) {
-            this.name = name;
-        }
-
-        public DogBuilder ofBreed(String breed) {
-            this.breed = breed;
-            return this;
-        }
-        public DogBuilder ofColour(String colour) {
-            this.colour = colour;
-            return this;
-        }
-
-        public Dog bornOn(LocalDateTime birthday){
-            this.birthday = birthday;
-            return new Dog(name,birthday,breed, colour, favouriteFood, favouriteToy);
-        }
-
-        public DogBuilder hasFavouriteFood(String favouriteFood) {
-            this.favouriteFood = favouriteFood;
-            return this;
-        }
-
-        public DogBuilder hasFavouriteToy(String favouriteToy) {
-            this.favouriteToy = favouriteToy;
-            return this;
-        }
-    }
 }
