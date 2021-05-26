@@ -1,9 +1,14 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+
+import static org.assertj.core.api.StrictAssertions.not;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 
 public class WhenWeCreateANewDog {
 
@@ -58,5 +63,20 @@ public class WhenWeCreateANewDog {
         Assert.assertEquals("Black", jackie.getColour());
         Assert.assertEquals("Pizza", jackie.getFavouriteFood());
         Assert.assertEquals("Ball", jackie.getFavouriteToy());
+    }
+
+    @Test
+    public void a_dog_has_more_than_one_colour() {
+        Dog fido = DogBreeder.aLargeDog()
+                .called("Fido")
+                .ofColour("Black","Brown")
+                .bornOn(dateOfBirth);
+
+        assertThat(fido.getColour(),hasItem("Brown"));
+        assertThat(fido.getColour(), Matchers.not(hasItem("Red ")));
+
+
+
+
     }
 }

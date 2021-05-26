@@ -1,5 +1,5 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
 public interface ofColour {
-    DogBreeder ofColour (String colour);
+    DogBreeder ofColour (String... colour);
 }

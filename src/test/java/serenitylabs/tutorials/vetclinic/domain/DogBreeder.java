@@ -1,13 +1,17 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
 
+import com.google.common.collect.ImmutableList;
+
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 public class DogBreeder implements WithBreed, ofColour {
     private String name;
     private String breed;
     private LocalDateTime birthday;
-    private String colour;
+    private List<String> colour;
     private String favouriteFood;
     private String favouriteToy;
 
@@ -26,8 +30,8 @@ public class DogBreeder implements WithBreed, ofColour {
         this.breed = breed;
         return this;
     }
-    public DogBreeder ofColour(String colour) {
-        this.colour = colour;
+    public DogBreeder ofColour(String... colour) {
+        this.colour = Arrays.asList(colour);
         return this;
     }
 
