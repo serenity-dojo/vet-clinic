@@ -11,7 +11,6 @@ public class Appointment {
 
     public static AppointmentBooker forPetCalled(String petName) {
         return new AppointmentBooker(petName);
-
     }
 
     public Appointment(String petName, String owner, LocalDateTime appointmentTime, String reason) {
@@ -20,11 +19,19 @@ public class Appointment {
         this.appointmentTime = appointmentTime;
         this.reason = Optional.ofNullable(reason);
     }
+//    public Appointment(LocalDateTime appointmentTime) {
+//        this.appointmentTime = appointmentTime;
+//    }
 
     public Appointment(String petName, String owner, LocalDateTime appointmentTime) {
         this(petName, owner, appointmentTime, null);
     }
-
+    public boolean isBefore(LocalDateTime dateTime) {
+        return appointmentTime.isBefore(dateTime);
+    }
+    public boolean isAfter(LocalDateTime dateTime) {
+        return appointmentTime.isAfter(dateTime);
+    }
 
     public String getPetName() {
         return petName;
@@ -50,7 +57,6 @@ public class Appointment {
         public AppointmentBooker(String petName) {
             this.petName = petName;
         }
-
         public AppointmentBooker ownedBy(String owner) {
             this.owner = owner;
             return this;

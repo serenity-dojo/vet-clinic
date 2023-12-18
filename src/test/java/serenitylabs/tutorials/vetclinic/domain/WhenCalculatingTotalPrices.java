@@ -1,8 +1,15 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import org.junit.Assert;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.lessThan;
 
 public class WhenCalculatingTotalPrices {
 
@@ -15,6 +22,6 @@ public class WhenCalculatingTotalPrices {
         int totalPrice = TotalConsultationPrice.includingTax().forANetPriceOf(netPrice);
 
         // THEN
-        Assert.assertEquals(120, totalPrice);
+        assertThat(totalPrice, equalTo(120));
     }
 }
