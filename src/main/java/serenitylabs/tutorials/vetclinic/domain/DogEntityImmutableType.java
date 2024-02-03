@@ -7,27 +7,35 @@ import java.time.LocalDate;
  * 
  */
 
-public class DogEntityImmutableType {
+public class DogEntityImmutableType implements WithIBreedable,IwithColourable {
 
 	//marking fields with final soo that its state can not be change.
-	private final String dogName;
-	private final String dogBreed;
-	private final LocalDate dateOfBirth;
-	private final String favouriteFood;
+	private String dogName;
+	private String dogBreed;
+	private LocalDate dateOfBirth;
+	private String favouriteColor;
+	private String optFldFavouriteFood;
+	private String optFldFavouriteToy;
 	
 	public DogEntityImmutableType(String dogName, String dogBreed, LocalDate birthDateTime) {
-		this(dogName, dogBreed, birthDateTime,null);
+		this(dogName, dogBreed, birthDateTime,null,null,null);
 		System.out.println("Parameterized constructor of Immutable DogEntityImmutableType class called.");
 	}
 	
-	public DogEntityImmutableType(String dogName, String dogBreed, LocalDate birthDateTime, String favouriteFood) {
+	public DogEntityImmutableType(String dogName, String dogBreed, LocalDate birthDateTime, String favColour,String favFood,String favToys) {
 		this.dogName = dogName;
 		this.dogBreed = dogBreed;
 		this.dateOfBirth = birthDateTime;
-		this.favouriteFood = favouriteFood;
+		this.favouriteColor = favColour;
+		this.optFldFavouriteFood=favFood;
+		this.optFldFavouriteToy=favToys;
 		System.out.println("Parameterized constructor with new field added.");
 	}
 	
+	public DogEntityImmutableType(String name) {
+		this.dogName=name;
+	}
+
 	public String getDogName() {
 		return dogName;
 	}
@@ -38,12 +46,54 @@ public class DogEntityImmutableType {
 		return dateOfBirth;
 	}
 
-	public String getFavouriteFood() {
-		return favouriteFood;
+	public String getFavouriteColor() {
+		return favouriteColor;
 	}
 	
-	public static DogBreederEntityBuilder called(String name) {
-		return new DogBreederEntityBuilder(name);
+	public String getOptFldFavouriteFood() {
+		return optFldFavouriteFood;
 	}
+
+	public String getOptFldFavouriteToy() {
+		return optFldFavouriteToy;
+	}
+	
+	public static WithIBreedable called(String name) {
+		System.out.println("\nThis methode call is mandatory. called()");
+		return new DogEntityImmutableType(name);
+	}
+
+	
+	public DogEntityImmutableType ofBreed(String breed) {
+		System.out.println("\nThis methode call is mandatory. ofBreed()");
+		this.dogBreed=breed;
+		return this;
+	}
+
+	public DogEntityImmutableType ofColour(String favColour) {
+		this.favouriteColor=favColour;
+		System.out.println("\nThis methode called. ofColour()");
+		return this;
+	}
+	
+	
+	public DogEntityImmutableType bornOn(LocalDate theFourthOfJuly) {
+		System.out.println("\nThis methode call is mandatory. bornOn()");
+		return new DogEntityImmutableType(dogName, dogBreed, theFourthOfJuly,favouriteColor,optFldFavouriteFood,optFldFavouriteToy);
+	}
+
+
+	public DogEntityImmutableType setOptFldFavouriteFood(String optFldFavouriteFood) {
+		this.optFldFavouriteFood = optFldFavouriteFood;
+		System.out.println("\nThis methode call is optional setOptFldFavouriteFood() ");
+		return this;
+	}
+
+	public DogEntityImmutableType setOptFldFavouriteToy(String optFldFavouriteToy) {
+		this.optFldFavouriteToy = optFldFavouriteToy;
+		System.out.println("\nThis methode call is optional setOptFldFavouriteToy() ");
+		return this;
+	}
+	
 	
 }

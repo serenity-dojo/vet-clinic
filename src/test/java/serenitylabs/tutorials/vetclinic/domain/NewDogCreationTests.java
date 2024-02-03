@@ -27,14 +27,93 @@ public class NewDogCreationTests {
 	@Test
 	public void a_new_dog_should_have_a_name()
 	{
-    DogEntityImmutableType dogObj=DogEntityImmutableType.called("Fido")
-		                          .ofBreed("Labrador")
+    DogEntityImmutableType dogObj=((DogEntityImmutableType) DogEntityImmutableType.called("Fido")
+		                          .ofBreed("Labrador"))
 		                          .bornOn(THE_FOURTH_OF_JULY);
     
     Assert.assertEquals("Fido",dogObj.getDogName());
     Assert.assertEquals("Labrador",dogObj.getDogBreed());
     Assert.assertEquals(THE_FOURTH_OF_JULY,dogObj.getBirthDate());
     System.out.println("\nThis is 4th Test methode.");
+	}
+	
+	
+	
+	/*
+	 * This TestNg test is representing test validation for colour should be a
+	 * mandatory field, and optional fields for Favourite Food with builder pattern
+	 * implementation.
+	 * 
+	 * see : Exercises-2 Step 5
+	 * 
+	 */
+	@Test
+	public void a_dog_can_have_an_optional_favourite_food() {
+	DogEntityImmutableType dogObj = DogEntityImmutableType.called("Fido") // mandatory
+				                                          .ofBreed("Labrador") // mandatory
+				                                          .ofColour("black")  //ofColour is mandatory.
+				                                          .setOptFldFavouriteFood("Pizza") //setOptFldFavouriteFood is optional
+				                                          .bornOn(THE_FOURTH_OF_JULY); // mandatory
+
+		Assert.assertEquals("Fido", dogObj.getDogName());
+		Assert.assertEquals("Labrador", dogObj.getDogBreed());
+		Assert.assertEquals("black", dogObj.getFavouriteColor());
+		Assert.assertEquals("Pizza", dogObj.getOptFldFavouriteFood());
+		Assert.assertEquals(THE_FOURTH_OF_JULY, dogObj.getBirthDate());
+		System.out.println("\nThis is 6th Test methode.");
+	}
+	
+	
+	
+	/*
+	 * This TestNg test is representing test validation for colour should be a
+	 * mandatory field, and optional fields for Favourite Toy with builder pattern
+	 * implementation.
+	 * 
+	 * see : Exercises-2 Step 5
+	 * 
+	 */
+	@Test
+	public void a_dog_can_have_an_optional_favourite_toy() {
+		DogEntityImmutableType dogObj=DogEntityImmutableType.called("Fido") // mandatory
+				                                            .ofBreed("Labrador") // mandatory
+				                                            .ofColour("black")  //ofColour is mandatory.
+				                                            .setOptFldFavouriteToy("PingPong") // setOptFldFavouriteToy optional
+				                                            .bornOn(THE_FOURTH_OF_JULY); // mandatory
+
+		Assert.assertEquals("Fido", dogObj.getDogName());
+		Assert.assertEquals("Labrador", dogObj.getDogBreed());
+		Assert.assertEquals("black", dogObj.getFavouriteColor());
+		Assert.assertEquals("PingPong", dogObj.getOptFldFavouriteToy());
+		Assert.assertEquals(THE_FOURTH_OF_JULY, dogObj.getBirthDate());
+		System.out.println("\nThis is 7th Test methode.");
+	}
+	
+	
+	
+	/*
+	 * This TestNg test is representing test validation for mandatory & optional
+	 * field/data member implementation with builder pattern implementation.
+	 * 
+	 * see : Exercises-2 Step 4 - Colour is an optional field.Use an interface
+	 * called WithIBreedable to allow the builder to cater for the mandatory fields
+	 * (name, breed and date of birth) and the optional one (colour).
+	 * 
+	 * This will be deleted once Exercises-2 'Step 5' will be implemented. 
+	 * 
+	 */
+	@Test
+	public void a_dog_can_have_an_optional_colour() {
+		DogEntityImmutableType dogObj = DogEntityImmutableType.called("Fido") // mandatory
+				                                              .ofBreed("Labrador") // mandatory
+				                                              .ofColour("black")  //ofColour is optional.
+				                                              .bornOn(THE_FOURTH_OF_JULY); // mandatory
+
+		Assert.assertEquals("Fido", dogObj.getDogName());
+		Assert.assertEquals("Labrador", dogObj.getDogBreed());
+		Assert.assertEquals("black", dogObj.getFavouriteColor());
+		Assert.assertEquals(THE_FOURTH_OF_JULY, dogObj.getBirthDate());
+		System.out.println("\nThis is 5th Test methode.");
 	}
 	
 	
@@ -71,12 +150,14 @@ public class NewDogCreationTests {
 	public void isOptionalFavouriteFoodFieldExists()
 	{
 		LocalDate locDateTimeObj=LocalDate.now();
-		DogEntityImmutableType dogObj=new DogEntityImmutableType("Touchi","Lasa",locDateTimeObj,"Rasgulla");
+		DogEntityImmutableType dogObj=new DogEntityImmutableType("Touchi","Lasa",locDateTimeObj,"Rasgulla",null,null);
 		
 		Assert.assertEquals("Touchi",dogObj.getDogName());
-		Assert.assertEquals("Rasgulla",dogObj.getFavouriteFood());
+		Assert.assertEquals("Rasgulla",dogObj.getFavouriteColor());
 		System.out.println("\nThis is 3rd Test methode.");
 	}
 
+
+	
 	
 }

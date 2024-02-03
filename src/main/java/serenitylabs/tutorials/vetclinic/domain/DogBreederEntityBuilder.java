@@ -5,6 +5,9 @@ public class DogBreederEntityBuilder {
 	
 	private String name;
 	private String breed;
+	private String favouriteColour;
+	private String optFldFavouriteFood;
+	private String optFldFavouriteToy;
 	
 	public DogBreederEntityBuilder(String name) {
 		this.name=name;
@@ -17,7 +20,7 @@ public class DogBreederEntityBuilder {
 	}
 	
 	public DogEntityImmutableType bornOn(LocalDate localDate) {
-		return new DogEntityImmutableType(name, breed, localDate);
+		return new DogEntityImmutableType(name, breed, localDate,favouriteColour,optFldFavouriteFood,optFldFavouriteToy);
 	}
 	
 }
