@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * 
  */
 
-public class DogEntityImmutableType implements WithIBreedable,IwithColourable {
+public class DogEntityImmutableType {
 
 	//marking fields with final soo that its state can not be change.
 	private String dogName;
@@ -16,6 +16,10 @@ public class DogEntityImmutableType implements WithIBreedable,IwithColourable {
 	private String favouriteColor;
 	private String optFldFavouriteFood;
 	private String optFldFavouriteToy;
+	
+	public static DogEntityImmutableType getImmutableInstance() {
+		return new DogEntityImmutableType();
+	}
 	
 	public DogEntityImmutableType(String dogName, String dogBreed, LocalDate birthDateTime) {
 		this(dogName, dogBreed, birthDateTime,null,null,null);
@@ -30,6 +34,10 @@ public class DogEntityImmutableType implements WithIBreedable,IwithColourable {
 		this.optFldFavouriteFood=favFood;
 		this.optFldFavouriteToy=favToys;
 		System.out.println("Parameterized constructor with new field added.");
+	}
+	
+	public DogEntityImmutableType() {
+		
 	}
 	
 	public DogEntityImmutableType(String name) {
@@ -58,11 +66,12 @@ public class DogEntityImmutableType implements WithIBreedable,IwithColourable {
 		return optFldFavouriteToy;
 	}
 	
-	public static WithIBreedable called(String name) {
-		System.out.println("\nThis methode call is mandatory. called()");
-		return new DogEntityImmutableType(name);
-	}
 
+	public DogEntityImmutableType called(String name) {
+		this.dogName=name;
+		System.out.println("\nThis methode call is mandatory. called()");
+		return this;
+	}
 	
 	public DogEntityImmutableType ofBreed(String breed) {
 		System.out.println("\nThis methode call is mandatory. ofBreed()");
@@ -95,5 +104,16 @@ public class DogEntityImmutableType implements WithIBreedable,IwithColourable {
 		return this;
 	}
 	
+	public static DogEntityImmutableType aLargeDog() {
+		return getImmutableInstance().ofBreed("Labrador");
+	}
+	
+	public static DogEntityImmutableType aSmallDog() {
+		return getImmutableInstance().ofBreed("Lasa");
+	}
+	
+	public static DogEntityImmutableType aGuardDog() {
+		return getImmutableInstance().ofBreed("German Shepherd");
+	}
 	
 }
