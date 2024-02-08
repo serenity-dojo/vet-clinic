@@ -1,5 +1,8 @@
 package serenitylabs.tutorials.vetclinic.domain;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 /**
  * Immutable DogEntityImmutableType class as its fields values state can not be
@@ -16,6 +19,7 @@ public class DogEntityImmutableType {
 	private String favouriteColor;
 	private String optFldFavouriteFood;
 	private String optFldFavouriteToy;
+	private List<String> strListOfColours;
 	
 	public static DogEntityImmutableType getImmutableInstance() {
 		return new DogEntityImmutableType();
@@ -23,6 +27,13 @@ public class DogEntityImmutableType {
 	
 	public DogEntityImmutableType(String dogName, String dogBreed, LocalDate birthDateTime) {
 		this(dogName, dogBreed, birthDateTime,null,null,null);
+		System.out.println("Parameterized constructor of Immutable DogEntityImmutableType class called.");
+	}
+	
+	public DogEntityImmutableType(String dogName, String dogBreed,List<String> localLstColorStr) {
+		this.dogName=dogName;
+		this.dogBreed=dogBreed;
+		this.strListOfColours=localLstColorStr;
 		System.out.println("Parameterized constructor of Immutable DogEntityImmutableType class called.");
 	}
 	
@@ -115,5 +126,20 @@ public class DogEntityImmutableType {
 	public static DogEntityImmutableType aGuardDog() {
 		return getImmutableInstance().ofBreed("German Shepherd");
 	}
+	
+	public DogEntityImmutableType andOfColour(String... favColour) {
+		System.out.println("\nThis methode called. andOfColour()");
+		return new DogEntityImmutableType(dogName, dogBreed, ImmutableList.copyOf(favColour));
+	}
+
+	@Override
+	public String toString() {
+		return ""+dogName+" the "+favouriteColor+" "+dogBreed+"";
+	}
+
+	public List<String> getStrListOfColours() {
+		return new ArrayList<String>(strListOfColours);
+	}
+
 	
 }

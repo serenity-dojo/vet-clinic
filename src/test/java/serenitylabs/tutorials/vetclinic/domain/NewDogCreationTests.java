@@ -1,4 +1,13 @@
 package serenitylabs.tutorials.vetclinic.domain;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.endsWith;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.Matchers.contains;
+import static org.junit.Assert.assertThat;
 import java.time.LocalDate;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -188,6 +197,48 @@ public class NewDogCreationTests {
 		Assert.assertEquals("black", dogObj.getFavouriteColour());
 		System.out.println("\nThis is 5th Test methode.");
 	}
+	
+	
+	/*
+	 * This TestNg test is representing test validation for 'Vet Clinic Tutorial 2 -
+	 * Hamcrest Matchers' modules Exercise - 'Step 4 - Hamcrest collection matchers'
+	 * implementation
+	 * 
+	 */
+	@Test
+	public void a_dog_can_have_several_colours() {
+		System.out.println("\nThis is 'Step 4 - Hamcrest collection matchers' Test methode-12th implementation");
+		 DogEntityImmutableType dogObj=DogEntityImmutableType.getImmutableInstance()
+				                                             .called("Fido")
+                                                             .ofBreed("labrador")
+                                                             .andOfColour("Red","black","green","blue");//ofColour is mandatory.
+		 
+		 assertThat(dogObj.getStrListOfColours(),contains("Red","black","green","blue"));
+		 assertThat(dogObj.getStrListOfColours(),hasItem("green"));
+		 assertThat(dogObj.getStrListOfColours(),not(hasItem("yellow")));
+	}
+	
+	
+	/*
+	 * This TestNg test is representing test validation for 'Vet Clinic Tutorial 2 -
+	 * Hamcrest Matchers' modules Exercise - 'Step 3 - Hamcrest String matchers'
+	 * implementation
+	 * 
+	 */
+	@Test
+	public void a_new_dog_should_be_printed_in_a_readable_form() {
+	System.out.println("\nThis is 'Step 3 - Hamcrest String matchers' Test methode-11th implementation");
+	 DogEntityImmutableType dogObj=DogEntityImmutableType.getImmutableInstance()
+			                                             .called("Fido")
+			                                             .ofBreed("labrador")
+			                                             .ofColour("black");//ofColour is mandatory.
+	
+	 assertThat(dogObj.toString(),is(equalTo("Fido the black labrador")));
+	 assertThat(dogObj.toString(),startsWith("Fido"));
+	 assertThat(dogObj.toString(),endsWith("labrador"));
+	 assertThat(dogObj.toString(),containsString("black"));
+	}
+	
 	
 	
 	@Test
