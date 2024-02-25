@@ -1,5 +1,6 @@
 package serenitylabs.tutorials.vetclinic.collections.katas;
 import org.testng.annotations.Test;
+import serenitylabs.tutorials.vetclinic.collections.exercises.BookingResponse;
 import serenitylabs.tutorials.vetclinic.katas.PetEntity;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.contains;

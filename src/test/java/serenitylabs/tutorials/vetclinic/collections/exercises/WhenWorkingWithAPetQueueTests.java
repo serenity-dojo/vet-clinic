@@ -1,4 +1,4 @@
-package serenitylabs.tutorials.vetclinic.collections.katas;
+package serenitylabs.tutorials.vetclinic.collections.exercises;
 import java.util.LinkedList;
 import java.util.Queue;
 import org.testng.annotations.Test;

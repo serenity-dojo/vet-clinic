@@ -1,4 +1,4 @@
-package serenitylabs.tutorials.vetclinic.collections.katas;
+package serenitylabs.tutorials.vetclinic.collections.exercises;
 import java.util.ArrayList;
 import java.util.List;
 

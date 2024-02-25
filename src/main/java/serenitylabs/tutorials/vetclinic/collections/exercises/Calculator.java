@@ -1,4 +1,4 @@
-package serenitylabs.tutorials.vetclinic.collections.katas;
+package serenitylabs.tutorials.vetclinic.collections.exercises;
 
 public class Calculator {
 

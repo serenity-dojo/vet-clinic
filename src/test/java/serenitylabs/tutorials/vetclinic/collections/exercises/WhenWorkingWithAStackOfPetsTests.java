@@ -1,4 +1,4 @@
-package serenitylabs.tutorials.vetclinic.collections.katas;
+package serenitylabs.tutorials.vetclinic.collections.exercises;
 import static org.hamcrest.Matchers.equalTo;
 import java.util.Deque;
 import java.util.LinkedList;

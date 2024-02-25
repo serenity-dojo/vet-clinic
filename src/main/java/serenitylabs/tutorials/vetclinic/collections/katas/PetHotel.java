@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.TreeSet;
+
+import serenitylabs.tutorials.vetclinic.collections.exercises.BookingResponse;
+import serenitylabs.tutorials.vetclinic.collections.exercises.CheckInStrategy;
+import serenitylabs.tutorials.vetclinic.collections.exercises.ConfirmBookingStrategy;
+import serenitylabs.tutorials.vetclinic.collections.exercises.HotelAvailability;
+import serenitylabs.tutorials.vetclinic.collections.exercises.WaitingListStrategy;
 import serenitylabs.tutorials.vetclinic.katas.PetEntity;
 
 public class PetHotel {
