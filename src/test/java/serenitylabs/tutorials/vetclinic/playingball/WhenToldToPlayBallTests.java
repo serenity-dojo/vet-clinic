@@ -1,20 +1,24 @@
 package serenitylabs.tutorials.vetclinic.playingball;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static serenitylabs.tutorials.vetclinic.playingball.model.GameEnum.Cricket;
+import static serenitylabs.tutorials.vetclinic.playingball.model.GameEnum.Football;
+import static serenitylabs.tutorials.vetclinic.playingball.model.GameEnum.Handball;
+import static serenitylabs.tutorials.vetclinic.playingball.model.GameEnum.Hockey;
+import static serenitylabs.tutorials.vetclinic.playingball.model.GameEnum.Tennis;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.Before;
 import org.testng.annotations.Test;
 import serenitylabs.tutorials.vetclinic.playingball.model.ChildEntity;
-import static serenitylabs.tutorials.vetclinic.playingball.model.GameEnum.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 public class WhenToldToPlayBallTests {
 
-	private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+	private ByteArrayOutputStream output=new ByteArrayOutputStream();
 	
 	@Before
 	public void setOutput() {
-		System.setOut(new PrintStream(output));
+	System.setOut(new PrintStream(output));
 	System.out.println("\nTC-01 - executing - setOutput()");
 	}
 
@@ -23,7 +27,7 @@ public class WhenToldToPlayBallTests {
 	public void child_should_play_cricket_if_asked() {
 		ChildEntity bill = new ChildEntity();
 		bill.goPlay(Cricket);
-		assertThat(output.toString(), equalTo("Hit the wicket"));
+		assertThat(output.toString(),equalTo("Hit the wicket"));
 	System.out.println("\nTC-02 - executing - child_should_play_cricket_if_asked() ");
 	}
 
