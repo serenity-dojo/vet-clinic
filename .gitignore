@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Maven template
 target/
+test-output/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
