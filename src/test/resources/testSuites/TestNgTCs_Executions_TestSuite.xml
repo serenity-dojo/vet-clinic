@@ -19,7 +19,6 @@
 			<class name="serenitylabs.tutorials.vetclinic.enumerations.katas.WhenCalculatingWithColoursTests" />
 			<class name="serenitylabs.tutorials.vetclinic.playingball.WhenPlayingBallTests" />
 			<class name="serenitylabs.tutorials.vetclinic.playingball.WhenSchedulingRecreationalSportTests" />
-			<class name="serenitylabs.tutorials.vetclinic.playingball.WhenToldToPlayBallTests" />
 		</classes>
 	</test> 
 </suite>

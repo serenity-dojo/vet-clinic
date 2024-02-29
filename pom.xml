@@ -76,7 +76,7 @@
 				<version>2.18.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+						<defaultSuiteXmlFile>src/test/resources/testSuites/TestNgTCs_Executions_TestSuite.xml</defaultSuiteXmlFile>
 					</suiteXmlFiles>
 					<includes>
 						<include>**/When*.java</include>
