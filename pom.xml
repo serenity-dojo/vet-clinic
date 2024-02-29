@@ -3,7 +3,7 @@
 
 	<groupId>com.wakaleo.tutorials</groupId>
 	<artifactId>vet-clinic</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>tutorials</name>
 	<url>http://maven.apache.org</url>
@@ -30,7 +30,7 @@
 		<developerConnection>
 			scm:git:https://github.com/abhinay5993/vet-clinic.git</developerConnection>
 		<url>https://github.com/abhinay5993/vet-clinic</url>
-		<tag>vet-clinic-1.1</tag>
+		<tag>vet-clinic-autodeployed-v</tag>
 	</scm>
 
 	<properties>
