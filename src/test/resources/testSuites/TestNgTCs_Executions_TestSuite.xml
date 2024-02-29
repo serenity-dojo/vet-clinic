@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="vet-Clinic_TestNg_Tests">
+	<test name="Run_TestNg_TCs">
+		<classes>
+			<class name="serenitylabs.tutorials.vetclinic.collections.exercises.WhenWorkingWithAListOfPetNamesTests" />
+			<class name="serenitylabs.tutorials.vetclinic.collections.exercises.WhenWorkingWithAListOfPetsTests" />
+			<class name="serenitylabs.tutorials.vetclinic.collections.exercises.WhenWorkingWithAPetMapTests" />
+			<class name="serenitylabs.tutorials.vetclinic.collections.exercises.WhenWorkingWithAPetQueueTests" />
+			<class name="serenitylabs.tutorials.vetclinic.collections.exercises.WhenWorkingWithASetOfPetsTests" />
+			<class name="serenitylabs.tutorials.vetclinic.collections.exercises.WhenWorkingWithAStackOfPetsTests" />
+			<class name="serenitylabs.tutorials.vetclinic.collections.katas.WhenBookingPetsIntoAPetHotelTests" />
+			<class name="serenitylabs.tutorials.vetclinic.domain.NewDogCreationTests" />
+			<class name="serenitylabs.tutorials.vetclinic.domain.WhenCalculatingTotalPricesTests" />
+			<class name="serenitylabs.tutorials.vetclinic.domain.WhenWeBookAnAppointmentTests" />
+			<class name="serenitylabs.tutorials.vetclinic.enumerations.exercises.WhenCreatingAComplexEnumTests" />
+			<class name="serenitylabs.tutorials.vetclinic.enumerations.exercises.WhenCreatingASimpleEnumTests" />
+			<class name="serenitylabs.tutorials.vetclinic.enumerations.exercises.WhenWorkingWithASimpleEnumerationTests" />
+			<class name="serenitylabs.tutorials.vetclinic.enumerations.katas.WhenCalculatingWithColoursTests" />
+			<class name="serenitylabs.tutorials.vetclinic.playingball.WhenPlayingBallTests" />
+			<class name="serenitylabs.tutorials.vetclinic.playingball.WhenSchedulingRecreationalSportTests" />
+			<class name="serenitylabs.tutorials.vetclinic.playingball.WhenToldToPlayBallTests" />
+		</classes>
+	</test> 
+</suite>

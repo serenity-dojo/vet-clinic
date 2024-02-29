@@ -1,0 +1,1 @@
+mvn clean test -DsuiteXmlFile=src/test/resources/testSuites/TestNgTCs_Executions_TestSuite.xml
