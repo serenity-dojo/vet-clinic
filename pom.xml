@@ -5,7 +5,7 @@
 
 	<groupId>com.wakaleo.tutorials</groupId>
 	<artifactId>vet-clinic</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>v1.0.1</version>
 	<packaging>jar</packaging>
 	<name>tutorials</name>
 	<url>http://maven.apache.org</url>
@@ -17,6 +17,22 @@
 			<url>https://maven.pkg.github.com/abhinay5993/vet-clinic</url>
 		</repository>
 	</distributionManagement>
+
+	<developers>
+		<developer>
+			<name>Abhinay Lunawat</name>
+			<email>abhinaylunawat5993@gmail.com</email>
+			<organization>com.github.abhinay5993</organization>
+			<organizationUrl>https://github.com/abhinay5993/vet-clinic</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/abhinay5993/vet-clinic.git</connection>
+		<developerConnection>scm:git:https://github.com/abhinay5993/vet-clinic.git</developerConnection>
+		<url>https://github.com/abhinay5993/vet-clinic</url>
+		<tag>vet-clinic-autodeployed-v</tag>
+	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,7 +92,8 @@
 				<version>2.18.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<defaultSuiteXmlFile>src/test/resources/testSuites/TestNgTCs_Executions_TestSuite.xml</defaultSuiteXmlFile>
+						<defaultSuiteXmlFile>
+							src/test/resources/testSuites/TestNgTCs_Executions_TestSuite.xml</defaultSuiteXmlFile>
 					</suiteXmlFiles>
 					<includes>
 						<include>**/When*.java</include>
@@ -84,6 +101,11 @@
 						<include>**/*TestSuite.java</include>
 					</includes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.0-M1</version>
 			</plugin>
 		</plugins>
 	</build>
