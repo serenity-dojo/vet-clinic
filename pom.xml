@@ -7,9 +7,16 @@
 	<artifactId>vet-clinic</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>tutorials</name>
 	<url>http://maven.apache.org</url>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub abhinay5993 Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/abhinay5993/vet-clinic</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
