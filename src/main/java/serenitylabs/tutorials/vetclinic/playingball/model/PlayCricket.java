@@ -1,10 +1,13 @@
 package serenitylabs.tutorials.vetclinic.playingball.model;
 
-public class PlayCricket implements IPlayer {
+public class PlayCricket implements IPlayer, IPlayBall {
 
-	@Override
 	public void play() {
 		System.out.print("Hit the wicket");
+	}
+
+	public GameEnum letEnumToPlay() {
+		return GameEnum.Cricket;
 	}
 
 }

@@ -2,14 +2,27 @@ package serenitylabs.tutorials.vetclinic.playingball.sales.model;
 
 public class LineItemEntityBuilder implements ItemICalled, InICategory {
 
+	private int quanity;
+	private String itemName;
+	private ProductCategoryEnum category;
+
+	public LineItemEntityBuilder(int quanity) {
+		this.quanity = quanity;
+	}
+
 	@Override
 	public LineItemEntityBuilder inCategory(ProductCategoryEnum category) {
-		return null;
+		this.category = category;
+		return this;
 	}
 
 	@Override
 	public InICategory itemCalled(String itemName) {
-		return null;
+		this.itemName = itemName;
+		return this;
 	}
 
+	public LineItemEntity withAUnitPriceOf(double price) {
+		return new LineItemEntity(price, quanity, itemName, category);
+	}
 }

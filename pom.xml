@@ -13,6 +13,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
 	</properties>
 
 	<dependencies>
@@ -53,12 +55,12 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
+				<version>3.8.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>21</source>
+					<target>21</target>
+					<release>21</release>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -66,6 +68,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.18.1</version>
 				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
 					<includes>
 						<include>**/When*.java</include>
 						<include>**/*Tests.java</include>
