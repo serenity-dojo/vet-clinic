@@ -3,7 +3,7 @@
 
 	<groupId>com.wakaleo.tutorials</groupId>
 	<artifactId>vet-clinic</artifactId>
-	<version>1.3-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>tutorials</name>
 	<url>http://maven.apache.org</url>
@@ -80,7 +80,6 @@
 					<artifactId>maven-plugin-plugin</artifactId>
 					<version>3.6.0</version>
 					<configuration>
-						<!-- see http://jira.codehaus.org/browse/MNG-5346 -->
 						<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
 					</configuration>
 				</plugin>
