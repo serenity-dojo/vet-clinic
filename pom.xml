@@ -18,17 +18,15 @@
 
 	<developers>
 		<developer>
-			<name>Abhinay Lunawat</name>
+			<name>abhinay5993</name>
 			<email>abhinaylunawat5993@gmail.com</email>
-			<organization>com.github.abhinay5993</organization>
 			<organizationUrl>https://github.com/abhinay5993/vet-clinic</organizationUrl>
 		</developer>
 	</developers>
 
 	<scm>
 		<connection>scm:git:git://github.com/abhinay5993/vet-clinic.git</connection>
-		<developerConnection>
-			scm:git:https://github.com/abhinay5993/vet-clinic.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/abhinay5993/vet-clinic.git</developerConnection>
 		<url>https://github.com/abhinay5993/vet-clinic</url>
 		<tag>vet-clinic-autodeployed-v</tag>
 	</scm>
